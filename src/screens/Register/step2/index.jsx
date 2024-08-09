@@ -19,7 +19,7 @@ export const RegisterStep2 = ({navigation}) => {
       const response = await axios.post('https://api.com', {code}); // 가족 코드 api
 
       if (response.data.valid) {
-        navigation.navigate('RegisterStep3');
+        navigation.navigate('RegisterStep4');
       } else {
         setErrorMessage('※ 코드가 올바르지 않습니다.');
       }
