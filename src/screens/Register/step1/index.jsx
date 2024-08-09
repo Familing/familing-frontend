@@ -11,7 +11,9 @@ export const RegisterStep1 = ({navigation}) => {
         <Text style={styles.subtitle}>이 있나요?</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.noButton}>
+        <TouchableOpacity
+          style={styles.noButton}
+          onPress={() => navigation.navigate('RegisterStep3')}>
           <Text style={styles.noText}>아니요</Text>
         </TouchableOpacity>
         <TouchableOpacity
