@@ -6,7 +6,7 @@ export const PhotoCard = ({isAddButton}) => {
     <TouchableOpacity style={styles.card}>
       {isAddButton ? (
         <Image
-          source={require('../../../../assets/images/photocard/plusbtn.png')}
+          source={require('@assets/images/photocard/plusbtn.png')}
           style={styles.addImage}
         />
       ) : (

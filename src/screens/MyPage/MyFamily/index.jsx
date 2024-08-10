@@ -32,7 +32,7 @@ export default function MyFamilyScreen({navigation}) {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
-          source={require('../../../../assets/images/register/arrow.png')}
+          source={require('@assets/images/register/arrow.png')}
           style={styles.arrowImage}
         />
       </TouchableOpacity>
@@ -44,7 +44,7 @@ export default function MyFamilyScreen({navigation}) {
           onPress={fetchInviteCode}
           style={styles.copyContainer}>
           <Image
-            source={require('../../../assets/images/register/copyimage.png')}
+            source={require('@assets/images/register/copyimage.png')}
             style={styles.copyImage}
           />
           <Text style={styles.copyText}>초대 코드 복사하기</Text>
@@ -55,7 +55,7 @@ export default function MyFamilyScreen({navigation}) {
       <View style={styles.familylistContainer}>
         <View style={styles.list1}>
           <Image
-            source={require('../../../../assets/images/photocard/photocard1.png')}
+            source={require('@assets/images/photocard/photocard1.png')}
             style={styles.listImage}
           />
           <Text style={styles.listText}>행복한 부자아빠</Text>
@@ -63,7 +63,7 @@ export default function MyFamilyScreen({navigation}) {
         <View style={styles.separator} />
         <View style={styles.list2}>
           <Image
-            source={require('../../../../assets/images/photocard/photocard1.png')}
+            source={require('@assets/images/photocard/photocard1.png')}
             style={styles.listImage}
           />
           <Text style={styles.listText}>익순여왕님</Text>
@@ -71,7 +71,7 @@ export default function MyFamilyScreen({navigation}) {
         <View style={styles.separator} />
         <View style={styles.list3}>
           <Image
-            source={require('../../../../assets/images/photocard/photocard1.png')}
+            source={require('@assets/images/photocard/photocard1.png')}
             style={styles.listImage}
           />
           <Text style={styles.listText}>민지 공주</Text>
@@ -79,7 +79,7 @@ export default function MyFamilyScreen({navigation}) {
         <View style={styles.separator} />
         <View style={styles.list4}>
           <Image
-            source={require('../../../../assets/images/photocard/photocard1.png')}
+            source={require('assets/images/photocard/photocard1.png')}
             style={styles.listImage}
           />
           <Text style={styles.listText}>이민형</Text>

@@ -10,7 +10,7 @@ export const CardBanner = () => {
         <Text style={styles.description}>간단하게 따뜻한 마음을</Text>
       </View>
       <Image
-        source={require('../../../../src/assets/images/CardImage.png')}
+        source={require('@assets/images/banner/CardImage.png')}
         style={styles.image}
         resizeMode="contain"
       />

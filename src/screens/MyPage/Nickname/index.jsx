@@ -24,7 +24,7 @@ export default function NicknameScreen({navigation}) {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
-          source={require('../../../../assets/images/register/arrow.png')}
+          source={require('@assets/images/register/arrow.png')}
           style={styles.arrowImage}
         />
       </TouchableOpacity>

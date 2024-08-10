@@ -38,7 +38,7 @@ export const RegisterStep2 = ({navigation}) => {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
-          source={require('../../assets/images/register/arrow.png')}
+          source={require('@assets/images/register/arrow.png')}
           style={styles.arrowImage}
         />
       </TouchableOpacity>
@@ -56,7 +56,7 @@ export const RegisterStep2 = ({navigation}) => {
         keyboardType="default"
       />
       <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={require('../../../assets/images/button/clearbtn.png')} />
+        <Image source={require('@assets/images/button/clearbtn.png')} />
       </TouchableOpacity>
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleJoin}>

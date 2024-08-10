@@ -10,7 +10,7 @@ export const ChatBanner = () => {
         <Text style={styles.description}>AI가 도와드릴게요!</Text>
       </View>
       <Image
-        source={require('../../../../src/assets/images/CardImage.png')}
+        source={require('@assets/images/banner/ChatImage.png')}
         style={styles.image}
         resizeMode="contain"
       />
