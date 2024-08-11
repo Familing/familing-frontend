@@ -1,16 +1,16 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Home from '../../../screens/Home/Home';
+import Home from '../../../screens/Home/index';
 import Chatting from '../../../screens/Chatting/Chatting';
-import LoveCard from '../../../screens/LoveCard/LoveCard';
-import MyPage from '../../../screens/MyPage/MyPage';
-import { CustomTabBar } from './CustomTabBar';
+import LoveCardMainScreen from '../../../screens/LoveCard/main';
+import MyPage from '../../../screens/MyPage/index';
+import {CustomTabBar} from './CustomTabBar';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+    <Tab.Navigator tabBarComponent={CustomTabBar}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -22,8 +22,8 @@ export const BottomTabScreen = () => {
         options={{tabBarLabel: '채팅', headerShown: false}}
       />
       <Tab.Screen
-        name="LoveCard"
-        component={LoveCard}
+        name="LovecardMainScreen"
+        component={LoveCardMainScreen}
         options={{tabBarLabel: '애정카드', headerShown: false}}
       />
       <Tab.Screen

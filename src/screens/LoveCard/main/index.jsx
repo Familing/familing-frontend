@@ -10,7 +10,7 @@ import {
 import Swiper from 'react-native-swiper';
 import {CardBanner} from '../../../components/features/Home/Banner/CardBanner';
 
-export const LoveCardMainScreen = ({navigation}) => {
+export default function LoveCardMainScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [showAvatars, setShowAvatars] = useState(false);
@@ -20,7 +20,7 @@ export const LoveCardMainScreen = ({navigation}) => {
   const handleProfileClick = () => {
     navigation.navigate('LoveCardDetailScreen', {
       name: '익순여왕님',
-      image: require('../../assets/images/photocard/photocard2.png'),
+      image: require('@assets/images/photocard/photocard2.png'),
     });
   };
 
@@ -56,7 +56,7 @@ export const LoveCardMainScreen = ({navigation}) => {
             style={styles.profileCard}
             onPress={handleProfileClick}>
             <Image
-              source={require('../../assets/images/photocard/photocard2.png')}
+              source={require('@assets/images/photocard/photocard2.png')}
               style={styles.avatar}
             />
             <Text style={styles.name}>익순여왕님</Text>
@@ -64,14 +64,14 @@ export const LoveCardMainScreen = ({navigation}) => {
         </View>
         <View style={styles.profileCard}>
           <Image
-            source={require('../../assets/images/photocard/photocard3.png')}
+            source={require('@assets/images/photocard/photocard3.png')}
             style={styles.avatar}
           />
           <Text style={styles.name}>민지공주</Text>
         </View>
         <View style={styles.profileCard}>
           <Image
-            source={require('../../assets/images/photocard/photocard1.png')}
+            source={require('@assets/images/photocard/photocard1.png')}
             style={styles.avatar}
           />
           <Text style={styles.name}>이민형</Text>
@@ -83,33 +83,28 @@ export const LoveCardMainScreen = ({navigation}) => {
         오늘 Familing이 고심해서 고른 12장의 카드예요!
       </Text>
       <View style={styles.swiperContainer}>
-        <Swiper
-          style={styles.wrapper}
-          showsButtons={true}
-          autoplay={true}
-          autoplayTimeout={3} // timeout 설정하나?
-        >
+        <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
           <TouchableOpacity onPress={() => handleCardClick('lovecard1')}>
             <Image
-              source={require('../../assets/images/lovecard/lovecard1.png')}
+              source={require('@assets/images/lovecard/lovecard1.png')}
               style={styles.image}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard2')}>
             <Image
-              source={require('../../assets/images/lovecard/lovecard2.png')}
+              source={require('@assets/images/lovecard/lovecard2.png')}
               style={styles.image}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard3')}>
             <Image
-              source={require('../../assets/images/lovecard/lovecard3.png')}
+              source={require('@assets/images/lovecard/lovecard3.png')}
               style={styles.image}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard4')}>
             <Image
-              source={require('../../assets/images/lovecard/lovecard4.png')}
+              source={require('@assets/images/lovecard/lovecard4.png')}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -123,7 +118,7 @@ export const LoveCardMainScreen = ({navigation}) => {
         onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalContainer}>
           <Image
-            source={require(`../../assets/images/lovecard/${selectedCard}.png`)}
+            source={require(`@assets/images/lovecard/${selectedCard}.png`)}
             style={styles.modalImage}
           />
           <View style={styles.buttonContainer}>
@@ -145,14 +140,14 @@ export const LoveCardMainScreen = ({navigation}) => {
         <View style={styles.avatarContainer}>
           <Image
             style={styles.clearButton}
-            source={require('../../../assets/images/button/clearbutton.png')}
+            source={require('@assets/images/button/clearbutton.png')}
           />
           <View style={styles.avatarBox}>
             <TouchableOpacity
               style={styles.avatarContent}
               onPress={() => handleAvatarClick('익순여왕님')}>
               <Image
-                source={require('../../assets/images/photocard/photocard2.png')}
+                source={require('@assets/images/photocard/photocard2.png')}
                 style={styles.avatarImage}
               />
               <Text style={styles.avatarName}>익순여왕님</Text>
@@ -161,7 +156,7 @@ export const LoveCardMainScreen = ({navigation}) => {
               style={styles.avatar}
               onPress={() => handleAvatarClick('민지공주')}>
               <Image
-                source={require('../../assets/images/photocard/photocard3.png')}
+                source={require('@assets/images/photocard/photocard3.png')}
                 style={styles.avatarImage}
               />
               <Text style={styles.avatarName}>민지공주</Text>
@@ -170,7 +165,7 @@ export const LoveCardMainScreen = ({navigation}) => {
               style={styles.avatar}
               onPress={() => handleAvatarClick('이민형')}>
               <Image
-                source={require('../../assets/images/photocard/photocard1.png')}
+                source={require('@assets/images/photocard/photocard1.png')}
                 style={styles.avatarImage}
               />
               <Text style={styles.avatarName}>이민형</Text>
@@ -189,7 +184,7 @@ export const LoveCardMainScreen = ({navigation}) => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

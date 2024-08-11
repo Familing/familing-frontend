@@ -43,7 +43,7 @@ export const RegisterStep3 = ({navigation}) => {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
-          source={require('../../assets/images/register/arrow.png')}
+          source={require('@assets/images/register/arrow.png')}
           style={styles.arrowImage}
         />
       </TouchableOpacity>
@@ -63,7 +63,7 @@ export const RegisterStep3 = ({navigation}) => {
         keyboardType="default"
       />
       <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={require('../../../assets/images/button/clearbtn.png')} />
+        <Image source={require('@assets/images/button/clearbtn.png')} />
       </TouchableOpacity>
       <View style={styles.inviteContainer}>
         <Text style={styles.inviteTitle}>
@@ -73,7 +73,7 @@ export const RegisterStep3 = ({navigation}) => {
           onPress={fetchInviteCode}
           style={styles.copyContainer}>
           <Image
-            source={require('../../../assets/images/register/copyimage.png')}
+            source={require('@assets/images/register/copyimage.png')}
             style={styles.copyImage}
           />
           <Text style={styles.copyText}>초대 코드 복사하기</Text>
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
     height: 80,
     position: 'absolute',
     top: 146,
+    backgroundColor: '#B3B3B3',
   },
   inviteTitle: {
     fontSize: 20,

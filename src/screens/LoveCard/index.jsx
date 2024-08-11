@@ -1,8 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LovecardMainScreen from './LovecardMainScreen';
-import LoveCardDetailScreen from './LoveCardDetailScreen';
+import LovecardMainScreen from './main/index';
+import LoveCardDetailScreen from './detail/index';
 
 const Stack = createNativeStackNavigator();
 

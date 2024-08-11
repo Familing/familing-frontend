@@ -13,7 +13,7 @@ export const FamilingBanner = () => {
         <Text style={styles.description}>소통이 활발한 가족을 바래요.</Text>
       </View>
       <Image
-        source={require('../../../../src/assets/images/BannerImage.png')}
+        source={require('@assets/images/banner/BannerImage.png')}
         style={styles.image}
         resizeMode="contain"
       />

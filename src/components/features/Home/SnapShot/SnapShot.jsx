@@ -21,21 +21,21 @@ export const SnapShot = () => {
         <View style={styles.row}>
           <PhotoCard
             isAddButton={true}
-            imageSource={require('../../../../assets/images/photocard/photocard1.png')}
+            imageSource={require('@assets/images/photocard/photocard1.png')}
             style={styles.cardImage}
           />
           <PhotoCard
-            imageSource={require('../../../../assets/images/photocard/photocard2.png')}
+            imageSource={require('@assets/images/photocard/photocard2.png')}
             style={styles.cardImage}
           />
         </View>
         <View style={styles.row}>
           <PhotoCard
-            imageSource={require('../../../../assets/images/photocard/photocard3.png')}
+            imageSource={require('@assets/images/photocard/photocard3.png')}
             style={styles.cardImage}
           />
           <PhotoCard
-            imageSource={require('../../../../assets/images/photocard/photocard4.png')}
+            imageSource={require('@assets/images/photocard/photocard4.png')}
             style={styles.cardImage}
           />
         </View>

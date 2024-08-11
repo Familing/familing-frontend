@@ -40,7 +40,7 @@ export const RegisterStep4 = ({navigation}) => {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
-          source={require('../../assets/images/register/arrow.png')}
+          source={require('@assets/images/register/arrow.png')}
           style={styles.arrowImage}
         />
       </TouchableOpacity>
@@ -48,7 +48,7 @@ export const RegisterStep4 = ({navigation}) => {
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={openModal}>
           <Image
-            source={require('../../../assets/images/avatar.png')}
+            source={require('@assets/images/avatar.png')}
             style={styles.image}
           />
         </TouchableOpacity>
@@ -75,7 +75,7 @@ export const RegisterStep4 = ({navigation}) => {
           <Text style={styles.modalTitle}>사진 업로드</Text>
           <TouchableOpacity style={styles.cameraButton} onPress={handleCamera}>
             <Image
-              source={require('../../../assets/images/register/camera.png')}
+              source={require('@assets/images/register/camera.png')}
               style={styles.cameraImage}
             />
             <Text style={styles.cameraText}>카메라</Text>
@@ -84,14 +84,14 @@ export const RegisterStep4 = ({navigation}) => {
             style={styles.galleryButton}
             onPress={handleGallery}>
             <Image
-              source={require('../../../assets/images/register/gallery.png')}
+              source={require('@assets/images/register/gallery.png')}
               style={styles.galleryImage}
             />
             <Text style={styles.galleryText}>앨범</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={closeModal}>
             <Image
-              source={require('../../../assets/images/button/clearbtn.png')}
+              source={require('@assets/images/button/clearbtn.png')}
               style={styles.closeButton}
             />
           </TouchableOpacity>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { LogoIcon } from '../../icon/LogoIcon';
-import { BellIcon } from '../../icon/BellIcon';
+import {StyleSheet, Text, View} from 'react-native';
+import {LogoIcon} from '../../icon/LogoIcon';
+import {BellIcon} from '../../icon/BellIcon';
 
 export const CustomHeader = () => {
   return (
