@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#383838',
   },
   button: {
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 10,
-    fontWeight: 600,
+    fontWeight: '600',
     color: '#383838',
   },
   subtitle: {
     fontSize: 12,
-    fontWeight: 400,
+    fontWeight: '400',
     color: '#383838',
   },
   box: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   boxText: {
     fontSize: 12,
-    fontWeight: 700,
+    fontWeight: '700',
     color: '#383838',
   },
   cardContainer: {
