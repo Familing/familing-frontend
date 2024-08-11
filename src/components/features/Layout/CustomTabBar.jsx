@@ -46,7 +46,7 @@ export const CustomTabBar = ({state, descriptors, navigation}) => {
           case 'Chatting':
             IconComponent = MessageIcon;
             break;
-          case 'LoveCard':
+          case 'LovecardMainScreen':
             IconComponent = CardIcon;
             break;
           case 'MyPage':
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 11,
-    fontWeight: 600,
+    fontWeight: '600',
   },
   focusedText: {
     color: '#4D83F4',

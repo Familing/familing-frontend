@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import CardImage from '../../../../assets/images/banner/CardImage.png';
 
 export const CardBanner = () => {
   return (
@@ -9,23 +10,18 @@ export const CardBanner = () => {
         <Text style={styles.subtitle}>애정 카드 기능</Text>
         <Text style={styles.description}>간단하게 따뜻한 마음을</Text>
       </View>
-      <Image
-        source={require('@assets/images/banner/CardImage.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={CardImage} style={styles.image} resizeMode="contain" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     backgroundColor: '#383838',
-    width: '360px',
-    height: '210px',
-    padding: '24px',
+    width: 360,
+    height: 210,
+    padding: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -36,22 +32,22 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#4D83F4',
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#FFFFFF',
   },
   description: {
     fontSize: 12,
-    fontWeight: 500,
+    fontWeight: '500',
     color: '#FFFFFF',
   },
   image: {
-    width: '190px',
-    height: '110px',
+    width: 190,
+    height: 110,
     marginRight: 24,
   },
 });

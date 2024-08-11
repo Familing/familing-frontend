@@ -6,44 +6,36 @@ import {
   Image,
   TouchableOpacity,
   Modal,
+  ScrollView,
 } from 'react-native';
-import Swiper from 'react-native-swiper';
-import {CardBanner} from '../../../components/features/Home/Banner/CardBanner';
-import PhotoCard1 from '@assets/images/photocard/photocard1.png';
-import PhotoCard2 from '@assets/images/photocard/photocard2.png';
-import PhotoCard3 from '@assets/images/photocard/photocard3.png';
-import LoveCard1 from '@assets/images/lovecard/lovecard1.png';
-import LoveCard2 from '@assets/images/lovecard/lovecard2.png';
-import LoveCard3 from '@assets/images/lovecard/lovecard3.png';
-import LoveCard4 from '@assets/images/lovecard/lovecard4.png';
-import ClearButton from '@assets/images/button/clearbtn.png';
+import LoveCardBanner from '../../../components/features/LoveCard/main/Banner/LoveCardBanner';
+import ReceiveCardSecton from '../../../components/features/LoveCard/main/ReceiveCardSection/ReceiveCardSecton';
+import SendCardSection from '../../../components/features/LoveCard/main/SendCardSection/SendCardSection';
+import {BlurView} from '@react-native-community/blur';
+import SendProfile from '../../../components/features/LoveCard/main/SendCardSection/SendProfile';
+import mom from '../../../assets/images/photocard/photocard2.png';
+import son from '../../../assets/images/photocard/photocard4.png';
+import daughter from '../../../assets/images/photocard/photocard3.png';
 
 export default function LoveCardMainScreen({navigation}) {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
   const [showAvatars, setShowAvatars] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
-  const handleProfileClick = () => {
-    navigation.navigate('LoveCardDetailScreen', {
-      name: '익순여왕님',
-      image: PhotoCard2,
-    });
-  };
-
-  const handleCardClick = card => {
-    setSelectedCard(card);
-    setModalVisible(true);
-  };
 
   const handleSendClick = () => {
-    setModalVisible(false);
     setShowAvatars(true);
   };
 
   const handleCancelClick = () => {
     setModalVisible(false);
+    setShowAvatars(false);
+  };
+
+  const handlePopupCancelClick = () => {
+    setShowAvatars(false);
   };
 
   const handleAvatarClick = name => {
@@ -68,50 +60,14 @@ export default function LoveCardMainScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <CardBanner />
-      <Text style={styles.title1}>내가 받은 애정 카드</Text>
-      <Text style={styles.subtitle1}>
-        가족들이 보낸 애정 카드를 모아놨어요.
-      </Text>
-      <View style={styles.cardContainer}>
-        <View style={styles.profileCard}>
-          <TouchableOpacity
-            style={styles.profileCard}
-            onPress={handleProfileClick}>
-            <Image source={PhotoCard2} style={styles.avatar} />
-            <Text style={styles.name}>익순여왕님</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.profileCard}>
-          <Image source={PhotoCard3} style={styles.avatar} />
-          <Text style={styles.name}>민지공주</Text>
-        </View>
-        <View style={styles.profileCard}>
-          <Image source={PhotoCard1} style={styles.avatar} />
-          <Text style={styles.name}>이민형</Text>
-        </View>
-      </View>
-
-      <Text style={styles.title2}>애정 카드 보내기</Text>
-      <Text style={styles.subtitle2}>
-        오늘 Familing이 고심해서 고른 12장의 카드예요!
-      </Text>
-      <View style={styles.swiperContainer}>
-        <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
-          <TouchableOpacity onPress={() => handleCardClick('lovecard1')}>
-            <Image source={LoveCard1} style={styles.image} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleCardClick('lovecard2')}>
-            <Image source={LoveCard2} style={styles.image} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleCardClick('lovecard3')}>
-            <Image source={LoveCard3} style={styles.image} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleCardClick('lovecard4')}>
-            <Image source={LoveCard4} style={styles.image} />
-          </TouchableOpacity>
-        </Swiper>
-      </View>
+      <ScrollView showsHorizontalScrollIndicator={false}>
+        <LoveCardBanner />
+        <ReceiveCardSecton navigation={navigation} />
+        <SendCardSection
+          setSelectedCard={setSelectedCard}
+          setModalVisible={setModalVisible}
+        />
+      </ScrollView>
 
       <Modal
         animationType="slide"
@@ -119,7 +75,14 @@ export default function LoveCardMainScreen({navigation}) {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalContainer}>
-          <Image source={cardImage} style={styles.modalImage} />
+          <BlurView
+            style={styles.absolute}
+            blurType="light"
+            blurAmount={3}
+            overlayColor="rgba(65, 65, 65, 0.7)"
+          />
+          <Image source={selectedCard} style={styles.modalImage} />
+
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={handleSendClick}
@@ -133,33 +96,42 @@ export default function LoveCardMainScreen({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
 
-      {showAvatars && (
-        <View style={styles.avatarContainer}>
-          <Image style={styles.clearButton} source={ClearButton} />
-          <View style={styles.avatarBox}>
+        {showAvatars && (
+          <View style={styles.avatarContainer}>
             <TouchableOpacity
-              style={styles.avatarContent}
-              onPress={() => handleAvatarClick('익순여왕님')}>
-              <Image source={PhotoCard2} style={styles.avatarImage} />
-              <Text style={styles.avatarName}>익순여왕님</Text>
+              style={styles.clearButtonContainer}
+              onPress={handlePopupCancelClick}>
+              <Image
+                style={styles.clearButton}
+                source={require('../../../assets/images/button/clearbtn.png')}
+              />
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.avatar}
-              onPress={() => handleAvatarClick('민지공주')}>
-              <Image source={PhotoCard3} style={styles.avatarImage} />
-              <Text style={styles.avatarName}>민지공주</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.avatar}
-              onPress={() => handleAvatarClick('이민형')}>
-              <Image source={PhotoCard1} style={styles.avatarImage} />
-              <Text style={styles.avatarName}>이민형</Text>
-            </TouchableOpacity>
+            <ScrollView
+              horizontal
+              style={{marginTop: 10}}
+              showsHorizontalScrollIndicator={false}>
+              <View style={styles.avatarBox}>
+                <SendProfile
+                  name="익순여왕님"
+                  image={mom}
+                  handleAvatarClick={handleAvatarClick}
+                />
+                <SendProfile
+                  name="민지공주"
+                  image={daughter}
+                  handleAvatarClick={handleAvatarClick}
+                />
+                <SendProfile
+                  name="이민형"
+                  image={son}
+                  handleAvatarClick={handleAvatarClick}
+                />
+              </View>
+            </ScrollView>
           </View>
-        </View>
-      )}
+        )}
+      </Modal>
 
       {confirmationVisible && (
         <View style={styles.confirmationContainer}>
@@ -175,96 +147,34 @@ export default function LoveCardMainScreen({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
-  title1: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#383838',
-    marginTop: 24,
-    marginLeft: 24,
-  },
-  subtitle1: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: '#383838',
-    marginTop: 4,
-    marginLeft: 24,
-  },
-  cardContainer: {
-    width: 236,
-    height: 91,
-    gap: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  profileCard: {
-    width: 68,
-    height: 91,
-    flexDirection: 'column',
-    gap: 8,
-  },
-  avatar: {
-    width: 68,
-    height: 68,
-  },
-  name: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#383838',
-  },
-  title2: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#383838',
-    marginTop: 28,
-    marginLeft: 24,
-  },
-  subtitle2: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: '#383838',
-    marginTop: 4,
-    marginLeft: 24,
-  },
-  swiperContainer: {
-    width: 444,
-    heigth: 210,
-    marginTop: 16,
-    marginLeft: 24,
-    gap: 12,
-  },
-  image: {
-    width: 140,
-    height: 210,
-  },
+
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  absolute: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   modalImage: {
     width: 264,
     height: 394,
-    position: 'absolute',
-    top: 150,
-    left: 48,
     marginBottom: 20,
   },
   buttonContainer: {
-    width: 156,
-    height: 88,
-    position: 'absolute',
-    top: 564,
-    left: 100,
+    display: 'flex',
     flexDirection: 'column',
     gap: 8,
   },
   sendButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 156,
     height: 40,
     borderRadius: 40,
@@ -272,10 +182,13 @@ const styles = StyleSheet.create({
   },
   sendButtonText: {
     fontSize: 14,
+    lineHeight: 17.47,
     fontWeight: '700',
     color: '#FFFFFF',
   },
   cancelButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 156,
     height: 40,
     borderRadius: 40,
@@ -283,16 +196,18 @@ const styles = StyleSheet.create({
   },
   cancelButtonText: {
     fontSize: 14,
+    lineHeight: 17.47,
     fontWeight: '700',
     color: '#383838',
   },
   avatarContainer: {
-    width: 360,
-    height: 172,
     position: 'absolute',
-    top: 630,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 172,
     backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+    borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -302,43 +217,25 @@ const styles = StyleSheet.create({
     shadowRadius: 8.4,
     elevation: 5,
   },
-  clearButton: {
-    width: 24,
+  clearButtonContainer: {
+    marginTop: 8,
+    marginRight: 8,
+    alignSelf: 'flex-end',
     height: 24,
-    position: 'absolute',
-    top: 638,
-    left: 328,
+    width: 24,
+  },
+  clearButton: {
+    height: 24,
+    width: 24,
   },
   avatarBox: {
-    width: 224,
-    height: 74,
     flexDirection: 'row',
-    position: 'absolute',
-    top: 673,
-    left: 24,
     gap: 16,
-  },
-  avatarContent: {
-    width: 64,
-    height: 87,
-    flexDirection: 'column',
-    gap: 8,
-  },
-  avatarImage: {
-    width: 64,
-    height: 64,
-  },
-  avatarName: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#383838',
+    marginLeft: 24,
   },
   confirmationContainer: {
     width: 312,
     height: 52,
-    position: 'absolute',
-    top: 690,
-    left: 336,
     borderRadius: 10,
     backgroundColor: '#383838',
   },
@@ -347,9 +244,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     color: '#FFFFFF',
-    position: 'absolute',
-    top: 706,
-    left: 55,
   },
   boldText: {
     fontWeight: '700',

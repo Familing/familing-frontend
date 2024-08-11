@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import BannerImage from '../../../../assets/images/banner/BannerImage.png';
 
 export const FamilingBanner = () => {
   return (
@@ -13,7 +14,7 @@ export const FamilingBanner = () => {
         <Text style={styles.description}>소통이 활발한 가족을 바래요.</Text>
       </View>
       <Image
-        source={require('@assets/images/banner/BannerImage.png')}
+        source={BannerImage}
         style={styles.image}
         resizeMode="contain"
       />
@@ -23,12 +24,11 @@ export const FamilingBanner = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     backgroundColor: '#4D83F4',
-    width: '360px',
-    height: '210px',
-    padding: '24px',
+    width: 360,
+    height: 210,
+    padding: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -42,27 +42,27 @@ const styles = StyleSheet.create({
   },
   title1: {
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#FFBE00',
   },
   title2: {
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#FFFFFF',
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: '800',
     color: '#FFFFFF',
   },
   description: {
     fontSize: 12,
-    fontWeight: 500,
+    fontWeight: '500',
     color: '#FFFFFF',
   },
   image: {
-    width: '160px',
-    height: '160px',
+    width: 160,
+    height: 160,
     marginRight: 24,
   },
 });
