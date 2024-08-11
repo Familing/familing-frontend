@@ -3,6 +3,7 @@ import {HomeIcon} from '../../icon/HomeIcon';
 import {MessageIcon} from '../../icon/MessageIcon';
 import {CardIcon} from '../../icon/CardIcon';
 import {PersonIcon} from '../../icon/PersonIcon';
+import React from 'react';
 
 export const CustomTabBar = ({state, descriptors, navigation}) => {
   return (
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 11,
-    fontWeight: 600,
+    fontWeight: '600',
   },
   focusedText: {
     color: '#4D83F4',

@@ -10,11 +10,7 @@ export const CardBanner = () => {
         <Text style={styles.subtitle}>애정 카드 기능</Text>
         <Text style={styles.description}>간단하게 따뜻한 마음을</Text>
       </View>
-      <Image
-        source={CardImage}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={CardImage} style={styles.image} resizeMode="contain" />
     </View>
   );
 };

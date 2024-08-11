@@ -10,11 +10,7 @@ export const ChatBanner = () => {
         <Text style={styles.subtitle}>공감봇과 애정봇</Text>
         <Text style={styles.description}>AI가 도와드릴게요!</Text>
       </View>
-      <Image
-        source={CardImage}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={CardImage} style={styles.image} resizeMode="contain" />
     </View>
   );
 };

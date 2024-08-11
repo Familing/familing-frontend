@@ -10,31 +10,23 @@ import {
 import SendInfo from '../../../components/features/LoveCard/detail/sendInfo';
 import TodayReceiveCard from '../../../components/features/LoveCard/detail/todayReceiveCard';
 import MonthReceiveCard from '../../../components/features/LoveCard/detail/monthReceiveCard';
+import savebtn2 from '@assets/images/button/savebtn2.png';
+import clearbtn2 from '@assets/images/button/clearbtn2.png';
+import savebtn from '@assets/images/button/savebtn.png';
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
-  const [saveButtonImage, setSaveButtonImage] = useState(
-    require('../../../assets/images/button/savebtn.png'),
-  );
+  const [saveButtonImage, setSaveButtonImage] = useState(savebtn);
   const {name, image} = route.params;
-
-  const imageMap = {
-    card1: require('../../../assets/images/lovecard/lovecard1.png'),
-    card2: require('../../../assets/images/lovecard/lovecard2.png'),
-    card3: require('../../../assets/images/lovecard/lovecard3.png'),
-    card4: require('../../../assets/images/lovecard/lovecard4.png'),
-  };
-
-  const selectedImage = imageMap[selectedCard];
 
   const handleCancelClick = () => {
     setModalVisible(false);
   };
 
   const handleSaveClick = () => {
-    setSaveButtonImage(require('../../../assets/images/button/savebtn2.png'));
+    setSaveButtonImage(savebtn2);
     setConfirmationVisible(true);
   };
 
@@ -56,9 +48,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
           <TouchableOpacity
             style={styles.clearButton}
             onPress={handleCancelClick}>
-            <Image
-              source={require('../../../assets/images/button/clearbtn2.png')}
-            />
+            <Image source={clearbtn2} />
           </TouchableOpacity>
           <Image source={selectedImage} style={styles.modalImage} />
           <TouchableOpacity style={styles.saveButton} onPress={handleSaveClick}>
@@ -115,7 +105,6 @@ const styles = StyleSheet.create({
   confirmationContainer: {
     width: 312,
     height: 52,
-
     borderRadius: 10,
     backgroundColor: '#383838',
   },

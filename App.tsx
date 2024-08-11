@@ -1,14 +1,14 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Home from './src/screens/Home/Home';
+import Home from './src/screens/Home';
 import Chatting from './src/screens/Chatting/Chatting';
-import MyPage from './src/screens/MyPage/MyPage';
+import LoveCardMainScreen from './src/screens/LoveCard/main';
+import LoveCardDetailScreen from './src/screens/LoveCard/detail';
+import MyPage from './src/screens/MyPage/index';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen';
 import {CustomHeader} from './src/components/features/Layout/CustomHeader';
 import {StatusBar} from 'react-native';
-import LovecardMainScreen from './src/screens/LoveCard/main/index';
-import LoveCardDetailScreen from './src/screens/LoveCard/detail/index';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
@@ -26,7 +26,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Chatting" component={Chatting} />
         <Stack.Screen
           name="LovecardMainScreen"
-          component={LovecardMainScreen}
+          component={LoveCardMainScreen}
         />
         <Stack.Screen
           name="LoveCardDetailScreen"

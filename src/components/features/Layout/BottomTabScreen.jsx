@@ -1,16 +1,16 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Home from '../../../screens/Home/Home';
+import Home from '../../../screens/Home/index';
 import Chatting from '../../../screens/Chatting/Chatting';
-import MyPage from '../../../screens/MyPage/MyPage';
-import { CustomTabBar } from './CustomTabBar';
 import LoveCardMainScreen from '../../../screens/LoveCard/main';
+import MyPage from '../../../screens/MyPage/index';
+import {CustomTabBar} from './CustomTabBar';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+    <Tab.Navigator tabBarComponent={CustomTabBar}>
       <Tab.Screen
         name="Home"
         component={Home}

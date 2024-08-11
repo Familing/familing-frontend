@@ -6,10 +6,7 @@ export const PhotoCard = ({isAddButton}) => {
   return (
     <TouchableOpacity style={styles.card}>
       {isAddButton ? (
-        <Image
-          source={plusbtn}
-          style={styles.addImage}
-        />
+        <Image source={plusbtn} style={styles.addImage} />
       ) : (
         <View style={styles.content}>
           <Text style={styles.description}>아직 업로드 전이에요!</Text>
