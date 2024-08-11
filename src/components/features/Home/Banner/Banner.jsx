@@ -8,6 +8,7 @@ import {ChatBanner} from './ChatBanner';
 export const Banner = () => {
   return (
     <Swiper
+    style={{width: 260, height: 210}}
       showsButtons
       loop={false}
       dot={<View style={styles.dot} />}
