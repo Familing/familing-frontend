@@ -9,6 +9,14 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {CardBanner} from '../../../components/features/Home/Banner/CardBanner';
+import PhotoCard1 from '@assets/images/photocard/photocard1.png';
+import PhotoCard2 from '@assets/images/photocard/photocard2.png';
+import PhotoCard3 from '@assets/images/photocard/photocard3.png';
+import LoveCard1 from '@assets/images/lovecard/lovecard1.png';
+import LoveCard2 from '@assets/images/lovecard/lovecard2.png';
+import LoveCard3 from '@assets/images/lovecard/lovecard3.png';
+import LoveCard4 from '@assets/images/lovecard/lovecard4.png';
+import ClearButton from '@assets/images/button/clearbtn.png';
 
 export default function LoveCardMainScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,7 +28,7 @@ export default function LoveCardMainScreen({navigation}) {
   const handleProfileClick = () => {
     navigation.navigate('LoveCardDetailScreen', {
       name: '익순여왕님',
-      image: require('@assets/images/photocard/photocard2.png'),
+      image: PhotoCard2,
     });
   };
 
@@ -43,6 +51,21 @@ export default function LoveCardMainScreen({navigation}) {
     setConfirmationVisible(true);
   };
 
+  let cardImage;
+  switch (selectedCard) {
+    case 'card1':
+      cardImage = LoveCard1;
+      break;
+    case 'card2':
+      cardImage = LoveCard2;
+      break;
+    case 'card3':
+      cardImage = LoveCard3;
+      break;
+    default:
+      cardImage = LoveCard1;
+  }
+
   return (
     <View style={styles.container}>
       <CardBanner />
@@ -55,25 +78,16 @@ export default function LoveCardMainScreen({navigation}) {
           <TouchableOpacity
             style={styles.profileCard}
             onPress={handleProfileClick}>
-            <Image
-              source={require('@assets/images/photocard/photocard2.png')}
-              style={styles.avatar}
-            />
+            <Image source={PhotoCard2} style={styles.avatar} />
             <Text style={styles.name}>익순여왕님</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.profileCard}>
-          <Image
-            source={require('@assets/images/photocard/photocard3.png')}
-            style={styles.avatar}
-          />
+          <Image source={PhotoCard3} style={styles.avatar} />
           <Text style={styles.name}>민지공주</Text>
         </View>
         <View style={styles.profileCard}>
-          <Image
-            source={require('@assets/images/photocard/photocard1.png')}
-            style={styles.avatar}
-          />
+          <Image source={PhotoCard1} style={styles.avatar} />
           <Text style={styles.name}>이민형</Text>
         </View>
       </View>
@@ -85,28 +99,16 @@ export default function LoveCardMainScreen({navigation}) {
       <View style={styles.swiperContainer}>
         <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
           <TouchableOpacity onPress={() => handleCardClick('lovecard1')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard1.png')}
-              style={styles.image}
-            />
+            <Image source={LoveCard1} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard2')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard2.png')}
-              style={styles.image}
-            />
+            <Image source={LoveCard2} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard3')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard3.png')}
-              style={styles.image}
-            />
+            <Image source={LoveCard3} style={styles.image} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard4')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard4.png')}
-              style={styles.image}
-            />
+            <Image source={LoveCard4} style={styles.image} />
           </TouchableOpacity>
         </Swiper>
       </View>
@@ -117,10 +119,7 @@ export default function LoveCardMainScreen({navigation}) {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalContainer}>
-          <Image
-            source={require(`@assets/images/lovecard/${selectedCard}.png`)}
-            style={styles.modalImage}
-          />
+          <Image source={cardImage} style={styles.modalImage} />
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               onPress={handleSendClick}
@@ -138,36 +137,24 @@ export default function LoveCardMainScreen({navigation}) {
 
       {showAvatars && (
         <View style={styles.avatarContainer}>
-          <Image
-            style={styles.clearButton}
-            source={require('@assets/images/button/clearbutton.png')}
-          />
+          <Image style={styles.clearButton} source={ClearButton} />
           <View style={styles.avatarBox}>
             <TouchableOpacity
               style={styles.avatarContent}
               onPress={() => handleAvatarClick('익순여왕님')}>
-              <Image
-                source={require('@assets/images/photocard/photocard2.png')}
-                style={styles.avatarImage}
-              />
+              <Image source={PhotoCard2} style={styles.avatarImage} />
               <Text style={styles.avatarName}>익순여왕님</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.avatar}
               onPress={() => handleAvatarClick('민지공주')}>
-              <Image
-                source={require('@assets/images/photocard/photocard3.png')}
-                style={styles.avatarImage}
-              />
+              <Image source={PhotoCard3} style={styles.avatarImage} />
               <Text style={styles.avatarName}>민지공주</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.avatar}
               onPress={() => handleAvatarClick('이민형')}>
-              <Image
-                source={require('@assets/images/photocard/photocard1.png')}
-                style={styles.avatarImage}
-              />
+              <Image source={PhotoCard1} style={styles.avatarImage} />
               <Text style={styles.avatarName}>이민형</Text>
             </TouchableOpacity>
           </View>

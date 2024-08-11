@@ -1,15 +1,13 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import BannerImage from '@assets/images/banner/BannerImage.png';
 
 export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Familing</Text>
       <Text style={styles.subtitle}>더 가까운 가족이 되는 중</Text>
-      <Image
-        source={require('@assets/images/banner/BannerImage.png')}
-        style={styles.image}
-      />
+      <Image source={BannerImage} style={styles.image} />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('RegisterStep1')}>

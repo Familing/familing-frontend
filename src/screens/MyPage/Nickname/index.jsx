@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Arrow from '@assets/images/register/arrow.png';
 
 export default function NicknameScreen({navigation}) {
   const [nickname, setNickname] = useState('내가 둘째다');
@@ -23,10 +24,7 @@ export default function NicknameScreen({navigation}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <Text style={styles.title}>닉네임</Text>
       <View style={styles.nicknameContainer}>

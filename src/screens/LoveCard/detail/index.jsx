@@ -8,14 +8,21 @@ import {
   Modal,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import SaveButton from '@assets/images/button/savebtn.png';
+import SaveButton2 from '@assets/images/button/savebtn2.png';
+import LoveCard1 from '@assets/images/lovecard/lovecard1.png';
+import LoveCard2 from '@assets/images/lovecard/lovecard2.png';
+import LoveCard3 from '@assets/images/lovecard/lovecard3.png';
+import LoveCard4 from '@assets/images/lovecard/lovecard4.png';
+import LoveCard5 from '@assets/images/lovecard/lovecard5.png';
+import Arrow from '@assets/images/register/arrow.png';
+import ClearButton2 from '@assets/images/button/clearbtn2.png';
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
-  const [saveButtonImage, setSaveButtonImage] = useState(
-    require('@assets/images/button/savebtn.png'),
-  );
+  const [saveButtonImage, setSaveButtonImage] = useState(SaveButton);
   const {name, image} = route.params;
 
   const handleCardClick = card => {
@@ -28,32 +35,29 @@ export default function LoveCardDetailScreen({route, navigation}) {
   };
 
   const handleSaveClick = () => {
-    setSaveButtonImage(require('@assets/images/button/savebtn2.png'));
+    setSaveButtonImage(SaveButton2);
     setConfirmationVisible(true);
   };
 
   let cardImage;
   switch (selectedCard) {
     case 'card1':
-      cardImage = require('@assets/images/lovecard/lovecard1.png');
+      cardImage = LoveCard1;
       break;
     case 'card2':
-      cardImage = require('@assets/images/lovecard/lovecard2.png');
+      cardImage = LoveCard2;
       break;
     case 'card3':
-      cardImage = require('@assets/images/lovecard/lovecard3.png');
+      cardImage = LoveCard3;
       break;
     default:
-      cardImage = require('@assets/images/lovecard/lovecard1.png');
+      cardImage = LoveCard1;
   }
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <Text style={styles.title}>내가 받은 애정 카드</Text>
       <View style={styles.subContainer}>
@@ -62,38 +66,23 @@ export default function LoveCardDetailScreen({route, navigation}) {
       </View>
       <Text style={styles.title1}>오늘 받은 애정 카드</Text>
       <Text style={styles.subtitle1}>오늘 받은 애정 카드는 이거예요!</Text>
-      <Image
-        source={require('@assets/images/photocard/photocard5.png')}
-        style={styles.image1}
-      />
+      <Image source={LoveCard5} style={styles.image1} />
 
       <Text style={styles.title2}>지난 날 받은 애정 카드(최근 30일)</Text>
       <Text style={styles.subtitle2}>최근 30일간 받은 카드를 모아봤어요.</Text>
       <View style={styles.swiperContainer}>
         <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
           <TouchableOpacity onPress={() => handleCardClick('lovecard1')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard1.png')}
-              style={styles.image2}
-            />
+            <Image source={LoveCard1} style={styles.image2} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard2')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard2.png')}
-              style={styles.image2}
-            />
+            <Image source={LoveCard2} style={styles.image2} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard3')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard3.png')}
-              style={styles.image2}
-            />
+            <Image source={LoveCard3} style={styles.image2} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => handleCardClick('lovecard4')}>
-            <Image
-              source={require('@assets/images/lovecard/lovecard4.png')}
-              style={styles.image2}
-            />
+            <Image source={LoveCard4} style={styles.image2} />
           </TouchableOpacity>
         </Swiper>
       </View>
@@ -107,7 +96,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
           <TouchableOpacity
             style={styles.clearButton}
             onPress={handleCancelClick}>
-            <Image source={require('@assets/images/button/clearbtn2.png')} />
+            <Image source={ClearButton2} />
           </TouchableOpacity>
           <Image source={cardImage} style={styles.modalImage} />
           <TouchableOpacity style={styles.saveButton} onPress={handleSaveClick}>

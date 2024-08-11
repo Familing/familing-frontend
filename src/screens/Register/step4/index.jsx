@@ -9,6 +9,11 @@ import {
   Modal,
 } from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
+import Arrow from '@assets/images/register/arrow.png';
+import Avatar from '@assets/images/avatar.png';
+import Camera from '@assets/images/register/camera.png';
+import Gallery from '@assets/images/register/gallery.png';
+import ClearButton from '@assets/images/button/clearbtn.png';
 
 export const RegisterStep4 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -39,18 +44,12 @@ export const RegisterStep4 = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <ProgressIndicator currentStep={3} />
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={openModal}>
-          <Image
-            source={require('@assets/images/avatar.png')}
-            style={styles.image}
-          />
+          <Image source={Avatar} style={styles.image} />
         </TouchableOpacity>
       </View>
       <Text style={styles.title}>Familing에서 사용할 이름</Text>
@@ -74,26 +73,17 @@ export const RegisterStep4 = ({navigation}) => {
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>사진 업로드</Text>
           <TouchableOpacity style={styles.cameraButton} onPress={handleCamera}>
-            <Image
-              source={require('@assets/images/register/camera.png')}
-              style={styles.cameraImage}
-            />
+            <Image source={Camera} style={styles.cameraImage} />
             <Text style={styles.cameraText}>카메라</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.galleryButton}
             onPress={handleGallery}>
-            <Image
-              source={require('@assets/images/register/gallery.png')}
-              style={styles.galleryImage}
-            />
+            <Image source={Gallery} style={styles.galleryImage} />
             <Text style={styles.galleryText}>앨범</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={closeModal}>
-            <Image
-              source={require('@assets/images/button/clearbtn.png')}
-              style={styles.closeButton}
-            />
+            <Image source={ClearButton} style={styles.closeButton} />
           </TouchableOpacity>
         </View>
       </Modal>

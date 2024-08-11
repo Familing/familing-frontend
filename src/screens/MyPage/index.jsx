@@ -7,6 +7,12 @@ import {
   Modal,
   TouchableOpacity,
 } from 'react-native';
+import PhotoCard1 from '@assets/images/photocard/photocard1.png';
+import SwitchButton from '@assets/images/button/switchbtn.png';
+import Arrow from '@assets/images/button/arrowbtn.png';
+import Camera from '@assets/images/register/camera.png';
+import Gallery from '@assets/images/register/gallery.png';
+import ClearButton from '@assets/images/button/clearbtn.png';
 
 export default function MyPage({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -34,24 +40,15 @@ export default function MyPage({navigation}) {
       <Text style={styles.header}>마이페이지</Text>
 
       <View style={styles.profileImageContainer} onPress={openModal}>
-        <Image
-          style={styles.profileImage1}
-          source={require('@assets/images/photocard/photocard1.png')}
-        />
-        <Image
-          style={styles.profileImage2}
-          source={require('@assets/images/button/switchbtn.png')}
-        />
+        <Image style={styles.profileImage1} source={PhotoCard1} />
+        <Image style={styles.profileImage2} source={SwitchButton} />
       </View>
 
       <View style={styles.profileContainer}>
         <Text style={styles.nicknameTitle1}>닉네임</Text>
         <Text style={styles.nicknameText1}>내가 둘째다</Text>
         <TouchableOpacity onPress={() => navigation.navigate('NicknameScreen')}>
-          <Image
-            style={styles.arrowButton1}
-            source={require('@assets/images/button/arrowbtn.png')}
-          />
+          <Image style={styles.arrowButton1} source={Arrow} />
         </TouchableOpacity>
         <View style={styles.separator1} />
         <Text style={styles.nicknameTitle2}>이름</Text>
@@ -61,34 +58,22 @@ export default function MyPage({navigation}) {
       <View style={styles.profileContainer2}>
         <Text style={styles.nicknameTitle3}>우리 가족</Text>
         <TouchableOpacity onPress={() => navigation.navigate('MyFamilyScreen')}>
-          <Image
-            style={styles.arrowButton2}
-            source={require('@assets/images/button/arrowbtn.png')}
-          />
+          <Image style={styles.arrowButton2} source={Arrow} />
         </TouchableOpacity>
         <View style={styles.separator2} />
         <Text style={styles.nicknameTitle4}>구독 모델</Text>
         <Text style={styles.nicknameText3}>프리미엄형</Text>
-        <Image
-          style={styles.arrowButton3}
-          source={require('@assets/images/button/arrowbtn.png')}
-        />
+        <Image style={styles.arrowButton3} source={Arrow} />
         <View style={styles.separator3} />
         <Text style={styles.nicknameTitle5}>결제 관리</Text>
-        <Image
-          style={styles.arrowButton4}
-          source={require('@assets/images/button/arrowbtn.png')}
-        />
+        <Image style={styles.arrowButton4} source={Arrow} />
       </View>
 
       <View style={styles.profileContainer3}>
         <Text style={styles.nicknameTitle6}>스냅샷 시간 설정</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('SnapshotTimeScreen')}>
-          <Image
-            style={styles.arrowButton5}
-            source={require('@assets/images/button/arrowbtn.png')}
-          />
+          <Image style={styles.arrowButton5} source={Arrow} />
         </TouchableOpacity>
       </View>
 
@@ -100,26 +85,17 @@ export default function MyPage({navigation}) {
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>사진 업로드</Text>
           <TouchableOpacity style={styles.cameraButton} onPress={handleCamera}>
-            <Image
-              source={require('@assets/images/register/camera.png')}
-              style={styles.cameraImage}
-            />
+            <Image source={Camera} style={styles.cameraImage} />
             <Text style={styles.cameraText}>카메라</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.galleryButton}
             onPress={handleGallery}>
-            <Image
-              source={require('@assets/images/register/gallery.png')}
-              style={styles.galleryImage}
-            />
+            <Image source={Gallery} style={styles.galleryImage} />
             <Text style={styles.galleryText}>앨범</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={closeModal}>
-            <Image
-              source={require('@assets/images/button/clearbtn.png')}
-              style={styles.closeButton}
-            />
+            <Image source={ClearButton} style={styles.closeButton} />
           </TouchableOpacity>
         </View>
       </Modal>
