@@ -14,11 +14,13 @@ import savebtn2 from '@assets/images/button/savebtn2.png';
 import clearbtn2 from '@assets/images/button/clearbtn2.png';
 import savebtn from '@assets/images/button/savebtn.png';
 
+
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [saveButtonImage, setSaveButtonImage] = useState(savebtn);
+
   const {name, image} = route.params;
 
   const handleCancelClick = () => {

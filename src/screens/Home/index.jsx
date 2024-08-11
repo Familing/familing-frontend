@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import BannerImg from '@assets/images/banner/BannerImage.png';
 
+
 export default function Home({navigation}) {
   return (
     <View style={styles.container}>

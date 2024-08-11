@@ -14,6 +14,7 @@ import camera from '@assets/images/register/camera.png';
 import gallery from '@assets/images/register/gallery.png';
 import clearbtn from '@assets/images/button/clearbtn.png';
 
+
 export default function MyPage({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -42,6 +43,7 @@ export default function MyPage({navigation}) {
       <View style={styles.profileImageContainer} onPress={openModal}>
         <Image style={styles.profileImage1} source={photocard1} />
         <Image style={styles.profileImage2} source={switchbtn} />
+
       </View>
 
       <View style={styles.profileContainer}>
@@ -49,6 +51,7 @@ export default function MyPage({navigation}) {
         <Text style={styles.nicknameText1}>내가 둘째다</Text>
         <TouchableOpacity onPress={() => navigation.navigate('NicknameScreen')}>
           <Image style={styles.arrowButton1} source={arrowbtn} />
+
         </TouchableOpacity>
         <View style={styles.separator1} />
         <Text style={styles.nicknameTitle2}>이름</Text>
@@ -74,6 +77,7 @@ export default function MyPage({navigation}) {
         <TouchableOpacity
           onPress={() => navigation.navigate('SnapshotTimeScreen')}>
           <Image style={styles.arrowButton5} source={arrowbtn} />
+
         </TouchableOpacity>
       </View>
 

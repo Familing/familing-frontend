@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
+import Arrow from '@assets/images/register/arrow.png';
+import ClearButton from '@assets/images/button/clearbtn.png';
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -37,10 +39,7 @@ export const RegisterStep2 = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
@@ -56,7 +55,7 @@ export const RegisterStep2 = ({navigation}) => {
         keyboardType="default"
       />
       <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={require('@assets/images/button/clearbtn.png')} />
+        <Image source={ClearButton} />
       </TouchableOpacity>
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleJoin}>

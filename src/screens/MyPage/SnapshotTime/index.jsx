@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+import Arrow from '@assets/images/register/arrow.png';
 
 export default function SnapshotTimeScreen({navigation}) {
   const [selectedTime, setSelectedTime] = useState(null);
@@ -60,10 +61,7 @@ export default function SnapshotTimeScreen({navigation}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <Text style={styles.title}>스냅샷 시간 설정</Text>
       <Text style={styles.subtitle}>주제 알림 받을 시간</Text>

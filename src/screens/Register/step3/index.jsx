@@ -11,6 +11,9 @@ import {
 import axios from 'axios';
 import Clipboard from '@react-native-clipboard/clipboard';
 import {ProgressIndicator} from '../ProgressIndicator';
+import Arrow from '@assets/images/register/arrow.png';
+import ClearButton from '@assets/images/button/clearbtn.png';
+import CopyImage from '@assets/images/register/copyimage.png';
 
 export const RegisterStep3 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -42,10 +45,7 @@ export const RegisterStep3 = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={require('@assets/images/register/arrow.png')}
-          style={styles.arrowImage}
-        />
+        <Image source={Arrow} style={styles.arrowImage} />
       </TouchableOpacity>
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
@@ -63,7 +63,7 @@ export const RegisterStep3 = ({navigation}) => {
         keyboardType="default"
       />
       <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={require('@assets/images/button/clearbtn.png')} />
+        <Image source={ClearButton} />
       </TouchableOpacity>
       <View style={styles.inviteContainer}>
         <Text style={styles.inviteTitle}>
@@ -72,10 +72,7 @@ export const RegisterStep3 = ({navigation}) => {
         <TouchableOpacity
           onPress={fetchInviteCode}
           style={styles.copyContainer}>
-          <Image
-            source={require('@assets/images/register/copyimage.png')}
-            style={styles.copyImage}
-          />
+          <Image source={CopyImage} style={styles.copyImage} />
           <Text style={styles.copyText}>초대 코드 복사하기</Text>
         </TouchableOpacity>
       </View>
