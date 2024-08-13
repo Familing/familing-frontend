@@ -36,9 +36,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     marginBottom: 32,
     flexDirection: 'row',
-    position: 'absolute',
-    top: 384,
-    left: 84,
+
   },
   title: {
     fontSize: 24,
@@ -56,17 +54,11 @@ const styles = StyleSheet.create({
     gap: 10,
     width: 140,
     height: 40,
-    position: 'absolute',
-    top: 410,
-    left: 36,
   },
   noButton: {
     backgroundColor: '#EEEEEE',
     borderRadius: 70,
     flex: 1,
-    position: 'absolute',
-    top: 410,
-    left: 36,
     paddingVertical: 10,
     paddingHorizontal: 49,
   },
@@ -80,9 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4D83F4',
     borderRadius: 70,
     flex: 1,
-    position: 'absolute',
-    top: 410,
-    left: 184,
+
     paddingVertical: 10,
     paddingHorizontal: 62,
   },
