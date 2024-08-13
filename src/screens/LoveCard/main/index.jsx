@@ -24,7 +24,6 @@ export default function LoveCardMainScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
-
   const handleSendClick = () => {
     setShowAvatars(true);
   };
@@ -42,7 +41,6 @@ export default function LoveCardMainScreen({navigation}) {
     setSelectedAvatar(name);
     setConfirmationVisible(true);
   };
-
 
   return (
     <View style={styles.container}>
@@ -95,7 +93,7 @@ export default function LoveCardMainScreen({navigation}) {
             </TouchableOpacity>
             <ScrollView
               horizontal
-              style={{marginTop: 10}}
+              style={styles.profileContainer}
               showsHorizontalScrollIndicator={false}>
               <View style={styles.avatarBox}>
                 <SendProfile
