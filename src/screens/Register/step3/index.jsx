@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Alert,
 } from 'react-native';
 //import axios from 'axios';
 //import Clipboard from '@react-native-clipboard/clipboard';
@@ -31,7 +30,7 @@ export const RegisterStep3 = ({navigation}) => {
   };
 
   useEffect(() => {
-    fetchInviteCode();
+    setInviteCode();
   }, []);
 
   const handleCreate = () => {
@@ -50,21 +49,23 @@ export const RegisterStep3 = ({navigation}) => {
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>가족 그룹</Text>
-        <Text style={styles.subtitle}>을</Text>
+        <Text style={styles.subtitle}>을 </Text>
         <Text style={styles.title}>생성</Text>
         <Text style={styles.subtitle}>해보세요!</Text>
       </View>
-      <TextInput
-        style={styles.input}
-        value={code}
-        onChangeText={setCode}
-        placeholder="가족 그룹 이름을 설정해주세요."
-        placeholderTextColor="#C5C5C5"
-        keyboardType="default"
-      />
-      <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={ClearButton} />
-      </TouchableOpacity>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="가족 그룹 이름을 설정해주세요."
+          placeholderTextColor="#C5C5C5"
+          value={code}
+          onChangeText={setCode}
+        />
+        <View style={styles.line} />
+        <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
+          <Image source={ClearButton} style={styles.clearbtnImage} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.inviteContainer}>
         <Text style={styles.inviteTitle}>
           {inviteCode ? inviteCode : '아직 생성되지 않음'}
@@ -76,9 +77,11 @@ export const RegisterStep3 = ({navigation}) => {
           <Text style={styles.copyText}>초대 코드 복사하기</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleCreate}>
-        <Text style={styles.buttonText}>참가하기</Text>
-      </TouchableOpacity>
+      <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleCreate}>
+          <Text style={styles.buttonText}>참가하기</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -86,8 +89,6 @@ export const RegisterStep3 = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
   arrowImage: {
@@ -99,8 +100,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   titleContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 252,
+    flexDirection: 'row',
+    marginTop: 150,
   },
   title: {
     fontSize: 24,
@@ -112,65 +115,89 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#383838',
   },
+  inputContainer: {
+    flex: 1,
+    marginTop: 40,
+  },
   input: {
     width: 312,
     height: 32,
     fontSize: 16,
     fontWeight: '400',
-    borderBottomWidth: 312,
-    borderBottomHeight: 4,
-    borderBottomColor: '#4D83F4',
-    borderBottomLeftRadius: 21,
-    borderBottomRightRadius: 21,
+    color: '#C5C5C5',
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    marginLeft: 24,
+  },
+  line: {
+    width: 312,
+    borderWidth: 2,
+    borderColor: '#4D83F4',
+    borderRadius: 12,
+    marginLeft: 24,
+    marginTop: 8,
+  },
+  clearbtnContainer: {
+    position: 'absolute',
+    top: 250,
+    left: 288,
   },
   clearButton: {
+    position: 'absolute',
+    top: 6,
+    left: 310,
+  },
+  clearbtnImage: {
     width: 24,
     height: 24,
-    position: 'absolute',
-    top: 86,
-    left: 288,
   },
   inviteContainer: {
     width: 312,
     height: 80,
-    position: 'absolute',
-    top: 146,
-    backgroundColor: '#B3B3B3',
+    backgroundColor: '#F2F2F2',
+    marginBottom: 304,
+    marginLeft: 24,
   },
   inviteTitle: {
     fontSize: 20,
-    fontWieght: '800',
+    fontWeight: '800',
     color: '#383838',
-    position: 'absolute',
-    top: 162,
-    left: 81,
+    textAlign: 'center',
+    marginTop: 16,
+    lineHeight: 24.96,
   },
   copyContainer: {
     flexDirection: 'row',
+    marginLeft: 95,
   },
   copyImage: {
     width: 10,
     height: 12,
-    position: 'absolute',
-    top: 197,
-    left: 104,
+    marginTop: 5,
+    marginRight: 5,
   },
   copyTitle: {
     fontSize: 12,
     fontWeight: '400',
     color: '#B3B3B3',
+    textAlign: 'center',
+  },
+  btnContainer: {
+    marginLeft: 24,
     position: 'absolute',
-    top: 195,
-    left: 118,
+    top: 455,
   },
   button: {
     width: 312,
     height: 40,
     borderRadius: 70,
+    backgroundColor: '#4D83F4',
   },
   buttonText: {
     fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
+    textAlign: 'center',
+    marginTop: 6,
   },
 });
