@@ -133,7 +133,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
   },
-
+  profileContainer: {
+    marginTop: 10,
+  },
   modalContainer: {
     flex: 1,
     justifyContent: 'center',

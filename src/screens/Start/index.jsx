@@ -1,25 +1,28 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import BannerImg from '@assets/images/banner/BannerImage.png';
+import {View, Text, Image, StyleSheet} from 'react-native';
+import StartImg from '@assets/images/banner/StartImg.png';
 //import Kakao from '@/components/icon/Kakao';
-import kakao from '@assets/images/register/kakao.png';
+// import {KakaoLogin} from '@/api/KakaoLogin';
+// import kakao from '@assets/images/register/kakao.png';
+import {KakaoLogin} from '@/api/KakaoLogin';
 
 export default function Start({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Familing</Text>
-        <Text style={styles.subtitle}>더 가까운 가족이 되는 중</Text>
+        <Text style={styles.title}>Bridge</Text>
+        <Text style={styles.subtitle}>더 가까운 사이가 되는 중</Text>
       </View>
-      <Image source={BannerImg} style={styles.image} />
-      <TouchableOpacity
+      <Image source={StartImg} style={styles.image} />
+      {/* <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('RegisterScreen')}>
+        onPress={navigation.navigate('RegisterScreen')}>
         <View style={styles.btnContainer}>
           <Image source={kakao} style={styles.kakao} />
           <Text style={styles.buttonText}>카카오로 시작하기</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <KakaoLogin />
     </View>
   );
 }
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#4D83F4',
+    backgroundColor: '#BBDEFB',
   },
   textContainer: {
     marginTop: 164,
@@ -49,11 +52,11 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   image: {
-    height: 240,
-    height: 240,
+    width: 200,
+    height: 200,
   },
   button: {
-    backgroundColor: '#FFBE00',
+    backgroundColor: '#FFD600',
     paddingVertical: 12,
     paddingHorizontal: 80,
     borderRadius: 40,
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 312,
     height: 52,
-    marginTop: 48
+    marginTop: 48,
   },
   btnContainer: {
     flexDirection: 'row',

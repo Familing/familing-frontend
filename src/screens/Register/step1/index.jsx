@@ -29,14 +29,13 @@ export const RegisterStep1 = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
   titleContainer: {
-    marginBottom: 32,
     flexDirection: 'row',
-
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginTop: 250,
   },
   title: {
     fontSize: 24,
@@ -50,36 +49,34 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    marginTop: 32,
     gap: 10,
     width: 140,
     height: 40,
+    marginLeft: 36,
   },
   noButton: {
     backgroundColor: '#EEEEEE',
     borderRadius: 70,
-    flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 49,
   },
   noText: {
-    textAlign: 'center',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
     color: '#CECECE',
+    textAlign: 'center',
   },
   yesButton: {
     backgroundColor: '#4D83F4',
     borderRadius: 70,
-    flex: 1,
-
     paddingVertical: 10,
     paddingHorizontal: 62,
   },
   yesText: {
-    textAlign: 'center',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
     color: '#FFFFFF',
+    textAlign: 'center',
   },
 });
