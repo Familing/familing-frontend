@@ -5,9 +5,10 @@ import {
   Image,
   TouchableOpacity,
   Modal,
-  PermissionsAndroid,
-  Platform,
-  NativeModules,
+  Text,
+  // PermissionsAndroid,
+  // Platform,
+  // NativeModules,
 } from 'react-native';
 import SendInfo from '../../../components/features/LoveCard/detail/sendInfo';
 import TodayReceiveCard from '../../../components/features/LoveCard/detail/todayReceiveCard';
@@ -15,7 +16,8 @@ import MonthReceiveCard from '../../../components/features/LoveCard/detail/month
 import clearbtn2 from '@assets/images/button/clearbtn2.png';
 import {BlurView} from '@react-native-community/blur';
 import SaveBtn from '@/components/icon/LoveCard/SaveBtn';
-import * as RNFS from 'react-native-fs';
+// import * as RNFS from 'react-native-fs';
+// import {MediaLibrary} from 'expo-media-library';
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -34,43 +36,47 @@ export default function LoveCardDetailScreen({route, navigation}) {
   };
 
   const handleSaveClick = () => {
-    setSaveButtonImage(savebtn2);
     setConfirmationVisible(true);
   };
 
-  const handleSaveImage = async selectedCard => {
-    console.log('image url', selectedCard.toString());
-    try {
-      // 이미지를 로컬 파일로 다운로드합니다.
-      const localFile = `${RNFS.DocumentDirectoryPath}/${selectedCard.toString()}.png`;
-      const options = {
-        fromUrl: selectedCard,
-        toFile: localFile,
-      };
-      await RNFS.downloadFile(options).promise;
+  // const handleSaveImage = async selectedCard => {
+  //   console.log('image url', selectedCard.toString());
+  //   try {
+  //     // 이미지를 로컬 파일로 다운로드합니다.
+  //     const localFile = `${
+  //       RNFS.DocumentDirectoryPath
+  //     }/${selectedCard.toString()}.png`;
+  //     const options = {
+  //       fromUrl: selectedCard,
+  //       toFile: localFile,
+  //     };
+  //     await RNFS.downloadFile(options).promise;
 
-      // 갤러리에 저장하기 전에 권한 요청
-      const {status} = await MediaLibrary.requestPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert('Permissions Not Granted', 'Gallery access is needed to save the image.');
-        return;
-      }
+  //     // 갤러리에 저장하기 전에 권한 요청
+  //     const {status} = await MediaLibrary.requestPermissionsAsync();
+  //     if (status !== 'granted') {
+  //       Alert.alert(
+  //         'Permissions Not Granted',
+  //         'Gallery access is needed to save the image.',
+  //       );
+  //       return;
+  //     }
 
-      // MediaLibrary를 사용하여 이미지 저장
-      const asset = await MediaLibrary.createAssetAsync(localFile);
-      const album = await MediaLibrary.getAlbumAsync('Download');
-      if (album == null) {
-        await MediaLibrary.createAlbumAsync('Download', asset, false);
-      } else {
-        await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
-      }
+  //     // MediaLibrary를 사용하여 이미지 저장
+  //     const asset = await MediaLibrary.createAssetAsync(localFile);
+  //     const album = await MediaLibrary.getAlbumAsync('Download');
+  //     if (album == null) {
+  //       await MediaLibrary.createAlbumAsync('Download', asset, false);
+  //     } else {
+  //       await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+  //     }
 
-      Alert.alert('Image Saved to Gallery');
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Failed to save image');
-    }
-  };
+  //     Alert.alert('Image Saved to Gallery');
+  //   } catch (error) {
+  //     console.error(error);
+  //     Alert.alert('Failed to save image');
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
@@ -95,9 +101,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
           </TouchableOpacity>
 
           <View>
-            <TouchableOpacity
-              onPress={() => handleSaveImage(selectedCard)}
-              style={styles.saveBtn}>
+            <TouchableOpacity onPress={handleSaveClick} style={styles.saveBtn}>
               <SaveBtn />
             </TouchableOpacity>
             <View style={styles.modalImage}>
