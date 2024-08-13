@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 //import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
-import Arrow from '@assets/images/register/arrow.png';
 import ClearButton from '@assets/images/button/clearbtn.png';
 
 export const RegisterStep2 = ({navigation}) => {
@@ -31,6 +30,7 @@ export const RegisterStep2 = ({navigation}) => {
     }*/
 
     setErrorMessage('※ 코드가 올바르지 않습니다.');
+    navigation.navigate('RegisterStep3');
   };
 
   const clearInput = () => {
@@ -40,24 +40,23 @@ export const RegisterStep2 = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={Arrow} style={styles.arrowImage} />
-      </TouchableOpacity>
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>코드를 입력해 참가</Text>
         <Text style={styles.subtitle}>해보세요!</Text>
       </View>
-      <TextInput
-        style={styles.input}
-        value={code}
-        onChangeText={setCode}
-        placeholder="가족이 공유한 코드를 입력하세요."
-        placeholderTextColor="#C5C5C5"
-        keyboardType="default"
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="가족이 공유한 코드를 입력하세요."
+          placeholderTextColor="#C5C5C5"
+          value={code}
+          onChangeText={setCode}
+        />
+        <View style={styles.line} />
+      </View>
       <TouchableOpacity onPress={clearInput} style={styles.clearButton}>
-        <Image source={ClearButton} />
+        <Image source={ClearButton} style={styles.clearbtnImage} />
       </TouchableOpacity>
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleJoin}>
@@ -70,21 +69,13 @@ export const RegisterStep2 = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
-  },
-  arrowImage: {
-    width: 24,
-    height: 24,
-    position: 'absolute',
-    top: 20,
-    left: 24,
-    marginBottom: 16,
   },
   titleContainer: {
     alignItems: 'center',
-    marginTop: 252,
+    marginTop: 150,
+    marginLeft: 24,
+    flexDirection: 'row',
   },
   title: {
     fontSize: 24,
@@ -96,41 +87,63 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#383838',
   },
+  inputContainer: {
+    flex: 1,
+    marginTop: 40,
+  },
   input: {
     width: 312,
     height: 32,
     fontSize: 16,
     fontWeight: '400',
-    borderBottomWidth: 312,
-    borderBottomHeight: 4,
-    borderBottomColor: '#4D83F4',
-    borderBottomLeftRadius: 21,
-    borderBottomRightRadius: 21,
+    color: '#C5C5C5',
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    marginLeft: 24,
+  },
+  line: {
+    width: 312,
+    borderWidth: 2,
+    borderColor: '#4D83F4',
+    borderRadius: 12,
+    marginLeft: 24,
+    marginTop: 8,
+  },
+  clearbtnContainer: {
+    position: 'absolute',
+    top: 250,
+    left: 288,
   },
   clearButton: {
+    position: 'absolute',
+    top: 266,
+    left: 310,
+  },
+  clearbtnImage: {
     width: 24,
     height: 24,
-    position: 'absolute',
-    top: 86,
-    left: 288,
   },
   error: {
     fontSize: 12,
     fontWeight: '400',
     color: '#FF3434',
     marginTop: 4,
+    marginLeft: 24,
+    marginBottom: 7,
   },
   button: {
     width: 312,
     height: 40,
     borderRadius: 70,
-    position: 'absolute',
-    top: 158,
-    left: 24,
+    backgroundColor: '#4D83F4',
+    marginLeft: 24,
+    marginBottom: 350,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: '#FFFFFF',
+    textAlign: 'center',
+    marginTop: 7,
   },
 });

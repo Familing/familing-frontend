@@ -17,7 +17,6 @@ import clearbtn2 from '@assets/images/button/clearbtn2.png';
 import {BlurView} from '@react-native-community/blur';
 import SaveBtn from '@/components/icon/LoveCard/SaveBtn';
 // import * as RNFS from 'react-native-fs';
-// import {MediaLibrary} from 'expo-media-library';
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,9 +42,8 @@ export default function LoveCardDetailScreen({route, navigation}) {
   //   console.log('image url', selectedCard.toString());
   //   try {
   //     // 이미지를 로컬 파일로 다운로드합니다.
-  //     const localFile = `${
-  //       RNFS.DocumentDirectoryPath
-  //     }/${selectedCard.toString()}.png`;
+
+  //     const localFile = `${RNFS.DocumentDirectoryPath}/${selectedCard.toString()}.png`;
   //     const options = {
   //       fromUrl: selectedCard,
   //       toFile: localFile,

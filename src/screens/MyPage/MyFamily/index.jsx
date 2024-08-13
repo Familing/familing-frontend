@@ -4,11 +4,11 @@ import {
   Text,
   StyleSheet,
   Image,
-  Alert,
+  // Alert,
   TouchableOpacity,
 } from 'react-native';
-import axios from 'axios';
-import Clipboard from '@react-native-clipboard/clipboard';
+// import axios from 'axios';
+// import Clipboard from '@react-native-clipboard/clipboard';
 import Arrow from '@assets/images/register/arrow.png';
 import CopyImage from '@assets/images/register/copyimage.png';
 import PhotoCard1 from '@assets/images/photocard/photocard1.png';
@@ -19,19 +19,19 @@ import PhotoCard4 from '@assets/images/photocard/photocard4.png';
 export default function MyFamilyScreen({navigation}) {
   const [inviteCode, setInviteCode] = useState(null);
 
-  const fetchInviteCode = async () => {
-    try {
-      const response = await axios.get('https://api.com'); // 초대 코드 api
-      setInviteCode(response.data.inviteCode);
-      Clipboard.setString(response.data.inviteCode);
-    } catch (error) {
-      Alert.alert('초대 코드를 가져오는 데 실패했습니다.');
-      console.error(error);
-    }
-  };
+  // const fetchInviteCode = async () => {
+  //   try {
+  //     const response = await axios.get('https://api.com'); // 초대 코드 api
+  //     setInviteCode(response.data.inviteCode);
+  //     Clipboard.setString(response.data.inviteCode);
+  //   } catch (error) {
+  //     Alert.alert('초대 코드를 가져오는 데 실패했습니다.');
+  //     console.error(error);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchInviteCode();
+    setInviteCode();
   }, []);
 
   return (
@@ -43,9 +43,7 @@ export default function MyFamilyScreen({navigation}) {
       <Text style={styles.subtitle1}>가족 코드</Text>
       <View style={styles.inviteContainer}>
         <Text style={styles.inviteTitle}>{inviteCode}</Text>
-        <TouchableOpacity
-          onPress={fetchInviteCode}
-          style={styles.copyContainer}>
+        <TouchableOpacity onPress={setInviteCode} style={styles.copyContainer}>
           <Image source={CopyImage} style={styles.copyImage} />
           <Text style={styles.copyText}>초대 코드 복사하기</Text>
         </TouchableOpacity>

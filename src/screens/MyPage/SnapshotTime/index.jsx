@@ -5,9 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
 } from 'react-native';
-import Arrow from '@assets/images/register/arrow.png';
 
 export default function SnapshotTimeScreen({navigation}) {
   const [selectedTime, setSelectedTime] = useState(null);
@@ -60,9 +58,6 @@ export default function SnapshotTimeScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={Arrow} style={styles.arrowImage} />
-      </TouchableOpacity>
       <Text style={styles.title}>스냅샷 시간 설정</Text>
       <Text style={styles.subtitle}>주제 알림 받을 시간</Text>
 
@@ -90,16 +85,7 @@ export default function SnapshotTimeScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
-  },
-  arrowImage: {
-    width: 24,
-    height: 24,
-    position: 'absolute',
-    top: 21,
-    left: 24,
   },
   title: {
     fontSize: 20,
@@ -113,9 +99,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    position: 'absolute',
-    left: 24,
     marginTop: 60,
+    marginLeft: 24,
   },
   sectionBox1: {
     width: 36,

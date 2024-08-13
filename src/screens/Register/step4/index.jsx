@@ -9,11 +9,11 @@ import {
   Modal,
 } from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
-import Arrow from '@assets/images/register/arrow.png';
 import Avatar from '@assets/images/photocard/photocard1.png';
 import Camera from '@assets/images/register/camera.png';
 import Gallery from '@assets/images/register/gallery.png';
 import ClearButton from '@assets/images/button/clearbtn.png';
+import SwitchButton from '@assets/images/button/switchbtn.png';
 
 export const RegisterStep4 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -43,24 +43,26 @@ export const RegisterStep4 = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={Arrow} style={styles.arrowImage} />
-      </TouchableOpacity>
       <ProgressIndicator currentStep={3} />
       <View style={styles.imageContainer}>
-        <TouchableOpacity onPress={openModal}>
+        <TouchableOpacity onPress={openModal} style={styles.buttonContainer}>
           <Image source={Avatar} style={styles.image} />
+          <Image style={styles.image2} source={SwitchButton} />
         </TouchableOpacity>
       </View>
-      <Text style={styles.title}>Familing에서 사용할 이름</Text>
-      <TextInput
-        style={styles.input}
-        value={code}
-        onChangeText={setCode}
-        placeholder="ex) 슈퍼맨 아빠, 귀염둥이 막내"
-        placeholderTextColor="#C5C5C5"
-        keyboardType="default"
-      />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Familing에서 사용할 이름</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="ex) 슈퍼맨 아빠, 귀염둥이 막내"
+          placeholderTextColor="#C5C5C5"
+          value={code}
+          onChangeText={setCode}
+        />
+        <View style={styles.line} />
+      </View>
       <TouchableOpacity style={styles.button} onPress={handleConfirm}>
         <Text style={styles.buttonText}>확인</Text>
       </TouchableOpacity>
@@ -94,42 +96,64 @@ export const RegisterStep4 = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff',
   },
-  arrowImage: {
-    width: 24,
-    height: 24,
+  buttonContainer: {
+    justifyContent: 'center',
+    marginTop: 75,
+    marginLeft: 124,
+  },
+  image: {
+    width: 112,
+    height: 112,
+  },
+  image2: {
+    width: 28,
+    height: 28,
+    marginLeft: 80,
     position: 'absolute',
-    top: 20,
-    left: 24,
-    marginBottom: 16,
+    top: 90,
   },
   titleContainer: {
-    alignItems: 'center',
-    marginTop: 252,
+    marginTop: 32,
+    marginLeft: 24,
   },
   title: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: '700',
-    color: '#4D83F4',
+    color: '#383838',
+  },
+  inputContainer: {
+    flex: 1,
+    marginTop: 20,
   },
   input: {
     width: 312,
     height: 32,
     fontSize: 16,
     fontWeight: '400',
-    borderBottomWidth: 312,
-    borderBottomHeight: 4,
-    borderBottomColor: '#4D83F4',
-    borderBottomLeftRadius: 21,
-    borderBottomRightRadius: 21,
+    color: '#C5C5C5',
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    marginLeft: 24,
+  },
+  line: {
+    width: 312,
+    borderWidth: 2,
+    borderColor: '#4D83F4',
+    borderRadius: 12,
+    marginLeft: 24,
+    marginTop: 8,
   },
   button: {
     width: 312,
     height: 40,
     borderRadius: 70,
+    backgroundColor: '#4D83F4',
+    marginBottom: 300,
+    marginLeft: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 16,

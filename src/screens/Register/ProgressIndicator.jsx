@@ -9,7 +9,7 @@ export const ProgressIndicator = ({currentStep}) => {
           key={step}
           style={[
             styles.stepIndicator,
-            currentStep >= step ? styles.activeStep : styles.inactiveStep,
+            currentStep === step ? styles.activeStep : styles.inactiveStep,
           ]}
         />
       ))}
@@ -20,9 +20,8 @@ export const ProgressIndicator = ({currentStep}) => {
 const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 28,
-    marginHorizontal: 24,
+    marginTop: 28,
+    marginLeft: 24,
   },
   stepIndicator: {
     width: 8,

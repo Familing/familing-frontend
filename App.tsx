@@ -5,6 +5,9 @@ import Chatting from './src/screens/Chatting/Chatting';
 import LoveCardMainScreen from './src/screens/LoveCard/main';
 import LoveCardDetailScreen from './src/screens/LoveCard/detail';
 import MyPage from './src/screens/MyPage/index';
+import MyFamilyScreen from '@/screens/MyPage/MyFamily';
+import NicknameScreen from './src/screens/MyPage/Nickname';
+import SnapshotTimeScreen from './src/screens/MyPage/SnapshotTime';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen';
 import {CustomHeader} from './src/components/features/Layout/CustomHeader';
@@ -45,6 +48,12 @@ function App(): React.JSX.Element {
           component={LoveCardDetailScreen}
         />
         <Stack.Screen name="MyPage" component={MyPage} />
+        <Stack.Screen name="MyFamilyScreen" component={MyFamilyScreen} />
+        <Stack.Screen name="NicknameScreen" component={NicknameScreen} />
+        <Stack.Screen
+          name="SnapshotTimeScreen"
+          component={SnapshotTimeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
