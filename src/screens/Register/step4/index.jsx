@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
 import Arrow from '@assets/images/register/arrow.png';
-import Avatar from '@assets/images/avatar.png';
+import Avatar from '@assets/images/photocard/photocard1.png';
 import Camera from '@assets/images/register/camera.png';
 import Gallery from '@assets/images/register/gallery.png';
 import ClearButton from '@assets/images/button/clearbtn.png';

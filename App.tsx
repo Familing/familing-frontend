@@ -9,6 +9,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen';
 import {CustomHeader} from './src/components/features/Layout/CustomHeader';
 import {StatusBar} from 'react-native';
+import Start from '@/screens/Start/index.jsx';
+import {RegisterScreen} from '@/screens/Register';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
@@ -17,6 +19,16 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <StatusBar hidden={true} />
       <Stack.Navigator>
+        <Stack.Screen
+          name="Start"
+          component={Start}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Bottom"
           component={BottomTabScreen}
