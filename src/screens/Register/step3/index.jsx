@@ -8,8 +8,8 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import axios from 'axios';
-import Clipboard from '@react-native-clipboard/clipboard';
+//import axios from 'axios';
+//import Clipboard from '@react-native-clipboard/clipboard';
 import {ProgressIndicator} from '../ProgressIndicator';
 import Arrow from '@assets/images/register/arrow.png';
 import ClearButton from '@assets/images/button/clearbtn.png';
@@ -20,14 +20,14 @@ export const RegisterStep3 = ({navigation}) => {
   const [inviteCode, setInviteCode] = useState(null);
 
   const fetchInviteCode = async () => {
-    try {
+    /*try {
       const response = await axios.get('https://api.com'); // 초대 코드 api
       setInviteCode(response.data.inviteCode);
       Clipboard.setString(response.data.inviteCode);
     } catch (error) {
       Alert.alert('초대 코드를 가져오는 데 실패했습니다.');
       console.error(error);
-    }
+    }*/
   };
 
   useEffect(() => {
