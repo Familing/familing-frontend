@@ -43,20 +43,6 @@ export default function LoveCardMainScreen({navigation}) {
     setConfirmationVisible(true);
   };
 
-  let cardImage;
-  switch (selectedCard) {
-    case 'card1':
-      cardImage = LoveCard1;
-      break;
-    case 'card2':
-      cardImage = LoveCard2;
-      break;
-    case 'card3':
-      cardImage = LoveCard3;
-      break;
-    default:
-      cardImage = LoveCard1;
-  }
 
   return (
     <View style={styles.container}>

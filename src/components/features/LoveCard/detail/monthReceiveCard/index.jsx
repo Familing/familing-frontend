@@ -5,7 +5,7 @@ import monthCard2 from '../../../../../assets/images/lovecard/lovecard3.png';
 import monthCard3 from '../../../../../assets/images/lovecard/lovecard4.png';
 import MonthCard from './MonthCard';
 
-export default function MonthReceiveCard({setSelectedCard, setModalVisible}) {
+export default function MonthReceiveCard({handleCardClick}) {
   return (
     <View style={styles.container}>
       <View>
@@ -17,21 +17,9 @@ export default function MonthReceiveCard({setSelectedCard, setModalVisible}) {
 
       <View style={styles.scrollCotainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <MonthCard
-            image={monthCard1}
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-          />
-          <MonthCard
-            image={monthCard2}
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-          />
-          <MonthCard
-            image={monthCard3}
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-          />
+          <MonthCard image={monthCard1} handleCardClick={handleCardClick} />
+          <MonthCard image={monthCard2} handleCardClick={handleCardClick} />
+          <MonthCard image={monthCard3} handleCardClick={handleCardClick} />
         </ScrollView>
       </View>
     </View>

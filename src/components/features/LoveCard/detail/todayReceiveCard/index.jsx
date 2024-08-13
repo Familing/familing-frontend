@@ -1,17 +1,26 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import shineCard from '../../../../../assets/images/lovecard/lovecard5.png';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import shineCard from '@assets/images/lovecard/lovecard5.png';
+import TodayCards from './TodayCards';
 
-export default function TodayReceiveCard() {
+export default function TodayReceiveCard({handleCardClick}) {
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.title1}>오늘 받은 애정 카드</Text>
         <Text style={styles.subtitle1}>오늘 받은 애정 카드는 이거예요!</Text>
       </View>
+
       <View style={styles.scrollContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Image source={shineCard} style={styles.image1} />
+          <TodayCards handleCardClick={handleCardClick} card={shineCard} />
         </ScrollView>
       </View>
     </View>
@@ -37,9 +46,5 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexDirection: 'row',
     marginTop: 16,
-  },
-  image1: {
-    width: 140,
-    height: 210,
   },
 });
