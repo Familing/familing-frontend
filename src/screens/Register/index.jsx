@@ -10,10 +10,26 @@ const Stack = createStackNavigator();
 export const RegisterScreen = () => {
   return (
     <Stack.Navigator initialRouteName="RegisterStep1">
-      <Stack.Screen name="RegisterStep1" component={RegisterStep1} />
-      <Stack.Screen name="RegisterStep2" component={RegisterStep2} />
-      <Stack.Screen name="RegisterStep3" component={RegisterStep3} />
-      <Stack.Screen name="RegisterStep4" component={RegisterStep4} />
+      <Stack.Screen
+        name="RegisterStep1"
+        component={RegisterStep1}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RegisterStep2"
+        component={RegisterStep2}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RegisterStep3"
+        component={RegisterStep3}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RegisterStep4"
+        component={RegisterStep4}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
