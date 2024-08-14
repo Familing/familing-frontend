@@ -15,7 +15,7 @@ import {BlurView} from '@react-native-community/blur';
 import SendProfile from '../../../components/features/LoveCard/main/SendCardSection/SendProfile';
 import mom from '../../../assets/images/photocard/photocard2.png';
 import son from '../../../assets/images/photocard/photocard4.png';
-import daughter from '../../../assets/images/photocard/photocard3.png';
+import daughter from '@assets/images/photocard/photocard3.png';
 
 export default function LoveCardMainScreen({navigation}) {
   const [showAvatars, setShowAvatars] = useState(false);
