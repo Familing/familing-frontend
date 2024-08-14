@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import axios from 'axios';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 import kakao from '@assets/images/register/kakao.png';
 export const KakaoLogin = ({navigation}) => {
   const kakaoURL = 'http://13.124.211.43:8080/oauth2/authorization/kakao';
@@ -17,19 +17,19 @@ export const KakaoLogin = ({navigation}) => {
   const handleLogin = async () => {
     try {
       await Linking.openURL(kakaoURL);
-      const response = await axios.get(kakaoURL);
-      const {data} = response;
+      // const response = await axios.get(kakaoURL);
+      // const {data} = response;
 
-      const idToken = data.id_token;
+      // const idToken = data.id_token;
 
-      if (idToken) {
-        await AsyncStorage.setItem('idToken', idToken);
+      // if (idToken) {
+      //   await AsyncStorage.setItem('idToken', idToken);
 
-        Alert.alert('Login Success');
-      } else {
-        Alert.alert('Login Failed');
-      }
-      navigation.navigate('RegisterScreen');
+      //   Alert.alert('Login Success');
+      // } else {
+      //   Alert.alert('Login Failed');
+      // }
+      // navigation.navigate('RegisterScreen');
     } catch (error) {
       console.error('Failed to login with Kakao:', error);
       Alert.alert('Login Failed', 'An error occurred during Kakao login.');
