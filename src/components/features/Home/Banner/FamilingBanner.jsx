@@ -7,8 +7,8 @@ export const FamilingBanner = () => {
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title1}>Familing</Text>
-          <Text style={styles.title2}>이</Text>
+          <Text style={styles.title1}>Bridge</Text>
+          <Text style={styles.title2}>가</Text>
         </View>
         <Text style={styles.subtitle}>추구하는 세상은?</Text>
         <Text style={styles.description}>소통이 활발한 가족을 바래요.</Text>
