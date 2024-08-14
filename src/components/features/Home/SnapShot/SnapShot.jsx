@@ -1,43 +1,42 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {PhotoCard} from './PhotoCard';
+import dad from '@assets/images/photocard/photocard1.png';
+import mom from '@assets/images/photocard/photocard2.png';
+import daughter from '@assets/images/photocard/photocard3.png';
+import son from '@assets/images/photocard/photocard4.png';
 
 export const SnapShot = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>SnapShot</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>이전 사진보기</Text>
-        </TouchableOpacity>
-      </View>
-      <Text style={styles.subtitle}>
-        설정한 시간의 순간을 사진을 찍어 공유해주세요.
-      </Text>
-      <View style={styles.box}>
-        <Text style={styles.boxText}>아직 설정한 시간이 되지 않았어요!</Text>
-      </View>
-      <View style={styles.cardContainer}>
-        <View style={styles.row}>
-          <PhotoCard
-            isAddButton={true}
-            imageSource={require('@assets/images/photocard/photocard1.png')}
-            style={styles.cardImage}
-          />
-          <PhotoCard
-            imageSource={require('@assets/images/photocard/photocard2.png')}
-            style={styles.cardImage}
-          />
+      <View style={styles.wrapper}>
+        <View>
+          <View style={styles.header}>
+            <Text style={styles.title}>SnapShot</Text>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>이전 사진보기</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.subtitle}>
+            설정한 시간의 순간을 사진을 찍어 공유해주세요.
+          </Text>
         </View>
-        <View style={styles.row}>
-          <PhotoCard
-            imageSource={require('@assets/images/photocard/photocard3.png')}
-            style={styles.cardImage}
-          />
-          <PhotoCard
-            imageSource={require('@assets/images/photocard/photocard4.png')}
-            style={styles.cardImage}
-          />
+        <View style={styles.box}>
+          <Text style={styles.boxText}>아직 설정한 시간이 되지 않았어요!</Text>
+        </View>
+        <View style={styles.cardContainer}>
+          <View style={styles.row}>
+            <PhotoCard
+              isAddButton={true}
+              imageSource={dad}
+              style={styles.cardImage}
+            />
+            <PhotoCard imageSource={mom} style={styles.cardImage} />
+          </View>
+          <View style={styles.row}>
+            <PhotoCard imageSource={daughter} style={styles.cardImage} />
+            <PhotoCard imageSource={son} style={styles.cardImage} />
+          </View>
         </View>
       </View>
     </View>
@@ -45,7 +44,14 @@ export const SnapShot = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: '#fff',
+  },
+  wrapper: {
+    marginTop: 20,
+    marginHorizontal: 24,
+    marginBottom: 6,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -78,6 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: '#383838',
+    marginTop: 4,
   },
   box: {
     width: 228,
@@ -85,22 +92,23 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 25,
     borderRadius: 5,
-    opacity: 1,
     backgroundColor: '#C5C5C5',
+    marginTop: 16,
   },
   boxText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#383838',
+    color: '#fff',
   },
   cardContainer: {
     flexDirection: 'column',
-    marginRight: 12,
+    marginTop: 8,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 12,
+    gap: 12,
   },
   cardImage: {
     width: 38,
