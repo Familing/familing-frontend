@@ -6,30 +6,27 @@ import {
   Alert,
   StyleSheet,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import kakao from '@assets/images/register/kakao.png';
-
 export const KakaoLogin = ({navigation}) => {
-  const kakaoURL = 'http://52.79.205.140:8080/oauth2/authorization/kakao';
+  const kakaoURL = 'http://13.124.211.43:8080/oauth2/authorization/kakao';
 
   const handleLogin = async () => {
     try {
+      await Linking.openURL(kakaoURL);
       const response = await axios.get(kakaoURL);
       const {data} = response;
-
-      console.log('Received data:', data);
 
       const idToken = data.id_token;
 
       if (idToken) {
         await AsyncStorage.setItem('idToken', idToken);
 
-        console.log('success');
         Alert.alert('Login Success');
       } else {
-        console.error('Token is missing in the response:', data);
         Alert.alert('Login Failed');
       }
       navigation.navigate('RegisterScreen');
@@ -51,12 +48,22 @@ export const KakaoLogin = ({navigation}) => {
 
 const styles = StyleSheet.create({
   btnContainer: {
+    backgroundColor: '#FFD600',
+    paddingVertical: 12,
+    paddingHorizontal: 80,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 312,
+    height: 52,
+    marginTop: 48,
     flexDirection: 'row',
   },
   buttonText: {
     fontSize: 18,
     color: '#000',
     fontWeight: 'bold',
+    marginLeft: 10,
   },
   kakao: {
     width: 28,
