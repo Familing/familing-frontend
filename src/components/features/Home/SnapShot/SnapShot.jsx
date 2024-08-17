@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {PhotoCard} from './PhotoCard';
 import dad from '@assets/images/photocard/photocard1.png';
 import mom from '@assets/images/photocard/photocard2.png';
 import daughter from '@assets/images/photocard/photocard3.png';
 import son from '@assets/images/photocard/photocard4.png';
+import {FamilyPhotoCard} from './FamilyPhotoCard';
+import snapshotImg1 from '@assets/images/snapshot/snapshotImg1.png';
+import snapshotImg2 from '@assets/images/snapshot/snapshotImg2.png';
 
 export const SnapShot = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -27,15 +32,27 @@ export const SnapShot = () => {
         <View style={styles.cardContainer}>
           <View style={styles.row}>
             <PhotoCard
-              isAddButton={true}
               imageSource={dad}
-              style={styles.cardImage}
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
             />
-            <PhotoCard imageSource={mom} style={styles.cardImage} />
+            <FamilyPhotoCard
+              imageSource={mom}
+              snapshot={snapshotImg1}
+              selectedImage={selectedImage}
+            />
           </View>
           <View style={styles.row}>
-            <PhotoCard imageSource={daughter} style={styles.cardImage} />
-            <PhotoCard imageSource={son} style={styles.cardImage} />
+            <FamilyPhotoCard
+              imageSource={daughter}
+              snapshot={snapshotImg2}
+              selectedImage={selectedImage}
+            />
+            <FamilyPhotoCard
+              imageSource={son}
+              snapshot={false}
+              selectedImage={selectedImage}
+            />
           </View>
         </View>
       </View>
