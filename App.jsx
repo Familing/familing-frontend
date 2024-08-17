@@ -1,44 +1,22 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import Home from './src/screens/Home';
 import Chatting from './src/screens/Chatting/Chatting';
 import LoveCardMainScreen from './src/screens/LoveCard/main';
 import LoveCardDetailScreen from './src/screens/LoveCard/detail';
 import MyPage from './src/screens/MyPage/index';
-import MyFamilyScreen from '@/screens/MyPage/MyFamily';
+import MyFamilyScreen from './src/screens/MyPage/MyFamily';
 import NicknameScreen from './src/screens/MyPage/Nickname';
 import SnapshotTimeScreen from './src/screens/MyPage/SnapshotTime';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen';
-import {CustomHeader} from './src/components/features/Layout/CustomHeader';
 import {StatusBar} from 'react-native';
-import Start from '@/screens/Start/index.jsx';
-import {RegisterScreen} from '@/screens/Register';
+import Start from './src/screens/Start/index.jsx';
+import {RegisterScreen} from './src/screens/Register';
 import {Linking} from 'react-native';
-
-const navigationRef = React.createRef();
 
 function App() {
   const Stack = createNativeStackNavigator();
-
-  useEffect(() => {
-    const handleDeepLink = event => {
-      const url = event.url;
-      const routeName = url.replace(/.*?:\/\//g, '');
-
-      if (routeName === 'register-screen1') {
-        navigationRef.current?.navigate('RegisterScreen1');
-      }
-    };
-
-    Linking.addEventListener('url', handleDeepLink);
-
-    const unsubscribe = Linking.addEventListener('url', handleDeepLink);
-
-    return () => {
-      unsubscribe.remove();
-    };
-  }, []);
 
   const linking = {
     prefixes: ['myapp://'],
@@ -64,11 +42,7 @@ function App() {
           component={RegisterScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="Bottom"
-          component={BottomTabScreen}
-          options={{header: CustomHeader}}
-        />
+        <Stack.Screen name="Bottom" component={BottomTabScreen} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Chatting" component={Chatting} />
         <Stack.Screen
