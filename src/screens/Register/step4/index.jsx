@@ -20,7 +20,7 @@ export const RegisterStep4 = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleConfirm = async () => {
-    navigation.navigate(''); // MainPage로 이동
+    navigation.navigate('Home'); 
   };
 
   const openModal = () => {

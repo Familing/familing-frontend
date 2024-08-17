@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
+import {CameraAlert} from '@/components/common/CameraAlert';
 
-export const PhotoCard = ({isAddButton, imageSource}) => {
+export const PhotoCard = ({imageSource, selectedImage, setSelectedImage}) => {
+  const [alertVisible, setAlertVisible] = useState(false);
+  const handleImageSelected = uri => {
+    setSelectedImage(uri);
+  };
+
   return (
     <View>
-      <TouchableOpacity style={styles.card}>
-        {isAddButton ? (
-          <Image source={plusbtn} style={styles.addImage} />
+      <TouchableOpacity
+        onPress={() => setAlertVisible(true)}
+        style={styles.card}>
+        {selectedImage ? (
+          <Image style={styles.cardImg} source={{uri: selectedImage}} />
         ) : (
-          <View style={styles.content}>
-            <Text style={styles.description}>아직 업로드 전이에요!</Text>
-          </View>
+          <Image source={plusbtn} style={styles.addImage} />
         )}
       </TouchableOpacity>
+      <CameraAlert
+        handleImageSelected={handleImageSelected}
+        visible={alertVisible}
+        onClose={() => setAlertVisible(false)}
+      />
       <Image source={imageSource} style={styles.profile} />
     </View>
   );
@@ -35,6 +46,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  cardImg: {
+    width: 150,
+    height: 150,
+    borderRadius: 6,
   },
   content: {
     width: '100%',
