@@ -6,11 +6,11 @@ import LoveCardMainScreen from '../../../screens/LoveCard/main';
 import MyPage from '../../../screens/MyPage/index';
 import {CustomTabBar} from './CustomTabBar';
 
-export const BottomTabScreen = () => {
-  const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
+export const BottomTabScreen = () => {
   return (
-    <Tab.Navigator tabBarComponent={CustomTabBar}>
+    <Tab.Navigator tabBar={CustomTabBar}>
       <Tab.Screen
         name="Home"
         component={Home}

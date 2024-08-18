@@ -10,6 +10,7 @@ import {
 //import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
 import ClearButton from '@assets/images/button/clearbtn.png';
+import Arrow from '@assets/images/register/arrowImg.png';
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -40,6 +41,10 @@ export const RegisterStep2 = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image source={Arrow} style={styles.arrowImage} />
+      </TouchableOpacity>
+
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>코드를 입력해 참가</Text>
@@ -70,6 +75,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  arrowImage: {
+    width: 30,
+    height: 20,
+    marginTop: 20,
+    marginLeft: 24,
   },
   titleContainer: {
     alignItems: 'center',

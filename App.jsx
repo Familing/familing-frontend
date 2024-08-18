@@ -13,7 +13,7 @@ import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen'
 import {StatusBar} from 'react-native';
 import Start from './src/screens/Start/index.jsx';
 import {RegisterScreen} from './src/screens/Register';
-import {Linking} from 'react-native';
+import {CustomHeader} from '@/components/features/Layout/CustomHeader.jsx';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -42,8 +42,16 @@ function App() {
           component={RegisterScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Bottom" component={BottomTabScreen} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Bottom"
+          component={BottomTabScreen}
+          options={{header: CustomHeader}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name="Chatting" component={Chatting} />
         <Stack.Screen
           name="LovecardMainScreen"

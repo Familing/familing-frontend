@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     width: 312,
     height: 80,
     backgroundColor: '#F2F2F2',
-    marginBottom: 304,
+    marginBottom: 354,
     marginLeft: 24,
   },
   inviteTitle: {

@@ -5,7 +5,7 @@ import {CardIcon} from '../../icon/CardIcon';
 import {PersonIcon} from '../../icon/PersonIcon';
 import React from 'react';
 
-export const CustomTabBar = ({state, descriptors, navigation}) => {
+export function CustomTabBar({state, descriptors, navigation}) {
   return (
     <View style={styles.tabBar}>
       {state.routes.map((route, index) => {
@@ -81,7 +81,7 @@ export const CustomTabBar = ({state, descriptors, navigation}) => {
       })}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   tabBar: {

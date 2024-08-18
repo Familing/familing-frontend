@@ -20,7 +20,7 @@ export const RegisterStep4 = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleConfirm = async () => {
-    navigation.navigate('Home'); 
+    navigation.navigate('Home'); // MainPage로 이동
   };
 
   const openModal = () => {
@@ -51,7 +51,7 @@ export const RegisterStep4 = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Familing에서 사용할 이름</Text>
+        <Text style={styles.title}>Bridge에서 사용할 이름</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
