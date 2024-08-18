@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 71,
     height: 20,
     paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
     borderRadius: 40,
     opacity: 1,
     shadowColor: '#0000001A',
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
     backgroundColor: '#FFFFFF',
+    marginTop: -2,
   },
   buttonText: {
     fontSize: 10,

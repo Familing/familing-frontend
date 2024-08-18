@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import DropdownSelectBox from './selectBox';
 
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   rightContainer: {
-    justifyContent: 'center', 
+    justifyContent: 'center',
   },
 });

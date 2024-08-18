@@ -20,7 +20,7 @@ export const ProgressIndicator = ({currentStep}) => {
 const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: 'row',
-    marginTop: 28,
+    marginTop: 20,
     marginLeft: 24,
   },
   stepIndicator: {
