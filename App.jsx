@@ -61,9 +61,21 @@ function App() {
           name="LoveCardDetailScreen"
           component={LoveCardDetailScreen}
         />
-        <Stack.Screen name="MyPage" component={MyPage} />
-        <Stack.Screen name="MyFamilyScreen" component={MyFamilyScreen} />
-        <Stack.Screen name="NicknameScreen" component={NicknameScreen} />
+        <Stack.Screen
+          name="MyPage"
+          component={MyPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="NicknameScreen"
+          component={NicknameScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MyFamilyScreen"
+          component={MyFamilyScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="SnapshotTimeScreen"
           component={SnapshotTimeScreen}
