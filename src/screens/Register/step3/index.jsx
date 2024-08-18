@@ -10,7 +10,7 @@ import {
 //import axios from 'axios';
 //import Clipboard from '@react-native-clipboard/clipboard';
 import {ProgressIndicator} from '../ProgressIndicator';
-import Arrow from '@assets/images/register/arrow.png';
+import Arrow from '@assets/images/register/arrowImg.png';
 import ClearButton from '@assets/images/button/clearbtn.png';
 import CopyImage from '@assets/images/register/copyimage.png';
 
@@ -79,7 +79,7 @@ export const RegisterStep3 = ({navigation}) => {
       </View>
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.button} onPress={handleCreate}>
-          <Text style={styles.buttonText}>참가하기</Text>
+          <Text style={styles.buttonText}>생성하기</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -92,18 +92,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   arrowImage: {
-    width: 24,
-    height: 24,
-    position: 'absolute',
-    top: 20,
-    left: 24,
-    marginBottom: 16,
+    width: 20,
+    height: 15,
+    marginTop: 20,
+    marginLeft: 24,
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 150,
+    marginTop: 100,
   },
   title: {
     fontSize: 24,
@@ -135,7 +133,7 @@ const styles = StyleSheet.create({
     borderColor: '#4D83F4',
     borderRadius: 12,
     marginLeft: 24,
-    marginTop: 8,
+    marginTop: 3,
   },
   clearbtnContainer: {
     position: 'absolute',
@@ -155,8 +153,9 @@ const styles = StyleSheet.create({
     width: 312,
     height: 80,
     backgroundColor: '#F2F2F2',
-    marginBottom: 354,
-    marginLeft: 24,
+    position: 'absolute',
+    top: 310,
+    left: 24,
   },
   inviteTitle: {
     fontSize: 20,
@@ -169,23 +168,24 @@ const styles = StyleSheet.create({
   copyContainer: {
     flexDirection: 'row',
     marginLeft: 95,
+    marginTop: 5,
   },
   copyImage: {
     width: 10,
     height: 12,
-    marginTop: 5,
+    marginTop: 6,
     marginRight: 5,
   },
   copyTitle: {
     fontSize: 12,
     fontWeight: '400',
     color: '#B3B3B3',
-    textAlign: 'center',
+    lineHeight: 24,
   },
   btnContainer: {
     marginLeft: 24,
     position: 'absolute',
-    top: 455,
+    top: 425,
   },
   button: {
     width: 312,
