@@ -18,7 +18,7 @@ export default function Start() {
       await Linking.openURL(kakaoURL);
     } catch (error) {
       console.error('Failed to login with Kakao:', error);
-      alert('Login Failed', 'An error occurred during Kakao login.');
+      // alert('Login Failed', 'An error occurred during Kakao login.');
     }
   };
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4D83F4',
   },
   textContainer: {
-    marginTop: 164,
+    marginTop: 104,
     marginBottom: 40,
   },
   title: {
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   image: {
-    width: 240,
-    height: 240,
+    width: 220,
+    height: 220,
   },
   button: {
     backgroundColor: '#FFBE00',
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 312,
-    height: 52,
-    marginTop: 48,
+    height: 50,
+    marginTop: 40,
   },
   btnContainer: {
     flexDirection: 'row',
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#371C09',
     fontWeight: '800',
+    textAlign: 'center',
   },
   kakao: {
     width: 28,
