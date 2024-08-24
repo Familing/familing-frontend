@@ -1,16 +1,22 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React from 'react';
-import Home from '../../../screens/Home/index';
-import Chatting from '../../../screens/Chatting/Chatting';
-import LoveCardMainScreen from '../../../screens/LoveCard/main';
-import MyPage from '../../../screens/MyPage/index';
-import {CustomTabBar} from './CustomTabBar';
+import React, {useEffect} from 'react';
+import Home from '../screens/Home/index';
+import {CustomTabBar} from '../components/features/Layout/CustomTabBar';
+import Chatting from '@/screens/Chatting/Chatting';
+import MyPage from '@/screens/MyPage';
+import {LoveCardNavigator} from './LoveCardStack';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
 
+  useEffect(() => {
+    console.log('BottomTabScreen mounted');
+  }, []);
+
   return (
-    <Tab.Navigator tabBarComponent={CustomTabBar}>
+    <Tab.Navigator
+      initialRouteName="Home"
+      tabBar={props => <CustomTabBar {...props} />}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -22,8 +28,8 @@ export const BottomTabScreen = () => {
         options={{tabBarLabel: '채팅', headerShown: false}}
       />
       <Tab.Screen
-        name="LovecardMainScreen"
-        component={LoveCardMainScreen}
+        name="LoveCardNavigator"
+        component={LoveCardNavigator}
         options={{tabBarLabel: '애정카드', headerShown: false}}
       />
       <Tab.Screen
