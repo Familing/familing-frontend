@@ -10,7 +10,7 @@ import snapshotImg1 from '@assets/images/snapshot/snapshotImg1.png';
 import snapshotImg2 from '@assets/images/snapshot/snapshotImg2.png';
 
 export const SnapShot = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState('');
 
   return (
     <View style={styles.container}>
@@ -27,7 +27,9 @@ export const SnapShot = () => {
           </Text>
         </View>
         <View style={styles.box}>
-          <Text style={styles.boxText}>아직 설정한 시간이 되지 않았어요!</Text>
+          <Text style={styles.boxText}>
+            주제: 오늘의 점심메뉴는 무엇인가요?
+          </Text>
         </View>
         <View style={styles.cardContainer}>
           <View style={styles.row}>
@@ -80,14 +82,18 @@ const styles = StyleSheet.create({
     color: '#383838',
   },
   button: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 71,
     height: 20,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
     borderRadius: 40,
-    opacity: 1,
-    shadowColor: '#0000001A',
-    shadowOpacity: 1,
+    //shadow
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
     backgroundColor: '#FFFFFF',
@@ -95,6 +101,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 10,
     fontWeight: '600',
+    lineHeight: 12.48,
     color: '#383838',
   },
   subtitle: {
@@ -104,12 +111,12 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   box: {
-    width: 228,
-    height: 28,
+    paddingHorizontal: 24,
     paddingVertical: 6,
-    paddingHorizontal: 25,
+    height: 28,
+    width: 228,
     borderRadius: 5,
-    backgroundColor: '#C5C5C5',
+    backgroundColor: '#FFBE00',
     marginTop: 16,
   },
   boxText: {

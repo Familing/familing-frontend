@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
 import {CameraAlert} from '@/components/common/CameraAlert';
 
 export const PhotoCard = ({imageSource, selectedImage, setSelectedImage}) => {
   const [alertVisible, setAlertVisible] = useState(false);
+
   const handleImageSelected = uri => {
     setSelectedImage(uri);
   };
