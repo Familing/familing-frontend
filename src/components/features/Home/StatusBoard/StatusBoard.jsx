@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import StatusProfile from './StatusProfile';
 import {Dad_profile} from '../../../icon/Dad_profile';
@@ -7,14 +7,29 @@ import {Mom_profile} from '@/components/icon/Mom_profile';
 import {Son_profile} from '@/components/icon/Son_profile';
 
 export default function StatusBorad() {
+  const [myName, setMyName] = useState('행복한 부자아빠');
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Text style={styles.title}>상태보기</Text>
         <Text style={styles.subTitle}>현재 가족들의 상태를 볼 수 있어요.</Text>
-        <StatusProfile Profile={Dad_profile} name="행복한 부자아빠" />
-        <StatusProfile Profile={Mom_profile} name="익순여왕님" />
-        <StatusProfile Profile={Daughter_profile} name="민지 공주" />
+        <StatusProfile
+          Profile={Dad_profile}
+          name="행복한 부자아빠"
+          myName={myName}
+        />
+        <StatusProfile
+          Profile={Mom_profile}
+          name="익순여왕님"
+          myName={myName}
+        />
+        <StatusProfile
+          Profile={Daughter_profile}
+          name="민지 공주"
+          myName={myName}
+        />
+        <StatusProfile Profile={Son_profile} name="이민형" myName={myName} />
       </View>
     </View>
   );
@@ -40,5 +55,4 @@ const styles = StyleSheet.create({
     marginTop: 3.89,
     marginBottom: 15,
   },
-
 });

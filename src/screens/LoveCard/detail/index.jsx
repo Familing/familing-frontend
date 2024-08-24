@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Modal,
   Text,
+  ScrollView,
   // PermissionsAndroid,
   // Platform,
   // NativeModules,
@@ -15,7 +16,8 @@ import TodayReceiveCard from '../../../components/features/LoveCard/detail/today
 import MonthReceiveCard from '../../../components/features/LoveCard/detail/monthReceiveCard';
 import clearbtn2 from '@assets/images/button/clearbtn2.png';
 import {BlurView} from '@react-native-community/blur';
-import SaveBtn from '@/components/icon/LoveCard/SaveBtn';
+import SaveBtn from '../../../components/icon/LoveCard/SaveBtn';
+import Header from '../../../components/features/Layout/Header';
 // import * as RNFS from 'react-native-fs';
 
 export default function LoveCardDetailScreen({route, navigation}) {
@@ -78,10 +80,13 @@ export default function LoveCardDetailScreen({route, navigation}) {
 
   return (
     <View style={styles.container}>
-      <SendInfo image={image} name={name} />
-      <TodayReceiveCard handleCardClick={handleCardClick} />
-      <MonthReceiveCard handleCardClick={handleCardClick} />
-
+      <Header title="내가 받은 애정 카드" />
+      <ScrollView showsHorizontalScrollIndicator={false}>
+        <SendInfo image={image} name={name} />
+        <TodayReceiveCard handleCardClick={handleCardClick} />
+        <MonthReceiveCard handleCardClick={handleCardClick} />
+        <View style={styles.space} />
+      </ScrollView>
       <Modal
         animationType="slide"
         transparent={true}
@@ -178,5 +183,9 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: '700',
+  },
+  space: {
+    height: 64,
+    width: '100%',
   },
 });

@@ -48,6 +48,7 @@ const headerStyles = StyleSheet.create({
     alignItems: 'center',
   },
   badgeText: {
+    fontWeight: '600',
     color: '#fff',
     fontSize: 9,
     lineHeight: 11.23,

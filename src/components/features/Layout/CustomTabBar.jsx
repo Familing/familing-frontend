@@ -1,115 +1,125 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {HomeIcon} from '../../icon/HomeIcon';
 import {MessageIcon} from '../../icon/MessageIcon';
 import {CardIcon} from '../../icon/CardIcon';
 import {PersonIcon} from '../../icon/PersonIcon';
-import React from 'react';
 
-export function CustomTabBar({state, descriptors, navigation}) {
+export const CustomTabBar = ({navigation}) => {
+  const [selectedTab, setSelectedTab] = useState('Home');
+
+  const handleTabPress = tabName => {
+    setSelectedTab(tabName);
+    navigation.navigate(tabName);
+  };
+
   return (
-    <View style={styles.tabBar}>
-      {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
+    <View style={styles.container}>
+      <View style={styles.innerWrapper}>
+        <TouchableOpacity
+          style={[styles.iconWrapper, styles.home]}
+          onPress={() => handleTabPress('Home')}>
+          <HomeIcon
+            height={24}
+            width={24}
+            color={selectedTab === 'Home' ? '#4D83F4' : '#D3D3D3'}
+          />
+          <Text style={selectedTab === 'Home' ? styles.focusText : styles.text}>
+            홈
+          </Text>
+        </TouchableOpacity>
 
-        const isFocused = state.index === index;
+        <TouchableOpacity
+          style={[styles.iconWrapper, styles.message]}
+          onPress={() => handleTabPress('Chatting')}>
+          <MessageIcon
+            height={24}
+            width={24}
+            color={selectedTab === 'Chatting' ? '#4D83F4' : '#D3D3D3'}
+          />
+          <Text
+            style={selectedTab === 'Chatting' ? styles.focusText : styles.text}>
+            채팅
+          </Text>
+        </TouchableOpacity>
 
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
+        <TouchableOpacity
+          style={[styles.iconWrapper, styles.loveCard]}
+          onPress={() => handleTabPress('LoveCardNavigator')}>
+          <CardIcon
+            height={24}
+            width={24}
+            color={selectedTab === 'LoveCardNavigator' ? '#4D83F4' : '#D3D3D3'}
+          />
+          <Text
+            style={
+              selectedTab === 'LoveCardNavigator'
+                ? styles.focusText
+                : styles.text
+            }>
+            애정카드
+          </Text>
+        </TouchableOpacity>
 
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        let IconComponent;
-        switch (route.name) {
-          case 'Home':
-            IconComponent = HomeIcon;
-            break;
-          case 'Chatting':
-            IconComponent = MessageIcon;
-            break;
-          case 'LovecardMainScreen':
-            IconComponent = CardIcon;
-            break;
-          case 'MyPage':
-            IconComponent = PersonIcon;
-            break;
-        }
-
-        return (
-          <TouchableOpacity
-            key={route.key}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={styles.tabItem}>
-            <IconComponent
-              width={24}
-              height={24}
-              color={isFocused ? '#4D83F4' : '#D3D3D3'}
-            />
-            <Text
-              style={[
-                styles.text,
-                isFocused ? styles.focusedText : styles.unfocusedText,
-              ]}>
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
+        <TouchableOpacity
+          style={[styles.iconWrapper, styles.person]}
+          onPress={() => handleTabPress('MyPage')}>
+          <PersonIcon
+            height={24}
+            width={24}
+            color={selectedTab === 'MyPage' ? '#4D83F4' : '#D3D3D3'}
+          />
+          <Text
+            style={selectedTab === 'MyPage' ? styles.focusText : styles.text}>
+            마이페이지
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  tabBar: {
+  container: {
     flexDirection: 'row',
+    width: '100%',
     height: 76,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: -1},
-    shadowOpacity: 0.1,
-    shadowRadius: 9,
+    backgroundColor: '#FDFDFD',
+    //shadow
+    shadowColor: '#000000', // 그림자 색상
+    shadowOffset: {width: 0, height: -1}, // X: 0, Y: -1
+    shadowOpacity: 0.1, // 그림자의 불투명도 (10%)
+    shadowRadius: 9, // 그림자의 블러 반경
     elevation: 5,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 42,
   },
-  tabItem: {
+  innerWrapper: {
+    marginLeft: 42,
+    marginTop: 16,
+    flexDirection: 'row',
+  },
+  iconWrapper: {
+    height: 43,
     alignItems: 'center',
-    justifyContent: 'center',
     gap: 4,
   },
-  text: {
-    fontSize: 11,
-    fontWeight: '600',
+  home: {},
+  message: {
+    marginLeft: 60,
   },
-  focusedText: {
+  loveCard: {
+    marginLeft: 54,
+  },
+  person: {
+    marginLeft: 40,
+  },
+  focusText: {
+    fontSize: 12,
+    fontWeight: '600',
     color: '#4D83F4',
   },
-  unfocusedText: {
+  text: {
+    fontSize: 12,
+    fontWeight: '600',
     color: '#D3D3D3',
   },
 });

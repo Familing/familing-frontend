@@ -16,6 +16,7 @@ import SendProfile from '../../../components/features/LoveCard/main/SendCardSect
 import mom from '../../../assets/images/photocard/photocard2.png';
 import son from '../../../assets/images/photocard/photocard4.png';
 import daughter from '@assets/images/photocard/photocard3.png';
+import {CustomHeader} from '../../../components/features/Layout/CustomHeader';
 
 export default function LoveCardMainScreen({navigation}) {
   const [showAvatars, setShowAvatars] = useState(false);
@@ -44,6 +45,7 @@ export default function LoveCardMainScreen({navigation}) {
 
   return (
     <View style={styles.container}>
+      <CustomHeader />
       <ScrollView showsHorizontalScrollIndicator={false}>
         <LoveCardBanner />
         <ReceiveCardSecton navigation={navigation} />
@@ -51,6 +53,7 @@ export default function LoveCardMainScreen({navigation}) {
           setSelectedCard={setSelectedCard}
           setModalVisible={setModalVisible}
         />
+        <View style={styles.space} />
       </ScrollView>
 
       <Modal
@@ -130,6 +133,10 @@ export default function LoveCardMainScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  space: {
+    height: 64,
+    width: '100%',
+  },
   container: {
     backgroundColor: '#fff',
   },

@@ -31,36 +31,6 @@ export default function ReceiveCardSecton({navigation}) {
             profileImg={son_profile}
             navigation={navigation}
           />
-          <Profile
-            name="이민형"
-            profileImg={son_profile}
-            navigation={navigation}
-          />
-          <Profile
-            name="이민형"
-            profileImg={son_profile}
-            navigation={navigation}
-          />
-          <Profile
-            name="이민형"
-            profileImg={son_profile}
-            navigation={navigation}
-          />
-          <Profile
-            name="이민형"
-            profileImg={son_profile}
-            navigation={navigation}
-          />
-          <Profile
-            name="이민형"
-            profileImg={son_profile}
-            navigation={navigation}
-          />
-          <Profile
-            name="민지공주"
-            profileImg={daughter_profile}
-            navigation={navigation}
-          />
         </ScrollView>
       </View>
     </View>

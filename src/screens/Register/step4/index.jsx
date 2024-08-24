@@ -22,7 +22,26 @@ export const RegisterStep4 = ({navigation}) => {
   };
 
   const handleConfirm = async () => {
-    navigation.navigate('Home'); // MainPage로 이동
+    navigation.navigate('Bottom'); 
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleCamera = () => {
+    // 카메라 기능 구현
+    closeModal();
+  };
+
+  const handleGallery = () => {
+    // 갤러리 기능 구현
+    closeModal();
+
   };
 
   return (
