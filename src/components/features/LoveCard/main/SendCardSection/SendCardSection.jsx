@@ -26,6 +26,21 @@ export default function SendCardSection({setSelectedCard, setModalVisible}) {
           <Card
             setSelectedCard={setSelectedCard}
             setModalVisible={setModalVisible}
+            loveCard={rainCard}
+          />
+          <Card
+            setSelectedCard={setSelectedCard}
+            setModalVisible={setModalVisible}
+            loveCard={shineCard}
+          />
+          <Card
+            setSelectedCard={setSelectedCard}
+            setModalVisible={setModalVisible}
+            loveCard={messageCard}
+          />
+          <Card
+            setSelectedCard={setSelectedCard}
+            setModalVisible={setModalVisible}
             loveCard={luckyCard}
           />
           <Card
@@ -43,21 +58,7 @@ export default function SendCardSection({setSelectedCard, setModalVisible}) {
             setModalVisible={setModalVisible}
             loveCard={cloudCard}
           />
-          <Card
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-            loveCard={shineCard}
-          />
-          <Card
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-            loveCard={rainCard}
-          />
-          <Card
-            setSelectedCard={setSelectedCard}
-            setModalVisible={setModalVisible}
-            loveCard={messageCard}
-          />
+
           <Card
             setSelectedCard={setSelectedCard}
             setModalVisible={setModalVisible}

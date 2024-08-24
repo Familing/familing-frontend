@@ -1,8 +1,9 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import monthCard1 from '../../../../../assets/images/lovecard/lovecard2.png';
-import monthCard2 from '../../../../../assets/images/lovecard/lovecard3.png';
-import monthCard3 from '../../../../../assets/images/lovecard/lovecard4.png';
+import monthCard1 from '../../../../../assets/images/lovecard/lovecard3.png';
+import monthCard2 from '../../../../../assets/images/lovecard/lovecard6.png';
+import monthCard3 from '../../../../../assets/images/lovecard/lovecard7.png';
+import monthCard4 from '../../../../../assets/images/lovecard/lovecard11.png';
 import MonthCard from './MonthCard';
 
 export default function MonthReceiveCard({handleCardClick}) {
@@ -17,9 +18,10 @@ export default function MonthReceiveCard({handleCardClick}) {
 
       <View style={styles.scrollCotainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <MonthCard image={monthCard1} handleCardClick={handleCardClick} />
           <MonthCard image={monthCard2} handleCardClick={handleCardClick} />
+          <MonthCard image={monthCard1} handleCardClick={handleCardClick} />
           <MonthCard image={monthCard3} handleCardClick={handleCardClick} />
+          <MonthCard image={monthCard4} handleCardClick={handleCardClick} />
         </ScrollView>
       </View>
     </View>
