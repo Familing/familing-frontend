@@ -26,6 +26,7 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
       cameraType: 'back',
     });
     if (result.didCancel) {
+      onClose();
       return null;
     }
     const localUri = result.assets[0].uri;
@@ -38,6 +39,7 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
       mediaType: 'photo',
     });
     if (result.didCancel) {
+      onClose();
       return null;
     }
     const localUri = result.assets[0].uri;
