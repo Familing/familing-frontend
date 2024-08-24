@@ -5,6 +5,7 @@ import {BottomTabScreen} from './src/navigation/BottomTabScreen.jsx';
 import {StatusBar} from 'react-native';
 import {StartStacks} from '@/navigation/StartStack.jsx';
 
+
 function App() {
   const Stack = createNativeStackNavigator();
 

@@ -10,6 +10,7 @@ import {
 //import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
 import ClearButton from '@assets/images/button/clearbtn.png';
+import Arrow from '@assets/images/register/arrowImg.png';
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -30,7 +31,7 @@ export const RegisterStep2 = ({navigation}) => {
     }*/
 
     setErrorMessage('※ 코드가 올바르지 않습니다.');
-    navigation.navigate('RegisterStep3');
+    navigation.navigate('RegisterStep4');
   };
 
   const clearInput = () => {
@@ -40,6 +41,10 @@ export const RegisterStep2 = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image source={Arrow} style={styles.arrowImage} />
+      </TouchableOpacity>
+
       <ProgressIndicator currentStep={2} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>코드를 입력해 참가</Text>
@@ -71,9 +76,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  arrowImage: {
+    width: 20,
+    height: 15,
+    marginTop: 20,
+    marginLeft: 24,
+  },
   titleContainer: {
     alignItems: 'center',
-    marginTop: 150,
+    marginTop: 130,
     marginLeft: 24,
     flexDirection: 'row',
   },
@@ -107,17 +118,19 @@ const styles = StyleSheet.create({
     borderColor: '#4D83F4',
     borderRadius: 12,
     marginLeft: 24,
-    marginTop: 8,
+    marginTop: 3,
   },
   clearbtnContainer: {
+    flex: 1,
     position: 'absolute',
-    top: 250,
+    top: 150,
     left: 288,
   },
   clearButton: {
+    flex: 1,
     position: 'absolute',
-    top: 266,
-    left: 310,
+    top: 273,
+    left: 308,
   },
   clearbtnImage: {
     width: 24,
@@ -127,17 +140,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: '#FF3434',
-    marginTop: 4,
+    marginBottom: 274,
     marginLeft: 24,
-    marginBottom: 7,
   },
   button: {
     width: 312,
     height: 40,
     borderRadius: 70,
     backgroundColor: '#4D83F4',
-    marginLeft: 24,
-    marginBottom: 350,
+    position: 'absolute',
+    top: 350,
+    left: 24,
   },
   buttonText: {
     fontSize: 14,

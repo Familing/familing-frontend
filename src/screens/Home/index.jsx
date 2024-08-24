@@ -10,6 +10,7 @@ export default function Home() {
     <View>
       <CustomHeader />
       <ScrollView>
+        <CustomHeader />
         <FamilingBanner />
         <StatusBorad />
         <SnapShot />

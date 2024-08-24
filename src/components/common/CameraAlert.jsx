@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
     color: '#383838',
     fontSize: 14,
     fontWeight: '700',
-    lineHeight: 17.47,
+    lineHeight: 23,
   },
   pictureText: {
     color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '700',
-    lineHeight: 17.47,
+    lineHeight: 23,
   },
 });
 

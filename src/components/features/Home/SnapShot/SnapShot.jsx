@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
     backgroundColor: '#FFFFFF',
+    marginTop: -2,
   },
   buttonText: {
     fontSize: 10,

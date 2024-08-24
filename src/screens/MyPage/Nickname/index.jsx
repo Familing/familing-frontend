@@ -5,8 +5,10 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Arrow from '@assets/images/register/arrowImg.png';
 
 export default function NicknameScreen({navigation}) {
   const [nickname, setNickname] = useState('내가 둘째다');
@@ -21,7 +23,12 @@ export default function NicknameScreen({navigation}) {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>닉네임</Text>
+      <View style={styles.titleContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Arrow} style={styles.arrowImage} />
+        </TouchableOpacity>
+        <Text style={styles.title}>닉네임</Text>
+      </View>
       <View style={styles.nicknameContainer}>
         <Text style={styles.subtitle}>새로운 닉네임을 입력해주세요</Text>
         <View style={styles.inputContainer}>
@@ -47,18 +54,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  titleContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    gap: 105,
+  },
+  arrowImage: {
+    width: 20,
+    height: 15,
+    marginLeft: 24,
+  },
   title: {
     fontSize: 20,
     fontWeight: '800',
     color: '#383838',
-    marginTop: 21,
-    marginLeft: 153,
+    marginTop: -5,
   },
   nicknameContainer: {
     width: 312,
     height: 68,
     flexDirection: 'column',
     gap: 16,
+    marginTop: 30,
   },
   subtitle: {
     fontSize: 16,
@@ -85,14 +102,14 @@ const styles = StyleSheet.create({
     borderColor: '#4D83F4',
     borderRadius: 12,
     marginLeft: 24,
-    marginTop: 8,
+    marginTop: 3,
   },
   button: {
     width: 312,
     height: 40,
     borderRadius: 6,
     backgroundColor: '#4D83F4',
-    marginTop: 520,
+    marginTop: 380,
     marginLeft: 24,
     justifyContent: 'center',
     alignItems: 'center',

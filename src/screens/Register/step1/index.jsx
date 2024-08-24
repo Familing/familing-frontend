@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
-    marginTop: 250,
+    marginTop: 200,
   },
   title: {
     fontSize: 24,
@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
     borderRadius: 70,
     paddingVertical: 10,
     paddingHorizontal: 49,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   noText: {
     fontSize: 15,
@@ -72,6 +74,8 @@ const styles = StyleSheet.create({
     borderRadius: 70,
     paddingVertical: 10,
     paddingHorizontal: 62,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   yesText: {
     fontSize: 15,

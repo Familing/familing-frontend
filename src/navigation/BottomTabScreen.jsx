@@ -9,10 +9,6 @@ import {LoveCardNavigator} from './LoveCardStack';
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
 
-  useEffect(() => {
-    console.log('BottomTabScreen mounted');
-  }, []);
-
   return (
     <Tab.Navigator
       initialRouteName="Home"
