@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import DropdownSelectBox from './selectBox';
+import StatusBtn from './StatusBtn';
 
-export default function StatusProfile({Profile, name}) {
+export default function StatusProfile({Profile, name, myName}) {
+  const familiyStatus = {
+    익순여왕님: '쉬는 중',
+    '민지 공주': '노는 중',
+    이민형: '공부 중',
+  };
+
   return (
     <View style={styles.divider}>
       <View style={styles.container}>
@@ -11,7 +18,11 @@ export default function StatusProfile({Profile, name}) {
           <Text style={styles.font}>{name}</Text>
         </View>
         <View style={styles.rightContainer}>
-          <DropdownSelectBox />
+          {name === myName ? (
+            <DropdownSelectBox />
+          ) : (
+            <StatusBtn nowStatus={familiyStatus[name]} />
+          )}
         </View>
       </View>
     </View>
@@ -46,6 +57,6 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   rightContainer: {
-    justifyContent: 'center', 
+    justifyContent: 'center',
   },
 });

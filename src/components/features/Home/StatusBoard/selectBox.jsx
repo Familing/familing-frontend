@@ -9,7 +9,7 @@ const data = [
   {id: '4', label: '일하는 중'},
 ];
 
-const DropdownSelectBox = () => {
+export default function DropdownSelectBox() {
   const [selectedItem, setSelectedItem] = useState(data[3]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -52,15 +52,18 @@ const DropdownSelectBox = () => {
       )}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+  },
   arrowImg: {
     width: 10,
     height: 6,
   },
   selectBox: {
-    zIndex: 9,
+    zIndex: 99,
     height: 28,
     width: 88,
     backgroundColor: '#4D83F4',
@@ -80,17 +83,23 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   dropdown: {
+    zIndex: 9,
     position: 'absolute',
     top: 14,
     width: 88,
     backgroundColor: '#fff',
     borderRadius: 8,
-    elevation: 5, // 안드로이드에서 그림자 효과
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
     paddingTop: 14,
     alignItems: 'center',
+    //shadow
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   item: {
     height: 16,
@@ -111,5 +120,3 @@ const styles = StyleSheet.create({
     lineHeight: 12.48,
   },
 });
-
-export default DropdownSelectBox;
