@@ -1,19 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import Home from './src/screens/Home';
-import Chatting from './src/screens/Chatting/Chatting';
-import LoveCardMainScreen from './src/screens/LoveCard/main';
-import LoveCardDetailScreen from './src/screens/LoveCard/detail';
-import MyPage from './src/screens/MyPage/index';
-import MyFamilyScreen from './src/screens/MyPage/MyFamily';
-import NicknameScreen from './src/screens/MyPage/Nickname';
-import SnapshotTimeScreen from './src/screens/MyPage/SnapshotTime';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {BottomTabScreen} from './src/components/features/Layout/BottomTabScreen';
+import {BottomTabScreen} from './src/navigation/BottomTabScreen.jsx';
 import {StatusBar} from 'react-native';
-import Start from './src/screens/Start/index.jsx';
-import {RegisterScreen} from './src/screens/Register';
-import {Linking} from 'react-native';
+import {StartStacks} from '@/navigation/StartStack.jsx';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -31,34 +21,16 @@ function App() {
   return (
     <NavigationContainer linking={linking}>
       <StatusBar hidden={true} />
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="StartStacks">
         <Stack.Screen
-          name="Start"
-          component={Start}
+          name="StartStacks"
+          component={StartStacks}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen}
+          name="Bottom"
+          component={BottomTabScreen}
           options={{headerShown: false}}
-        />
-        <Stack.Screen name="Bottom" component={BottomTabScreen} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Chatting" component={Chatting} />
-        <Stack.Screen
-          name="LovecardMainScreen"
-          component={LoveCardMainScreen}
-        />
-        <Stack.Screen
-          name="LoveCardDetailScreen"
-          component={LoveCardDetailScreen}
-        />
-        <Stack.Screen name="MyPage" component={MyPage} />
-        <Stack.Screen name="MyFamilyScreen" component={MyFamilyScreen} />
-        <Stack.Screen name="NicknameScreen" component={NicknameScreen} />
-        <Stack.Screen
-          name="SnapshotTimeScreen"
-          component={SnapshotTimeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
