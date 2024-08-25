@@ -19,7 +19,7 @@ export default function DropdownSelectBox() {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity
         style={styles.selectBox}
         onPress={() => setDropdownVisible(!dropdownVisible)}>
@@ -57,13 +57,14 @@ export default function DropdownSelectBox() {
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
+    zIndex: 100,
   },
   arrowImg: {
     width: 10,
     height: 6,
   },
   selectBox: {
-    zIndex: 99,
+    zIndex: 101,
     height: 28,
     width: 88,
     backgroundColor: '#4D83F4',
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   dropdown: {
-    zIndex: 9,
+    zIndex: 99,
     position: 'absolute',
     top: 14,
     width: 88,

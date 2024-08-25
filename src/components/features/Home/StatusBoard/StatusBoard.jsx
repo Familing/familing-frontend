@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import StatusProfile from './StatusProfile';
-import {Dad_profile} from '../../../icon/Dad_profile';
-import {Daughter_profile} from '@/components/icon/Daughter_profile';
-import {Mom_profile} from '@/components/icon/Mom_profile';
-import {Son_profile} from '@/components/icon/Son_profile';
+import {Dad_profile} from '../../../icon/profile/Dad_profile';
+import {Daughter_profile} from '@/components/icon/profile/Daughter_profile';
+import {Mom_profile} from '@/components/icon/profile/Mom_profile';
+import {Son_profile} from '@/components/icon/profile/Son_profile';
 
 export default function StatusBorad() {
   const [myName, setMyName] = useState('행복한 부자아빠');

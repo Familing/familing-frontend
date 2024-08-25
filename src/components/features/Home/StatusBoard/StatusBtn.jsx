@@ -11,7 +11,6 @@ export default function StatusBtn({nowStatus}) {
 
 const styles = StyleSheet.create({
   btn: {
-    zIndex: 1,
     display: 'flex',
     paddingHorizontal: 14,
     justifyContent: 'center',

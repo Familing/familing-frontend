@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

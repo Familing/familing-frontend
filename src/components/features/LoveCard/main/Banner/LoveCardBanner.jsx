@@ -12,7 +12,7 @@ export default function LoveCardBanner() {
             어렵다고요?
           </Text>
           <Text style={styles.subTitle}>
-            <Text style={{fontWeight: '700'}}>Famiing</Text>에서 만든,{'\n'}
+            <Text style={styles.innerText}>Famiing</Text>에서 만든,{'\n'}
             따뜻한 카드를 보내보세요.
           </Text>
         </View>
@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  innerText: {
+    fontWeight: '700',
   },
   title: {
     fontSize: 20,

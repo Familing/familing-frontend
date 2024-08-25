@@ -28,7 +28,7 @@ export const SnapShot = () => {
         </View>
         <View style={styles.box}>
           <Text style={styles.boxText}>
-            주제: 오늘의 점심메뉴는 무엇인가요?
+            아직 설정한 시간이 되지 않았어요!
           </Text>
         </View>
         <View style={styles.cardContainer}>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     height: 28,
     width: 228,
     borderRadius: 5,
-    backgroundColor: '#FFBE00',
+    backgroundColor: '#C5C5C5',
     marginTop: 16,
   },
   boxText: {
