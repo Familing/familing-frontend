@@ -7,16 +7,7 @@ export const FamilyPhotoCard = ({imageSource, snapshot, selectedImage}) => {
     <View style={styles.content}>
       {snapshot ? (
         <View style={styles.imgaeContainer}>
-          {selectedImage === '' ? (
-            <ImageBackground
-              source={snapshot}
-              style={styles.cardImg}
-              blurRadius={40}>
-              <View style={styles.backgroud} />
-            </ImageBackground>
-          ) : (
-            <Image source={snapshot} style={styles.cardImg} />
-          )}
+          <Image source={snapshot} style={styles.cardImg} />
         </View>
       ) : (
         <Text style={styles.description}>아직 업로드 전이에요!</Text>
