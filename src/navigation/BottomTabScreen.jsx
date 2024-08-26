@@ -3,8 +3,8 @@ import React, {useEffect} from 'react';
 import Home from '../screens/Home/index';
 import {CustomTabBar} from '../components/features/Layout/CustomTabBar';
 import Chatting from '@/screens/Chatting/Chatting';
-import MyPage from '@/screens/MyPage';
 import {LoveCardNavigator} from './LoveCardStack';
+import {MyPageNavigator} from './MyPageStack';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
@@ -29,8 +29,8 @@ export const BottomTabScreen = () => {
         options={{tabBarLabel: '애정카드', headerShown: false}}
       />
       <Tab.Screen
-        name="MyPage"
-        component={MyPage}
+        name="MyPageNavigator"
+        component={MyPageNavigator}
         options={{tabBarLabel: '마이페이지', headerShown: false}}
       />
     </Tab.Navigator>
