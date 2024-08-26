@@ -5,22 +5,11 @@ import {BottomTabScreen} from './src/navigation/BottomTabScreen.jsx';
 import {StatusBar} from 'react-native';
 import {StartStacks} from '@/navigation/StartStack.jsx';
 
-
 function App() {
   const Stack = createNativeStackNavigator();
 
-  const linking = {
-    prefixes: ['myapp://'],
-    config: {
-      screens: {
-        Home: '',
-        RegisterScreen: 'auth/login',
-      },
-    },
-  };
-
   return (
-    <NavigationContainer linking={linking}>
+    <NavigationContainer>
       <StatusBar hidden={true} />
       <Stack.Navigator initialRouteName="StartStacks">
         <Stack.Screen
