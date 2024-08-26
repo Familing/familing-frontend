@@ -18,7 +18,7 @@ export const Banner = () => {
       paginationStyle={styles.pagination}
       index={0}
       autoplay={true}
-      autoplayTimeout={3}
+      autoplayTimeout={4}
       onIndexChanged={index => setCurrentIndex(index)}>
       <FamilingBanner />
       <CardBanner />
