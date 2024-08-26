@@ -63,14 +63,16 @@ export const CustomTabBar = ({navigation}) => {
 
         <TouchableOpacity
           style={[styles.iconWrapper, styles.person]}
-          onPress={() => handleTabPress('MyPage')}>
+          onPress={() => handleTabPress('MyPageNavigator')}>
           <PersonIcon
             height={24}
             width={24}
-            color={selectedTab === 'MyPage' ? '#4D83F4' : '#D3D3D3'}
+            color={selectedTab === 'MyPageNavigator' ? '#4D83F4' : '#D3D3D3'}
           />
           <Text
-            style={selectedTab === 'MyPage' ? styles.focusText : styles.text}>
+            style={
+              selectedTab === 'MyPageNavigator' ? styles.focusText : styles.text
+            }>
             마이페이지
           </Text>
         </TouchableOpacity>
