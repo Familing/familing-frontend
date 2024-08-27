@@ -1,25 +1,34 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Linking,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import BannerImg from '@assets/images/banner/BannerImage.png';
 import kakao from '@assets/images/register/kakao.png';
+import * as KakaoLogin from '@react-native-seoul/kakao-login';
+import axios from 'axios';
+import {BASE_URL} from '@/util/base_url';
 
-export default function Start() {
-  const kakaoURL = 'http://3.39.254.198:8080/oauth2/authorization/kakao';
-
+export default function Start({navigation}) {
+  //kakao login
   const handleLogin = async () => {
-    try {
-      await Linking.openURL(kakaoURL);
-    } catch (error) {
-      console.error('Failed to login with Kakao:', error);
-      // alert('Login Failed', 'An error occurred during Kakao login.');
-    }
+    KakaoLogin.login()
+      .then(result => {
+        console.log('access token:', JSON.stringify(result.accessToken));
+
+        axios
+          .post(`${BASE_URL}/api/v1/login/oauth/kakao/callback`, {
+            access_token: result.accessToken,
+          })
+          .then(response => {
+            console.log(response.data);
+            navigation.navigate('RegisterScreen');
+          });
+      })
+      .catch(error => {
+        if (error.code === 'E_CANCELLED_OPERATION') {
+          console.log('Login Cancel', error.message);
+        } else {
+          console.log(`Login Fail(code:${error.code})`, error.message);
+        }
+      });
   };
 
   return (
