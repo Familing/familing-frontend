@@ -1,8 +1,9 @@
-import ChatHeader from '@/components/features/Layout/ChatHeader';
+import SearchChatHeader from '@/components/features/Chatting/header/SearchChatHeader';
 import {ChatInput} from '../../components/features/Chatting/ChatInput';
 import {Message} from '../../components/features/Chatting/Message';
-import React from 'react';
+import React, {useState} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
+import ChatHeader from '@/components/features/Chatting/header/ChatHeader';
 
 const messages = [
   {id: '1', text: '그럼 다음주 약속을 비워둘게요~', sender: 'son'},
@@ -31,9 +32,19 @@ const messages = [
 ];
 
 export default function Chatting() {
+  const [isSearch, setIsSearch] = useState(false);
+
+  const toggleIsSearch = () => {
+    setIsSearch(!isSearch);
+  };
+
   return (
     <View style={styles.container}>
-      <ChatHeader />
+      {isSearch ? (
+        <SearchChatHeader setIsSearch={setIsSearch} />
+      ) : (
+        <ChatHeader setIsSearch={setIsSearch} />
+      )}
       <FlatList
         data={messages}
         renderItem={({item, index}) => (
