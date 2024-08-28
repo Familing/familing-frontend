@@ -13,6 +13,8 @@ import modalCancle from '@assets/images/button/modalCancle.png';
 import camera from '@assets/images/register/camera.png';
 import gallery from '@assets/images/register/gallery.png';
 import {BlurView} from '@react-native-community/blur';
+import axios from 'axios';
+import {BASE_URL} from '@/util/base_url';
 
 export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
   const handleCamera = async () => {
@@ -30,6 +32,9 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
       return null;
     }
     const localUri = result.assets[0].uri;
+    const fileName = result.assets[0].fileName;
+
+    postImage(localUri, fileName);
     handleImageSelected(localUri);
     onClose();
   };
@@ -43,8 +48,39 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
       return null;
     }
     const localUri = result.assets[0].uri;
+    const fileName = result.assets[0].fileName;
+
+    postImage(localUri, fileName);
     handleImageSelected(localUri);
     onClose();
+  };
+
+  //스냅샷 이미지 등록
+  const postImage = (localUri, fileName) => {
+    //현재 날짜
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}${String(
+      today.getMonth() + 1,
+    ).padStart(2, '0')}${String(today.getDate()).padStart(2, '0')}`;
+
+    //이미지 FormData 객체 생성
+    const ImgFormData = new FormData();
+    ImgFormData.append({
+      uri: localUri,
+      name: fileName,
+      type: 'image/jpeg',
+    });
+
+    axios
+      .post(`${BASE_URL}/api/v1/snapshots/${formattedDate}/users`, {
+        snapshot_img: ImgFormData,
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('snapShot image post failed,', error);
+      });
   };
 
   return (
