@@ -3,7 +3,7 @@ import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
 import {CameraAlert} from '@/components/common/CameraAlert';
 
-export const PhotoCard = ({imageSource, selectedImage, setSelectedImage}) => {
+export const PhotoCard = ({profile, selectedImage, setSelectedImage}) => {
   const [alertVisible, setAlertVisible] = useState(false);
 
   const handleImageSelected = uri => {
@@ -12,21 +12,23 @@ export const PhotoCard = ({imageSource, selectedImage, setSelectedImage}) => {
 
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => setAlertVisible(true)}
-        style={styles.card}>
-        {selectedImage ? (
+      {selectedImage ? (
+        <View style={styles.card}>
           <Image style={styles.cardImg} source={{uri: selectedImage}} />
-        ) : (
+        </View>
+      ) : (
+        <TouchableOpacity
+          onPress={() => setAlertVisible(true)}
+          style={styles.card}>
           <Image source={plusbtn} style={styles.addImage} />
-        )}
-      </TouchableOpacity>
+        </TouchableOpacity>
+      )}
       <CameraAlert
         handleImageSelected={handleImageSelected}
         visible={alertVisible}
         onClose={() => setAlertVisible(false)}
       />
-      <Image source={imageSource} style={styles.profile} />
+      <Image source={{uri: profile}} style={styles.profile} />
     </View>
   );
 };
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
     left: 4,
     width: 38,
     height: 38,
+    borderRadius: 50,
   },
   card: {
     display: 'flex',
