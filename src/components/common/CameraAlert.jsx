@@ -26,6 +26,8 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
     const result = await launchCamera({
       mediaType: 'photo',
       cameraType: 'back',
+      maxHeight: 150,
+      maxWidth: 150,
     });
     if (result.didCancel) {
       onClose();
@@ -33,8 +35,9 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
     }
     const localUri = result.assets[0].uri;
     const fileName = result.assets[0].fileName;
+    const type = result.assets[0].type;
 
-    postImage(localUri, fileName);
+    postImage(localUri, fileName, type);
     handleImageSelected(localUri);
     onClose();
   };
@@ -42,6 +45,8 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
   const handleGallery = async () => {
     const result = await launchImageLibrary({
       mediaType: 'photo',
+      maxHeight: 150,
+      maxWidth: 150,
     });
     if (result.didCancel) {
       onClose();
@@ -49,14 +54,15 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
     }
     const localUri = result.assets[0].uri;
     const fileName = result.assets[0].fileName;
+    const type = result.assets[0].type;
 
-    postImage(localUri, fileName);
+    postImage(localUri, fileName, type);
     handleImageSelected(localUri);
     onClose();
   };
 
   //스냅샷 이미지 등록
-  const postImage = (localUri, fileName) => {
+  const postImage = (localUri, fileName, type) => {
     //현재 날짜
     const today = new Date();
     const formattedDate = `${today.getFullYear()}${String(
@@ -65,16 +71,22 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
 
     //이미지 FormData 객체 생성
     const ImgFormData = new FormData();
-    ImgFormData.append({
-      uri: localUri,
+    const imgFile = {
       name: fileName,
-      type: 'image/jpeg',
-    });
+      uri: localUri,
+      type: type,
+    };
+
+    ImgFormData.append('snapshot_img', imgFile);
 
     axios
-      .post(`${BASE_URL}/api/v1/snapshots/${formattedDate}/users`, {
-        snapshot_img: ImgFormData,
-      })
+      .post(
+        `${BASE_URL}/api/v1/snapshots/${formattedDate}/users`,
+        ImgFormData,
+        {
+          headers: {'Content-Type': 'multipart/form-data'},
+        },
+      )
       .then(response => {
         console.log(response.data);
       })
