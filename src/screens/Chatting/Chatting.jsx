@@ -34,10 +34,6 @@ const messages = [
 export default function Chatting() {
   const [isSearch, setIsSearch] = useState(false);
 
-  const toggleIsSearch = () => {
-    setIsSearch(!isSearch);
-  };
-
   return (
     <View style={styles.container}>
       {isSearch ? (

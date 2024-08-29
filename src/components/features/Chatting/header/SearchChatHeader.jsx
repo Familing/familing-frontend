@@ -26,7 +26,7 @@ export default function SearchChatHeader({setIsSearch}) {
           placeholderTextColor="rgba(255, 255, 255, 0.5)"
         />
       </View>
-      <TouchableOpacity onPress={() => setIsSearch}>
+      <TouchableOpacity onPress={() => setIsSearch(false)}>
         <Text style={styles.cancel}>취소</Text>
       </TouchableOpacity>
     </View>

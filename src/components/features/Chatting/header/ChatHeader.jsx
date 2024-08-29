@@ -3,12 +3,12 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import searchIcon from '@assets/images/chatting/searchIcon.png';
 import menuIcon from '@assets/images/chatting/menuIcon.png';
 
-export default function ChatHeader({toggleIsSearch}) {
+export default function ChatHeader({setIsSearch}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>CHAT</Text>
       <View style={styles.iconContainer}>
-        <TouchableOpacity onPress={toggleIsSearch}>
+        <TouchableOpacity onPress={() => setIsSearch(true)}>
           <Image source={searchIcon} style={styles.icon} />
         </TouchableOpacity>
         <TouchableOpacity>
