@@ -15,6 +15,7 @@ import gallery from '@assets/images/register/gallery.png';
 import {BlurView} from '@react-native-community/blur';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
+import getToday from './getToday';
 
 export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
   const handleCamera = async () => {
@@ -63,11 +64,7 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
 
   //스냅샷 이미지 등록
   const postImage = (localUri, fileName, type) => {
-    //현재 날짜
-    const today = new Date();
-    const formattedDate = `${today.getFullYear()}${String(
-      today.getMonth() + 1,
-    ).padStart(2, '0')}${String(today.getDate()).padStart(2, '0')}`;
+    const today = getToday();
 
     //이미지 FormData 객체 생성
     const ImgFormData = new FormData();
@@ -81,7 +78,7 @@ export const CameraAlert = ({visible, onClose, handleImageSelected}) => {
 
     axios
       .post(
-        `${BASE_URL}/api/v1/snapshots/${formattedDate}/users`,
+        `${BASE_URL}/api/v1/snapshots/${today}/users`,
         ImgFormData,
         {
           headers: {'Content-Type': 'multipart/form-data'},
