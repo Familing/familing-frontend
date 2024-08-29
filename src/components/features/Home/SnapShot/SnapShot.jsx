@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {PhotoCard} from './PhotoCard';
 import dad from '@assets/images/photocard/photocard1.png';
@@ -8,10 +8,24 @@ import son from '@assets/images/photocard/photocard4.png';
 import {FamilyPhotoCard} from './FamilyPhotoCard';
 import snapshotImg1 from '@assets/images/snapshot/snapshotImg1.png';
 import snapshotImg2 from '@assets/images/snapshot/snapshotImg2.png';
+import axios from 'axios';
+import { BASE_URL } from '@/util/base_url';
+import getToday from '@/components/common/getToday';
 
 export const SnapShot = () => {
   const [selectedImage, setSelectedImage] = useState('');
-  console.log('image source:', selectedImage);
+
+  // useEffect(()=> {
+  //   //특정 날짜 스냅샷 조회
+  //   const today = getToday();
+  //   axios.get(`${BASE_URL}/api/v1/snapshots/${today}`)
+  //   .then(response => {
+  //     console.log(response.data.result);
+  //   })
+  //   .catch(error => {
+  //     console.log("Failed to retrieve snapshot :", error);
+  //   });
+  // }, []);
 
   //임시 데이터
   const familyData = [
@@ -40,6 +54,7 @@ export const SnapShot = () => {
     snapshot_img:
       'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080914_8503664abbfb477c98fddc5e15e81599.jpg',
   };
+  
 
   return (
     <View style={styles.container}>
