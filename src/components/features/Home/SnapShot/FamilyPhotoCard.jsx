@@ -1,18 +1,27 @@
-import {BlurView} from '@react-native-community/blur';
 import React from 'react';
-import {View, Image, Text, StyleSheet, ImageBackground} from 'react-native';
+import {View, Image, Text, StyleSheet} from 'react-native';
 
-export const FamilyPhotoCard = ({imageSource, snapshot, selectedImage}) => {
+export const FamilyPhotoCard = ({profile, snapshot}) => {
   return (
     <View style={styles.content}>
-      {snapshot ? (
-        <View style={styles.imgaeContainer}>
-          <Image source={snapshot} style={styles.cardImg} />
-        </View>
-      ) : (
+      {snapshot === 'EMPTY' ? (
         <Text style={styles.description}>아직 업로드 전이에요!</Text>
+      ) : (
+        <View style={styles.imgaeContainer}>
+          <Image
+            source={{
+              uri: snapshot,
+            }}
+            style={styles.cardImg}
+          />
+        </View>
       )}
-      <Image source={imageSource} style={styles.profile} />
+      <Image
+        source={{
+          uri: profile,
+        }}
+        style={styles.profile}
+      />
     </View>
   );
 };
@@ -27,6 +36,7 @@ const styles = StyleSheet.create({
     left: 4,
     width: 38,
     height: 38,
+    borderRadius: 50,
   },
   absolute: {
     position: 'absolute',
