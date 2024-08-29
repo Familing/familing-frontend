@@ -6,6 +6,7 @@ import {
   Image,
   Modal,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import photocard1 from '@assets/images/photocard/photocard1.png';
 import switchbtn from '@assets/images/button/switchbtn.png';
@@ -36,7 +37,7 @@ export default function MyPage({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>마이페이지</Text>
       </View>
@@ -75,15 +76,14 @@ export default function MyPage({navigation}) {
           <Text style={styles.nicknameTitle4}>구독 모델</Text>
           <Text style={styles.nicknameText3}>프리미엄형</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('MyFamilyScreen')}>
+            onPress={() => navigation.navigate('SubscribeScreen')}>
             <Image style={styles.arrowButton3} source={arrowbtn} />
           </TouchableOpacity>
         </View>
         <View style={styles.separator3} />
         <View style={styles.payContainer}>
           <Text style={styles.nicknameTitle5}>결제 관리</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('MyFamilyScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('PayScreen')}>
             <Image style={styles.arrowButton4} source={arrowbtn} />
           </TouchableOpacity>
         </View>
@@ -121,7 +121,7 @@ export default function MyPage({navigation}) {
           </TouchableOpacity>
         </View>
       </Modal>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 92,
     height: 92,
-    marginTop: 75,
+    marginTop: 25,
     marginLeft: 134,
   },
   profileImage1: {
