@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 // import axios from 'axios';
 // import Clipboard from '@react-native-clipboard/clipboard';
-import Arrow from '@assets/images/register/arrow.png';
+import Arrow from '@assets/images/register/arrowImg.png';
 import CopyImage from '@assets/images/register/copyimage.png';
 import PhotoCard1 from '@assets/images/photocard/photocard1.png';
 import PhotoCard2 from '@assets/images/photocard/photocard2.png';
@@ -36,39 +36,61 @@ export default function MyFamilyScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={Arrow} style={styles.arrowImage} />
-      </TouchableOpacity>
-      <Text style={styles.title}>우리 가족</Text>
-      <Text style={styles.subtitle1}>가족 코드</Text>
-      <View style={styles.inviteContainer}>
-        <Text style={styles.inviteTitle}>{inviteCode}</Text>
-        <TouchableOpacity onPress={setInviteCode} style={styles.copyContainer}>
-          <Image source={CopyImage} style={styles.copyImage} />
-          <Text style={styles.copyText}>초대 코드 복사하기</Text>
+      <View style={styles.titleContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={Arrow} style={styles.arrowImage} />
         </TouchableOpacity>
+        <Text style={styles.title}>우리 가족</Text>
       </View>
 
-      <Text style={styles.subtitle2}>가족 목록</Text>
+      <View style={styles.subContainer}>
+        <Text style={styles.subtitle1}>가족 코드</Text>
+      </View>
+
+      <View style={styles.inviteContainer}>
+        <View style={styles.codeBox}>
+          <Text style={styles.code}>YXKRN8QS</Text>
+        </View>
+        {/* <Text style={styles.inviteTitle}>{inviteCode}</Text> */}
+        {/* <TouchableOpacity onPress={setInviteCode} style={styles.copyContainer}> */}
+        <View style={styles.copyContainer}>
+          <Image source={CopyImage} style={styles.copyImage} />
+          <Text style={styles.copyText}>초대 코드 복사하기</Text>
+        </View>
+        {/* </TouchableOpacity> */}
+      </View>
+
+      <View style={styles.subContainer2}>
+        <Text style={styles.subtitle2}>가족 목록</Text>
+      </View>
+
       <View style={styles.familylistContainer}>
         <View style={styles.list1}>
           <Image source={PhotoCard1} style={styles.listImage} />
-          <Text style={styles.listText}>행복한 부자아빠</Text>
+          <View style={styles.listTextContainer}>
+            <Text style={styles.listText}>행복한 부자아빠</Text>
+          </View>
         </View>
         <View style={styles.separator} />
         <View style={styles.list2}>
           <Image source={PhotoCard2} style={styles.listImage} />
-          <Text style={styles.listText}>익순여왕님</Text>
+          <View style={styles.listTextContainer}>
+            <Text style={styles.listText}>익순여왕님</Text>
+          </View>
         </View>
         <View style={styles.separator} />
         <View style={styles.list3}>
           <Image source={PhotoCard3} style={styles.listImage} />
-          <Text style={styles.listText}>민지 공주</Text>
+          <View style={styles.listTextContainer}>
+            <Text style={styles.listText}>민지 공주</Text>
+          </View>
         </View>
         <View style={styles.separator} />
         <View style={styles.list4}>
           <Image source={PhotoCard4} style={styles.listImage} />
-          <Text style={styles.listText}>이민형</Text>
+          <View style={styles.listTextContainer}>
+            <Text style={styles.listText}>이민형</Text>
+          </View>
         </View>
         <View style={styles.separator} />
       </View>
@@ -79,82 +101,82 @@ export default function MyFamilyScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
   },
   arrowImage: {
-    width: 24,
-    height: 24,
-    position: 'absolute',
-    top: 21,
-    left: 24,
+    width: 20,
+    height: 15,
+    marginLeft: 24,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    gap: 90,
   },
   title: {
     fontSize: 20,
     fontWeight: '800',
     color: '#383838',
-    position: 'absolute',
-    top: 20,
-    left: 142,
+  },
+  subContainer: {
+    marginLeft: 24,
+    marginTop: 40,
   },
   subtitle1: {
     fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    position: 'absolute',
-    left: 24,
-    marginTop: 60,
   },
   inviteContainer: {
     width: 312,
     height: 80,
-    position: 'absolute',
-    top: 30,
-    left: 24,
     flexDirection: 'column',
-    backgroundColor: '#B3B3B3',
+    backgroundColor: '#E7E7E7',
+    marginTop: 10,
+    marginLeft: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inviteTitle: {
     fontSize: 20,
     fontWieght: '800',
     color: '#383838',
-    position: 'absolute',
-    top: 48,
-    left: 86,
+  },
+  codeBox: {
+    marginBottom: 5,
+  },
+  code: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#383838',
   },
   copyContainer: {
     flexDirection: 'row',
+    gap: 5,
   },
   copyImage: {
     width: 10,
     height: 12,
-    position: 'absolute',
-    top: 83,
-    left: 104,
+    marginTop: 3,
   },
-  copyTitle: {
+  copyText: {
     fontSize: 12,
     fontWeight: '400',
-    color: '#B3B3B3',
-    position: 'absolute',
-    top: 81,
-    left: 118,
+    color: 'rgba(179, 179, 179, 0.6)',
+  },
+  subContainer2: {
+    marginLeft: 24,
+    marginTop: 30,
   },
   subtitle2: {
-    fontSize: 20,
-    fontWieght: '800',
+    fontSize: 16,
+    fontWeight: '800',
     color: '#383838',
-    marginTop: 12,
-    marginBottom: 12,
-    position: 'absolute',
-    left: 24,
   },
   familylistContainer: {
-    width: 312,
-    height: 208.17,
     flexDirection: 'column',
     gap: 8,
+    marginTop: 10,
+    marginLeft: 24,
   },
   list1: {
     width: 143,
@@ -166,16 +188,21 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
   },
+  listTextContainer: {
+    marginTop: 8,
+  },
   listText: {
     fontSize: 14,
     fontWeight: '500',
     color: '#383838',
   },
   separator: {
-    width: 312,
-    border: 1,
-    borderColor: '#F3F3F3',
-    alignSelf: 'center',
+    width: 310,
+    height: StyleSheet.hairlineWidth,
+    borderTopWidth: 1,
+    borderColor: '#E7E7E7',
+    marginTop: 2,
+    opacity: 1,
   },
   list2: {
     width: 116,
@@ -184,8 +211,6 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   list3: {
-    width: 107,
-    height: 38.17,
     flexDirection: 'row',
     gap: 16,
   },
