@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,18 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Modal,
 } from 'react-native';
 import Arrow from '@assets/images/register/arrowImg.png';
 import premium from '@assets/images/mypage/premium.png';
 
 export default function SubscribeScreen({navigation}) {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleConfirm = () => {
+    setModalVisible(true);
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.titleContainer}>
@@ -28,11 +35,13 @@ export default function SubscribeScreen({navigation}) {
       </View>
 
       <View style={styles.bannerContainer}>
-        <View style={styles.banner}>
-          <Text style={styles.bannerText}>
-            한달동안 프리미엄형 무료 체험해보기 {'\u2192'}
-          </Text>
-        </View>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <View style={styles.banner}>
+            <Text style={styles.bannerText}>
+              한달동안 프리미엄형 무료 체험해보기 {'\u2192'}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.bannerContainer1}>
@@ -120,6 +129,35 @@ export default function SubscribeScreen({navigation}) {
           </View>
         </View>
       </View>
+
+      <Modal
+        transparent={true}
+        animationType="slide"
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalBackground}>
+          <View style={styles.modalContainer}>
+            <View style={styles.modalTitleContainer}>
+              <Text style={styles.modalTitle}>무료 체험을 시작할까요?</Text>
+            </View>
+            <Text style={styles.modalMessage}>
+              2024.07.17~2024.08.17까지{'\n'}무료로 사용할 수 있습니다.
+            </Text>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.cancelButton}
+                onPress={() => setModalVisible(false)}>
+                <Text style={styles.buttonText1}>취소</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.confirmButton}
+                onPress={handleConfirm}>
+                <Text style={styles.buttonText2}>확인</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -174,7 +212,7 @@ const styles = StyleSheet.create({
   },
   banner: {
     marginLeft: -15,
-    marginTop: 20,
+    marginTop: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -311,5 +349,68 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '800',
     color: '#FFFFFF',
+  },
+  modalBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: 312,
+    height: 228,
+    borderRadius: 6,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalTitleContainer: {
+    marginBottom: 10,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#4D83F4',
+    textAlign: 'center',
+  },
+  modalMessage: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#383838',
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    gap: 10,
+  },
+  cancelButton: {
+    width: 136,
+    height: 40,
+    borderRadius: 38,
+    backgroundColor: '#EEEEEE',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText1: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#C5C5C5',
+    textAlign: 'center',
+  },
+  confirmButton: {
+    width: 136,
+    height: 40,
+    borderRadius: 38,
+    backgroundColor: '#4D83F4',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText2: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
 });
