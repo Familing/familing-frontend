@@ -43,6 +43,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 64,
     backgroundColor: 'rgba(77, 131, 244, 1)',
+    //shadow
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
   },
   icon: {
     width: 24,

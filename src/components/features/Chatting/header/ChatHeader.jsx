@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import searchIcon from '@assets/images/chatting/searchIcon.png';
 import menuIcon from '@assets/images/chatting/menuIcon.png';
 
-export default function ChatHeader({setIsSearch}) {
+export default function ChatHeader({setIsSearch, navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>CHAT</Text>
@@ -11,7 +11,7 @@ export default function ChatHeader({setIsSearch}) {
         <TouchableOpacity onPress={() => setIsSearch(true)}>
           <Image source={searchIcon} style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Image source={menuIcon} style={styles.icon} />
         </TouchableOpacity>
       </View>
@@ -29,6 +29,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 64,
     backgroundColor: 'rgba(77, 131, 244, 1)',
+    //shadow
+    shadowColor: '#000000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
   },
   title: {
     fontSize: 20,
