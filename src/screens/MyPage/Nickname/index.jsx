@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: 68,
     flexDirection: 'column',
     gap: 16,
-    marginTop: 30,
+    marginTop: 10,
   },
   subtitle: {
     fontSize: 16,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 6,
     backgroundColor: '#4D83F4',
-    marginTop: 380,
+    marginTop: 300,
     marginLeft: 24,
     justifyContent: 'center',
     alignItems: 'center',
