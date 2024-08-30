@@ -291,6 +291,7 @@ const styles = StyleSheet.create({
     borderColor: '#E7E7E7',
     marginTop: 20,
     marginLeft: 24,
+    marginBottom: 20,
   },
   nicknameTitle6: {
     fontSize: 16,
