@@ -31,14 +31,16 @@ export const CustomTabBar = ({navigation}) => {
 
         <TouchableOpacity
           style={[styles.iconWrapper, styles.message]}
-          onPress={() => handleTabPress('Chatting')}>
+          onPress={() => handleTabPress('ChattingDrawer')}>
           <MessageIcon
             height={24}
             width={24}
-            color={selectedTab === 'Chatting' ? '#4D83F4' : '#D3D3D3'}
+            color={selectedTab === 'ChattingDrawer' ? '#4D83F4' : '#D3D3D3'}
           />
           <Text
-            style={selectedTab === 'Chatting' ? styles.focusText : styles.text}>
+            style={
+              selectedTab === 'ChattingDrawer' ? styles.focusText : styles.text
+            }>
             채팅
           </Text>
         </TouchableOpacity>

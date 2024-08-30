@@ -36,10 +36,12 @@ export const Message = ({message, key, showProfile}) => {
   } else if (!isMyMessage) {
     return (
       <View style={styles.otherContainer}>
-        <Image
-          source={showProfile ? getProfileImage() : 'null'}
-          style={styles.profileImg}
-        />
+        {showProfile ? (
+          <Image source={getProfileImage()} style={styles.profileImg} />
+        ) : (
+          <View style={styles.profileImg} />
+        )}
+
         <View key={key} style={[styles.bubbleContainer, styles.otherBubble]}>
           <Text style={[styles.messageText, styles.otherText]}>
             {message.text}

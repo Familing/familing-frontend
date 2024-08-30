@@ -1,16 +1,60 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {PhotoCard} from './PhotoCard';
 import dad from '@assets/images/photocard/photocard1.png';
-import mom from '@assets/images/photocard/photocard2.png';
+import mom from '../../../../assets/images/photocard/photocard2.png';
 import daughter from '@assets/images/photocard/photocard3.png';
 import son from '@assets/images/photocard/photocard4.png';
 import {FamilyPhotoCard} from './FamilyPhotoCard';
 import snapshotImg1 from '@assets/images/snapshot/snapshotImg1.png';
 import snapshotImg2 from '@assets/images/snapshot/snapshotImg2.png';
+import axios from 'axios';
+import { BASE_URL } from '@/util/base_url';
+import getToday from '@/components/common/getToday';
 
 export const SnapShot = () => {
   const [selectedImage, setSelectedImage] = useState('');
+
+  // useEffect(()=> {
+  //   //특정 날짜 스냅샷 조회
+  //   const today = getToday();
+  //   axios.get(`${BASE_URL}/api/v1/snapshots/${today}`)
+  //   .then(response => {
+  //     console.log(response.data.result);
+  //   })
+  //   .catch(error => {
+  //     console.log("Failed to retrieve snapshot :", error);
+  //   });
+  // }, []);
+
+  //임시 데이터
+  const familyData = [
+    {
+      profile_img:
+        'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080955_c398a941fa754cf2ab46a791228cc21a.jpg',
+      snapshot_img:
+        'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080914_8503664abbfb477c98fddc5e15e81599.jpg',
+    },
+    {
+      profile_img:
+        'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080955_c398a941fa754cf2ab46a791228cc21a.jpg',
+      snapshot_img:
+        'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080914_8503664abbfb477c98fddc5e15e81599.jpg',
+    },
+    {
+      profile_img:
+        'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080955_c398a941fa754cf2ab46a791228cc21a.jpg',
+      snapshot_img: 'EMPTY',
+    },
+  ];
+
+  const me = {
+    profile_img:
+      'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080955_c398a941fa754cf2ab46a791228cc21a.jpg',
+    snapshot_img:
+      'https://st.kakaocdn.net/shoppingstore/store/home/brand/20240802080914_8503664abbfb477c98fddc5e15e81599.jpg',
+  };
+  
 
   return (
     <View style={styles.container}>
@@ -27,35 +71,22 @@ export const SnapShot = () => {
           </Text>
         </View>
         <View style={styles.box}>
-          <Text style={styles.boxText}>
-            아직 설정한 시간이 되지 않았어요!
-          </Text>
+          <Text style={styles.boxText}>아직 설정한 시간이 되지 않았어요!</Text>
         </View>
+
         <View style={styles.cardContainer}>
-          <View style={styles.row}>
-            <PhotoCard
-              imageSource={dad}
-              selectedImage={selectedImage}
-              setSelectedImage={setSelectedImage}
-            />
+          <PhotoCard
+            profile={me.profile_img}
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+          />
+          {familyData.map((person, index) => (
             <FamilyPhotoCard
-              imageSource={mom}
-              snapshot={snapshotImg1}
-              selectedImage={selectedImage}
+              key={index}
+              profile={person.profile_img}
+              snapshot={person.snapshot_img}
             />
-          </View>
-          <View style={styles.row}>
-            <FamilyPhotoCard
-              imageSource={daughter}
-              snapshot={snapshotImg2}
-              selectedImage={selectedImage}
-            />
-            <FamilyPhotoCard
-              imageSource={son}
-              snapshot={false}
-              selectedImage={selectedImage}
-            />
-          </View>
+          ))}
         </View>
       </View>
     </View>
@@ -126,19 +157,16 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   cardContainer: {
-    flexDirection: 'column',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: 8,
+    marginBottom: 12,
+    gap: 12,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 12,
     gap: 12,
-  },
-  cardImage: {
-    width: 38,
-    height: 38,
-    marginTop: 4,
-    marginLeft: 4,
   },
 });
