@@ -85,7 +85,9 @@ export default function SnapshotTimeScreen({navigation}) {
         {renderTimeRows(times.slice(4))}
       </ScrollView>
 
-      <TouchableOpacity style={styles.changeButton}>
+      <TouchableOpacity
+        style={styles.changeButton}
+        onPress={() => navigation.navigate('MyPage')}>
         <Text style={styles.buttonText}>변경하기</Text>
       </TouchableOpacity>
     </View>
