@@ -7,18 +7,21 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
-//import axios from 'axios';
+import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
 import ClearButton from '@assets/images/button/clearbtn.png';
 import Arrow from '@assets/images/register/arrowImg.png';
+import {BASE_URL} from '@/util/base_url';
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleJoin = async () => {
-    /*try {
-      const response = await axios.post('https://api.com', {code}); // 가족 코드 api
+    try {
+      const response = await axios.post(`${BASE_URL}/api/v1/family/user`, {
+        code: code,
+      });
 
       if (response.data.valid) {
         navigation.navigate('RegisterStep4');
@@ -28,7 +31,7 @@ export const RegisterStep2 = ({navigation}) => {
     } catch (error) {
       console.error(error);
       setErrorMessage('서버에 문제가 발생했습니다. 다시 시도해주세요.');
-    }*/
+    }
 
     setErrorMessage('※ 코드가 올바르지 않습니다.');
     navigation.navigate('RegisterStep4');
