@@ -6,6 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import Arrow from '@assets/images/register/arrowImg.png';
+import {setSnapshotTime} from '@/api/setSnapshotTime';
 
 export default function SnapshotTimeScreen({navigation}) {
   const [selectedTime, setSelectedTime] = useState(null);
@@ -16,18 +18,44 @@ export default function SnapshotTimeScreen({navigation}) {
     {label: '10:00', key: '10:00'},
     {label: '11:00', key: '11:00'},
     {label: '12:00', key: '12:00'},
-    {label: '1:00', key: '1:00'},
-    {label: '2:00', key: '2:00'},
-    {label: '4:00', key: '4:00'},
-    {label: '6:00', key: '6:00'},
-    {label: '8:00', key: '8:00'},
+    {label: '1:00', key: '13:00'},
+    {label: '2:00', key: '14:00'},
+    {label: '4:00', key: '15:00'},
+    {label: '6:00', key: '16:00'},
+    {label: '8:00', key: '17:00'},
   ];
 
   const handleTimePress = time => {
     setSelectedTime(time);
   };
 
-  const renderTimeButtons = () => {
+  const handleChangeTime = () => {
+    setSnapshotTime({selectedTime});
+    navigation.navigate('MyPage');
+  };
+
+  const renderTimeButtons = timesArray => {
+    return timesArray.map(time => (
+      <TouchableOpacity
+        key={time.key}
+        style={[
+          styles.timeButton,
+          selectedTime === time.key && styles.selectedTime,
+        ]}
+        onPress={() => handleTimePress(time.key)}>
+        <Text
+          style={
+            selectedTime === time.key
+              ? styles.selectedTimeText
+              : styles.defaultText
+          }>
+          {time.label}
+        </Text>
+      </TouchableOpacity>
+    ));
+  };
+
+  const renderTimeRows = timesArray => {
     const rows = [];
     for (let i = 0; i < times.length; i += 3) {
       rows.push(
@@ -74,8 +102,7 @@ export default function SnapshotTimeScreen({navigation}) {
         </View>
         {renderTimeButtons().slice(4)}
       </ScrollView>
-
-      <TouchableOpacity style={styles.changeButton}>
+      <TouchableOpacity style={styles.changeButton} onPress={handleChangeTime}>
         <Text style={styles.buttonText}>변경하기</Text>
       </TouchableOpacity>
     </View>
