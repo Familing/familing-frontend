@@ -2,33 +2,29 @@ import React, {useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
 import {CameraAlert} from '@/components/common/CameraAlert';
+import mom from '../../../../assets/images/photocard/photocard2.png';
 
-export const PhotoCard = ({profile, selectedImage, setSelectedImage}) => {
+export const PhotoCard = ({profile, uploadImage}) => {
   const [alertVisible, setAlertVisible] = useState(false);
-
-  const handleImageSelected = uri => {
-    setSelectedImage(uri);
-  };
 
   return (
     <View>
-      {selectedImage ? (
-        <View style={styles.card}>
-          <Image style={styles.cardImg} source={{uri: selectedImage}} />
-        </View>
-      ) : (
+      {uploadImage === 'EMPTY' ? (
         <TouchableOpacity
           onPress={() => setAlertVisible(true)}
           style={styles.card}>
           <Image source={plusbtn} style={styles.addImage} />
         </TouchableOpacity>
+      ) : (
+        <View style={styles.card}>
+          <Image style={styles.cardImg} source={{uri: uploadImage}} />
+        </View>
       )}
       <CameraAlert
-        handleImageSelected={handleImageSelected}
         visible={alertVisible}
         onClose={() => setAlertVisible(false)}
       />
-      <Image source={{uri: profile}} style={styles.profile} />
+      <Image source={profile ? profile : mom} style={styles.profile} />
     </View>
   );
 };
