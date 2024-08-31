@@ -19,7 +19,7 @@ export default function Start({navigation}) {
             access_token: result.accessToken,
           })
           .then(response => {
-            console.log(response.data);
+            console.log(response.data.result);
             navigation.navigate('RegisterScreen');
           })
           .catch(error => {

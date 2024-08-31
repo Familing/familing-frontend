@@ -5,6 +5,7 @@ import {CustomTabBar} from '../components/features/Layout/CustomTabBar';
 import Chatting from '@/screens/Chatting/Chatting';
 import {LoveCardNavigator} from './LoveCardStack';
 import {MyPageNavigator} from './MyPageStack';
+import ChattingDrawer from './ChattingDrawer';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();
@@ -19,8 +20,8 @@ export const BottomTabScreen = () => {
         options={{tabBarLabel: '홈', headerShown: false}}
       />
       <Tab.Screen
-        name="Chatting"
-        component={Chatting}
+        name="ChattingDrawer"
+        component={ChattingDrawer}
         options={{tabBarLabel: '채팅', headerShown: false}}
       />
       <Tab.Screen
