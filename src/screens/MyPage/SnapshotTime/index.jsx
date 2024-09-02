@@ -14,8 +14,8 @@ export default function SnapshotTimeScreen({navigation}) {
   const [selectedTime, setSelectedTime] = useState('10:00');
 
   const times = [
-    {label: '8:00', key: '8:00'},
-    {label: '9:00', key: '9:00'},
+    {label: '8:00', key: '08:00'},
+    {label: '9:00', key: '09:00'},
     {label: '10:00', key: '10:00'},
     {label: '11:00', key: '11:00'},
     {label: '12:00', key: '12:00'},
