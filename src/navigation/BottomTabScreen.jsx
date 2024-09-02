@@ -2,10 +2,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Home from '../screens/Home/index';
 import {CustomTabBar} from '../components/features/Layout/CustomTabBar';
-import ChattingDrawer from '@/screens/Chatting/Chatting';
 import {LoveCardNavigator} from './LoveCardStack';
 import {MyPageNavigator} from './MyPageStack';
 import NotificationPage from '../screens/Notification/index';
+import ChattingDrawer from './ChattingDrawer';
 
 export const BottomTabScreen = () => {
   const Tab = createBottomTabNavigator();

@@ -1,17 +1,31 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import arrowbtn from '@assets/images/button/arrowbtn2.png';
 import nullImg from '@assets/images/chatting/nullImg.png';
-import dad_profile from '@assets/images/photocard/photocard1.png';
 import Profile from '@/components/features/Chatting/menu/Profile';
-import mom_profile from '@assets/images/photocard/photocard2.png';
-import daughter_profile from '@assets/images/photocard/photocard3.png';
-import son_profile from '@assets/images/photocard/photocard4.png';
 import onBellIcon from '@assets/images/chatting/onBellIcon.png';
 import offBellIcon from '@assets/images/chatting/offBellIcon.png';
 
+import axios from 'axios';
+import {BASE_URL} from '@/util/base_url';
+
 export const MenuScreen = () => {
   const [isAlertOn, setIsAlertOn] = useState(true);
+  const [familiy, setFamily] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/api/v1/family`)
+      .then(res => {
+        const familiyData =
+          res.data.result.family_users_dto.family_user_dto_list;
+        setFamily(familiyData);
+        console.log('가족 로드');
+      })
+      .catch(error => {
+        console.log('get familiy list failed ', error);
+      });
+  }, []);
 
   const toggleAlert = () => {
     setIsAlertOn(!isAlertOn);
@@ -60,10 +74,13 @@ export const MenuScreen = () => {
         <View style={styles.personSection}>
           <Text style={styles.subtitle}>대화상대</Text>
           <View style={styles.profileSection}>
-            <Profile profile={dad_profile} name="행복한 부자아빠" />
-            <Profile profile={mom_profile} name="익순여왕님" />
-            <Profile profile={daughter_profile} name="민지 공주" />
-            <Profile profile={son_profile} name="이민형" />
+            {familiy.map(person => (
+              <Profile
+                profile={person.profileImg}
+                name={person.nickName}
+                key={person.username}
+              />
+            ))}
           </View>
         </View>
       </View>

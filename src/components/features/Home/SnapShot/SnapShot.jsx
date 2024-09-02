@@ -45,17 +45,22 @@ export const SnapShot = () => {
 
   const showAndHideSnapshot = async () => {
     const snapshotTime = await getSnapshotTime();
+
     const now = new Date();
     const currentTime = now.toTimeString().slice(0, 5);
 
-    if (currentTime === snapshotTime) {
+    const current = parseInt(currentTime.replace(':', ''), 10);
+    const snapshot = parseInt(snapshotTime.replace(':', ''), 10);
+    console.log('현재', current, snapshot);
+
+    if (current >= snapshot) {
       setIsShowSnapshot(true);
     }
 
-    if (currentTime === '00:00') {
-      setFamiliySnapshot([]);
-      setMySnapShot({});
-      setSnapshotTitle('');
+    if (current >= '00:00' && current < snapshot) {
+      // setFamiliySnapshot([]);
+      // setMySnapShot({});
+      // setSnapshotTitle('');
       setIsShowSnapshot(false);
     }
   };
