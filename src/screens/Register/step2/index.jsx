@@ -23,10 +23,12 @@ export const RegisterStep2 = ({navigation}) => {
         code: code,
       });
 
-      if (response.data.valid) {
+      if (response.data.code) {
         navigation.navigate('RegisterStep4');
+        console.log(response.data);
       } else {
         setErrorMessage('※ 코드가 올바르지 않습니다.');
+        console.log('※ 코드가 올바르지 않습니다.');
       }
     } catch (error) {
       console.error(error);

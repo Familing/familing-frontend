@@ -5,7 +5,7 @@ import kakao from '@assets/images/register/kakao.png';
 import * as KakaoLogin from '@react-native-seoul/kakao-login';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import Cookies from '@react-native-cookies/cookies';
+// import Cookies from '@react-native-cookies/cookies';
 
 export default function Start({navigation}) {
   //kakao login
@@ -46,13 +46,13 @@ export default function Start({navigation}) {
   // const clearAllCookies = async () => {
   //   try {
   //     await Cookies.clearAll(); // 모든 도메인의 쿠키 삭제
-  
+
   //     console.log('모든 쿠키가 삭제되었습니다.');
   //   } catch (error) {
   //     console.error('모든 쿠키 삭제 중 오류가 발생했습니다:', error);
   //   }
   // };
-  
+
   // clearAllCookies();
 
   return (
