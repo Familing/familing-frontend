@@ -7,7 +7,7 @@ export const setSnapshotTime = async ({selectedTime}) => {
     const response = await axios.post(
       `${BASE_URL}/api/v1/snapshots/alarm?time=${selectedTime}`,
     );
-    console.log(response.data.result);
+    console.log('snapshot time ', response.data.result);
   } catch (error) {
     console.log('get snapshot time failed ', error);
     return;
