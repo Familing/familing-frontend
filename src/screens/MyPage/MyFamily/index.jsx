@@ -101,6 +101,7 @@ export default function MyFamilyScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   arrowImage: {
     width: 20,

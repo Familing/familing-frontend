@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Modal,
   TouchableOpacity,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 import photocard1 from '@assets/images/photocard/photocard1.png';
 import switchbtn from '@assets/images/button/switchbtn.png';
@@ -14,9 +15,13 @@ import arrowbtn from '@assets/images/button/arrowbtn.png';
 import camera from '@assets/images/register/camera.png';
 import gallery from '@assets/images/register/gallery.png';
 import clearbtn from '@assets/images/button/clearbtn.png';
+import axios from 'axios';
+import {BASE_URL} from '@/util/base_url';
 
 export default function MyPage({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [realname, setRealname] = useState('');
 
   const openModal = () => {
     setModalVisible(true);
@@ -36,21 +41,44 @@ export default function MyPage({navigation}) {
     closeModal();
   };
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/v1/user`);
+        setNickname(response.data.result.nickname);
+        setRealname(response.data.result.realname);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    const fetchNickname = async () => {
+      const storedNickname = await AsyncStorage.getItem('nickname');
+      if (storedNickname) {
+        setNickname(storedNickname);
+      }
+    };
+
+    fetchNickname();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.header}>마이페이지</Text>
       </View>
-
       <View style={styles.profileImageContainer} onPress={openModal}>
         <Image style={styles.profileImage1} source={photocard1} />
         <Image style={styles.profileImage2} source={switchbtn} />
       </View>
-
       <View style={styles.profileContainer}>
         <View style={styles.nicknameContainer}>
           <Text style={styles.nicknameTitle1}>닉네임</Text>
-          <Text style={styles.nicknameText1}>내가 둘째다</Text>
+          <Text style={styles.nicknameText1}>{nickname}</Text>
           <TouchableOpacity
             onPress={() => navigation.navigate('NicknameScreen')}>
             <Image style={styles.arrowButton1} source={arrowbtn} />
@@ -59,10 +87,9 @@ export default function MyPage({navigation}) {
         <View style={styles.separator1} />
         <View style={styles.nameContainer}>
           <Text style={styles.nicknameTitle2}>이름</Text>
-          <Text style={styles.nicknameText2}>진서현</Text>
+          <Text style={styles.nicknameText2}>{realname}</Text>
         </View>
       </View>
-
       <View style={styles.profileContainer2}>
         <View style={styles.myfamilyContainer}>
           <Text style={styles.nicknameTitle3}>우리 가족</Text>
@@ -88,7 +115,6 @@ export default function MyPage({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-
       <View style={styles.profileContainer3}>
         <View style={styles.snapshotContainer}>
           <Text style={styles.nicknameTitle6}>스냅샷 시간 설정</Text>
@@ -98,7 +124,6 @@ export default function MyPage({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -174,21 +199,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     color: '#383838',
+    position: 'absolute',
     marginTop: 21,
-    marginLeft: 12,
+    marginLeft: 10,
   },
   nicknameText1: {
     fontSize: 16,
     fontWeight: '400',
     color: '#B3B3B3',
     marginTop: 21,
-    marginLeft: 130,
+    marginLeft: 220,
   },
   arrowButton1: {
     width: 18,
     height: 18,
-    marginTop: 25,
-    marginLeft: 10,
+    position: 'absolute',
+    top: 23,
+    left: 10,
   },
   separator1: {
     width: 310,
