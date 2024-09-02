@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1,
   },
   button: {
     position: 'absolute',
@@ -174,6 +175,12 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 10,
     backgroundColor: '#383838',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 25,
+    zIndex: 2,
+    position: 'absolute',
+    top: '50%',
   },
   confirmationText: {
     fontSize: 16,
