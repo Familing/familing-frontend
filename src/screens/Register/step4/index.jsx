@@ -6,42 +6,31 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  Alert,
+  Modal,
 } from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
 import Avatar from '@assets/images/photocard/photocard1.png';
 import SwitchButton from '@assets/images/button/switchbtn.png';
-import {CameraAlert} from '../../../components/common/CameraAlert';
 
 export const RegisterStep4 = ({navigation}) => {
   const [code, setCode] = useState('');
-  const [isCameraAlertVisible, setCameraAlertVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [imageSelected, setImageSelected] = useState(false);
 
   const handleClick = async () => {
-    setCameraAlertVisible(true);
-    setCameraAlertVisible(true);
-  };
-
-  const handleConfirm = async () => {
-    navigation.navigate('Bottom'); 
-  };
-
-  const openModal = () => {
+    setImageSelected(true);
     setModalVisible(true);
   };
 
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-
-  const handleCamera = () => {
-    // 카메라 기능 구현
-    closeModal();
-  };
-
-  const handleGallery = () => {
-    // 갤러리 기능 구현
-    closeModal();
-
+  const handleConfirm = async () => {
+    if (code.trim() === '') {
+      Alert.alert('필수 입력입니다.');
+    } else if (!imageSelected) {
+      Alert.alert('이미지를 등록해 주세요.');
+    } else {
+      navigation.navigate('Bottom');
+    }
   };
 
   return (
@@ -70,10 +59,22 @@ export const RegisterStep4 = ({navigation}) => {
         <Text style={styles.buttonText}>확인</Text>
       </TouchableOpacity>
 
-      <CameraAlert
-        visible={isCameraAlertVisible}
-        onClose={() => setCameraAlertVisible(false)}
-      />
+      <Modal
+        transparent={true}
+        animationType="slide"
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text>모달 내용</Text>
+            <TouchableOpacity
+              onPress={() => setModalVisible(false)}
+              style={styles.closeButton}>
+              <Text>닫기</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
