@@ -1,8 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import Home from '../screens/Home/index';
 import {CustomTabBar} from '../components/features/Layout/CustomTabBar';
-import Chatting from '@/screens/Chatting/Chatting';
 import {LoveCardNavigator} from './LoveCardStack';
 import {MyPageNavigator} from './MyPageStack';
 import ChattingDrawer from './ChattingDrawer';
