@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   TextInput,
@@ -11,19 +11,89 @@ import infoIcon from '@assets/images/chatting/infoIcon.png';
 import CameraIcon from '@/components/icon/chatting/CameraIcon';
 import AiIcon from '@/components/icon/chatting/AiIcon';
 import SendIcon from '@/components/icon/chatting/SendIcon';
+import SockJS from 'sockjs-client';
+import {Client, CompatClient, Stomp} from '@stomp/stompjs';
+import {BASE_URL} from '@/util/base_url';
+import {getChatRoomId} from '@/api/getChatRoomId';
+import {getLoveChat} from '@/api/getLoveChat';
 
-export const ChatInput = () => {
-  const [isSelectVisible, setisSelectVisible] = useState(false);
+export const ChatInput = ({
+  setReceiveMsg,
+  setisSelectVisible,
+  isSelectVisible,
+}) => {
   const [inputValue, setInputValue] = useState('');
   const [selected, setSelected] = useState('원문');
+  const [chatRoomId, setChatRoomId] = useState('');
+  const [originInput, setOriginInput] = useState('');
+
+  const client = useRef(null);
+
+  useEffect(() => {
+    connectWebSocket();
+    return () => {
+      if (client.current) {
+        client.current.disconnect();
+        console.log('websocket disconnected');
+      }
+    };
+  }, []);
+
+  //websocket 연결 & 채팅방 구독
+  const connectWebSocket = async () => {
+    try {
+      const chatRoomIdData = await getChatRoomId();
+      setChatRoomId(chatRoomIdData);
+      const socket = new SockJS(`${BASE_URL}/ws`);
+      const stompClient = Stomp.over(() => socket);
+
+      stompClient.connect(
+        {},
+        () => {
+          client.current = stompClient;
+
+          client.current.subscribe(`/sub/${chatRoomIdData}`, message => {
+            //var receive = JSON.parse(message.body);
+            setReceiveMsg(message.body);
+          });
+        },
+        error => {
+          console.log('websocket connection error: ', error);
+        },
+      );
+    } catch (error) {
+      console.log('Error fetching chat room ID:', error);
+    }
+  };
+
+  const sendMessage = () => {
+    if (inputValue && client.current) {
+      const message = {
+        contentType: 'text',
+        content: inputValue,
+        chatRoomId: chatRoomId,
+      };
+
+      client.current.send('/pub/message', {}, JSON.stringify(message));
+      console.log('전송완료');
+      setInputValue('');
+      setOriginInput('');
+    }
+  };
 
   const selectOriginal = () => {
     setSelected('원문');
+    setInputValue(originInput);
+    setOriginInput('');
   };
 
-  const selectLovebot = () => {
+  const selectLovebot = async () => {
     setSelected('애정 봇');
-    setInputValue('우리 아들 괜찮아.');
+    if (inputValue != null) {
+      setOriginInput(inputValue);
+      const loveChat = await getLoveChat(inputValue);
+      setInputValue(loveChat);
+    }
   };
 
   const selectSympathybot = () => {
@@ -35,7 +105,7 @@ export const ChatInput = () => {
   };
 
   return (
-    <>
+    <View style={styles.mainContainer}>
       {isSelectVisible && (
         <View style={styles.selectContainer}>
           <View style={styles.btnFlex}>
@@ -102,21 +172,25 @@ export const ChatInput = () => {
           <TouchableOpacity onPress={handleAiToggle}>
             <AiIcon />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={sendMessage}>
             <SendIcon />
           </TouchableOpacity>
         </View>
       </View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  selectContainer: {
-    position: 'absolute',
+  mainContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
     flex: 1,
+  },
+  selectContainer: {
+    position: 'static',
     alignSelf: 'center',
-    bottom: 27,
+    bottom: -20,
     height: 60,
     width: 312,
     borderTopLeftRadius: 10,
@@ -177,7 +251,6 @@ const styles = StyleSheet.create({
     color: '#C5C5C5',
   },
   container: {
-    position: 'relative',
     marginBottom: 7,
     flexDirection: 'row',
     alignItems: 'center',
