@@ -6,25 +6,10 @@ import {StatusBar} from 'react-native';
 import {StartStacks} from '@/navigation/StartStack.jsx';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Cookies from '@react-native-cookies/cookies';
 
 function App() {
-  // 쿠키 삭제 함수
-  // const clearAllCookies = async () => {
-  //   try {
-  //     // 모든 도메인의 모든 쿠키를 삭제
-  //     await Cookies.clearAll();
-
-  //     console.log('모든 쿠키가 삭제되었습니다.');
-  //   } catch (error) {
-  //     console.error('모든 쿠키 삭제 중 오류가 발생했습니다:', error);
-  //   }
-  // };
-
-  // 함수 호출
-  // clearAllCookies();
-
   const Stack = createNativeStackNavigator();
+
   useEffect(() => {
     getFcmToken();
 
@@ -62,11 +47,11 @@ function App() {
     <NavigationContainer>
       <StatusBar hidden={true} />
       <Stack.Navigator initialRouteName="StartStacks">
-        {/* <Stack.Screen
+        <Stack.Screen
           name="StartStacks"
           component={StartStacks}
           options={{headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name="Bottom"
           component={BottomTabScreen}
