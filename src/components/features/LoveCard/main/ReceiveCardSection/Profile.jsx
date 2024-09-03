@@ -1,18 +1,20 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import defaultImg from '@assets/images/photocard/photocard1.png';
 
-export default function Profile({profileImg, name, navigation}) {
+export default function Profile({profileImg, name, userId, navigation}) {
   const handleProfileClick = () => {
     navigation.navigate('LoveCardDetailScreen', {
       name: name,
       image: profileImg,
+      userId: userId,
     });
   };
 
   return (
     <View style={styles.profileCard}>
       <TouchableOpacity onPress={handleProfileClick}>
-        <Image source={profileImg} style={styles.avatar} />
+        <Image source={profileImg | defaultImg} style={styles.avatar} />
         <Text style={styles.name}>{name}</Text>
       </TouchableOpacity>
     </View>

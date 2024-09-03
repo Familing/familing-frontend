@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {PhotoCard} from './PhotoCard';
 import {FamilyPhotoCard} from './FamilyPhotoCard';
@@ -51,7 +51,6 @@ export const SnapShot = () => {
 
     const current = parseInt(currentTime.replace(':', ''), 10);
     const snapshot = parseInt(snapshotTime.replace(':', ''), 10);
-    console.log('현재', current, snapshot);
 
     if (current >= snapshot) {
       setIsShowSnapshot(true);
