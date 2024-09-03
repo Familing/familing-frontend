@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import Arrow from '@assets/images/register/arrowImg.png';
-import {BASE_URL} from '@utils/baseURL';
+import {BASE_URL} from '@/util/base_url';
 
 export default function NotificationPage({navigation}) {
   const [yesterdayNotifications, setYesterdayNotifications] = useState([]);
   const [unreadNotifications, setUnreadNotifications] = useState([]);
-  const [recentNotifications, setRecentNotifications] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [sevendayNotifications, setSevendayNotifications] = useState([]);
 
   useEffect(() => {
     const fetchNotification = async () => {
@@ -24,28 +23,24 @@ export default function NotificationPage({navigation}) {
         const data = response.data;
         console.log('Fetched Data:', data);
 
-        setYesterdayNotifications(data.yesterday);
-        setUnreadNotifications(data.unread);
-        setRecentNotifications(data.recent);
+        // const unread = data.result.unread.filter(item => !item.is_read);
+        // const yesterday = data.result.yesterday.filter(item => item.is_read);
+        // const sevenday = data.result.sevenday.filter(item => item.is_read);
+
+        setYesterdayNotifications(data.result.unread);
+        setUnreadNotifications(data.result.yesterday);
+        setSevendayNotifications(data.result.sevenday);
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchNotification();
   }, []);
 
-  if (loading) {
-    return <Text>로딩 중...</Text>;
-  }
   const renderNotificationItem = ({item}) => (
     <View style={styles.notificationItem}>
-      <Image
-        source={{uri: item.alarm_image}}
-        style={styles.notificationImage}
-      />
+      <Image source={{uri: item.alarm_img}} style={styles.notificationImage} />
       <Text style={styles.notificationText}>{item.message}</Text>
     </View>
   );
@@ -87,7 +82,7 @@ export default function NotificationPage({navigation}) {
         <Text style={styles.sectionTitle}>최근 7일</Text>
       </View>
       <FlatList
-        data={recentNotifications}
+        data={sevendayNotifications}
         renderItem={renderNotificationItem}
         keyExtractor={item => item.id.toString()}
       />
