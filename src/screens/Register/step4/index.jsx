@@ -7,20 +7,22 @@ import {
   StyleSheet,
   Image,
   Alert,
-  Modal,
 } from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
-import Avatar from '@assets/images/photocard/photocard1.png';
+import Avatar from '@assets/images/photocard/defaultProfile.png';
 import SwitchButton from '@assets/images/button/switchbtn.png';
+import {ChangeProfile} from '@/components/common/ChangeProfile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import {BASE_URL} from '@/util/base_url';
 
 export const RegisterStep4 = ({navigation}) => {
   const [code, setCode] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
-  const [imageSelected, setImageSelected] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [imageSelected, setImageSelected] = useState('');
 
-  const handleClick = async () => {
-    setImageSelected(true);
-    setModalVisible(true);
+  const handleClick = () => {
+    setAlertVisible(true);
   };
 
   const handleConfirm = async () => {
@@ -29,7 +31,18 @@ export const RegisterStep4 = ({navigation}) => {
     } else if (!imageSelected) {
       Alert.alert('이미지를 등록해 주세요.');
     } else {
-      navigation.navigate('Bottom');
+      try {
+        await AsyncStorage.setItem('nickname', code);
+
+        const response = await axios.patch(`${BASE_URL}/api/v1/user/nickname`, {
+          nickname: code,
+        });
+
+        console.log('닉네임 변경 성공:', response.data);
+        navigation.navigate('Bottom');
+      } catch (error) {
+        console.error('닉네임 저장 실패:', error);
+      }
     }
   };
 
@@ -37,10 +50,21 @@ export const RegisterStep4 = ({navigation}) => {
     <View style={styles.container}>
       <ProgressIndicator currentStep={3} />
       <View style={styles.imageContainer}>
-        <TouchableOpacity onPress={handleClick} style={styles.buttonContainer}>
-          <Image source={Avatar} style={styles.image} />
-          <Image style={styles.image2} source={SwitchButton} />
-        </TouchableOpacity>
+        {imageSelected ? (
+          <TouchableOpacity
+            onPress={handleClick}
+            style={styles.buttonContainer}>
+            <Image source={{uri: imageSelected}} style={styles.image} />
+            <Image style={styles.image2} source={SwitchButton} />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={handleClick}
+            style={styles.buttonContainer}>
+            <Image source={Avatar} style={styles.image} />
+            <Image style={styles.image2} source={SwitchButton} />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Familing에서 사용할 이름</Text>
@@ -59,22 +83,11 @@ export const RegisterStep4 = ({navigation}) => {
         <Text style={styles.buttonText}>확인</Text>
       </TouchableOpacity>
 
-      <Modal
-        transparent={true}
-        animationType="slide"
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text>모달 내용</Text>
-            <TouchableOpacity
-              onPress={() => setModalVisible(false)}
-              style={styles.closeButton}>
-              <Text>닫기</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+      <ChangeProfile
+        visible={alertVisible}
+        onClose={() => setAlertVisible(false)}
+        setImageSelected={setImageSelected}
+      />
     </View>
   );
 };
@@ -90,6 +103,7 @@ const styles = StyleSheet.create({
     marginLeft: 124,
   },
   image: {
+    borderRadius: 60,
     width: 112,
     height: 112,
   },
@@ -117,8 +131,8 @@ const styles = StyleSheet.create({
     width: 312,
     height: 32,
     fontSize: 16,
-    fontWeight: '400',
-    color: '#C5C5C5',
+    fontWeight: '700',
+    color: '#383838',
     paddingHorizontal: 5,
     paddingVertical: 1,
     marginLeft: 24,

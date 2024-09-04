@@ -17,7 +17,7 @@ import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import getToday from './getToday';
 
-export const CameraAlert = ({visible, onClose, setUploadImage}) => {
+export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   const handleCamera = async () => {
     await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
     await PermissionsAndroid.request(
@@ -60,7 +60,7 @@ export const CameraAlert = ({visible, onClose, setUploadImage}) => {
     onClose();
   };
 
-  //스냅샷 이미지 등록
+  //프로필 이미지 등록
   const postImage = (localUri, fileName, type) => {
     const today = getToday();
 
@@ -72,18 +72,17 @@ export const CameraAlert = ({visible, onClose, setUploadImage}) => {
       type: type,
     };
 
-    ImgFormData.append('snapshot_img', imgFile);
+    ImgFormData.append('profileImg', imgFile);
 
     axios
-      .post(`${BASE_URL}/api/v1/snapshots/${today}/users`, ImgFormData, {
+      .patch(`${BASE_URL}/api/v1/user/profile`, ImgFormData, {
         headers: {'Content-Type': 'multipart/form-data'},
       })
       .then(response => {
-        console.log(response.data);
-        setUploadImage(today);
+        setImageSelected(response.data.result.uploadFileUrl);
       })
       .catch(error => {
-        console.error('snapShot image post failed,', error);
+        console.error('profile image post failed,', error);
       });
   };
 
@@ -201,4 +200,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CameraAlert;
+export default ChangeProfile;

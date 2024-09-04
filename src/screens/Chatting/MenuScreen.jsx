@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import arrowbtn from '@assets/images/button/arrowbtn2.png';
 import nullImg from '@assets/images/chatting/nullImg.png';
@@ -11,16 +11,15 @@ import {BASE_URL} from '@/util/base_url';
 
 export const MenuScreen = () => {
   const [isAlertOn, setIsAlertOn] = useState(true);
+  const [me, setMe] = useState([]);
   const [familiy, setFamily] = useState([]);
 
   useEffect(() => {
     axios
       .get(`${BASE_URL}/api/v1/family`)
       .then(res => {
-        const familiyData =
-          res.data.result.family_users_dto.family_user_dto_list;
-        setFamily(familiyData);
-        console.log('가족 로드');
+        setFamily(res.data.result.family_users_dto.family_user_dto_list);
+        setMe(res.data.result.me.family_user_dto_list);
       })
       .catch(error => {
         console.log('get familiy list failed ', error);
@@ -74,6 +73,14 @@ export const MenuScreen = () => {
         <View style={styles.personSection}>
           <Text style={styles.subtitle}>대화상대</Text>
           <View style={styles.profileSection}>
+            {me.map(me => (
+              <Profile
+                profile={me.profileImg}
+                name={me.nickName}
+                key={me.username}
+              />
+            ))}
+
             {familiy.map(person => (
               <Profile
                 profile={person.profileImg}

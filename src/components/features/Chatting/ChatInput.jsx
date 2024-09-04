@@ -1,32 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  Text,
-} from 'react-native';
-import infoIcon from '@assets/images/chatting/infoIcon.png';
+import {View, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 import CameraIcon from '@/components/icon/chatting/CameraIcon';
 import AiIcon from '@/components/icon/chatting/AiIcon';
 import SendIcon from '@/components/icon/chatting/SendIcon';
 import SockJS from 'sockjs-client';
-import {Client, CompatClient, Stomp} from '@stomp/stompjs';
+import {Stomp} from '@stomp/stompjs';
 import {BASE_URL} from '@/util/base_url';
 import {getChatRoomId} from '@/api/getChatRoomId';
 import {getLoveChat} from '@/api/getLoveChat';
 
-export const ChatInput = ({
-  setReceiveMsg,
-  setisSelectVisible,
-  isSelectVisible,
-}) => {
+export const ChatInput = ({setReceiveMsg}) => {
   const [inputValue, setInputValue] = useState('');
-  const [selected, setSelected] = useState('원문');
   const [chatRoomId, setChatRoomId] = useState('');
-  const [originInput, setOriginInput] = useState('');
-
   const client = useRef(null);
 
   useEffect(() => {
@@ -66,7 +51,7 @@ export const ChatInput = ({
     }
   };
 
-  const sendMessage = () => {
+  const sendMessage = inputValue => {
     if (inputValue && client.current) {
       const message = {
         contentType: 'text',
@@ -77,84 +62,16 @@ export const ChatInput = ({
       client.current.send('/pub/message', {}, JSON.stringify(message));
       console.log('전송완료');
       setInputValue('');
-      setOriginInput('');
     }
   };
 
-  const selectOriginal = () => {
-    setSelected('원문');
-    setInputValue(originInput);
-    setOriginInput('');
-  };
-
-  const selectLovebot = async () => {
-    setSelected('애정 봇');
-    if (inputValue != null) {
-      setOriginInput(inputValue);
-      const loveChat = await getLoveChat(inputValue);
-      setInputValue(loveChat);
-    }
-  };
-
-  const selectSympathybot = () => {
-    setSelected('공감 봇');
-  };
-
-  const handleAiToggle = () => {
-    setisSelectVisible(!isSelectVisible);
+  const handleAiToggle = async () => {
+    const loveChat = await getLoveChat(inputValue);
+    sendMessage(loveChat);
   };
 
   return (
     <View style={styles.mainContainer}>
-      {isSelectVisible && (
-        <View style={styles.selectContainer}>
-          <View style={styles.btnFlex}>
-            <Image style={styles.infoImage} source={infoIcon} />
-            <View style={styles.btnWrapper}>
-              <TouchableOpacity
-                style={
-                  selected === '원문' ? styles.selectedBtn : styles.grayBtn
-                }
-                onPress={selectOriginal}>
-                <Text
-                  style={
-                    selected === '원문' ? styles.selectedText : styles.grayText
-                  }>
-                  원문
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={
-                  selected === '애정 봇' ? styles.selectedBtn : styles.grayBtn
-                }
-                onPress={selectLovebot}>
-                <Text
-                  style={
-                    selected === '애정 봇'
-                      ? styles.selectedText
-                      : styles.grayText
-                  }>
-                  애정 봇
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={
-                  selected === '공감 봇' ? styles.selectedBtn : styles.grayBtn
-                }
-                onPress={selectSympathybot}>
-                <Text
-                  style={
-                    selected === '공감 봇'
-                      ? styles.selectedText
-                      : styles.grayText
-                  }>
-                  공감 봇
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      )}
       <View style={styles.container}>
         <View style={styles.assetsContainer}>
           <TouchableOpacity>
@@ -172,7 +89,7 @@ export const ChatInput = ({
           <TouchableOpacity onPress={handleAiToggle}>
             <AiIcon />
           </TouchableOpacity>
-          <TouchableOpacity onPress={sendMessage}>
+          <TouchableOpacity onPress={() => sendMessage(inputValue)}>
             <SendIcon />
           </TouchableOpacity>
         </View>
@@ -187,69 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flex: 1,
   },
-  selectContainer: {
-    position: 'static',
-    alignSelf: 'center',
-    bottom: -20,
-    height: 60,
-    width: 312,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: '#ffffff',
-    // shadow
-    shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  btnFlex: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 12,
-    marginTop: 8,
-    gap: 14,
-  },
-  btnWrapper: {
-    flexDirection: 'row',
-    gap: 6,
-  },
-  infoImage: {
-    width: 16,
-    height: 16,
-  },
-  selectedBtn: {
-    height: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 40,
-    borderWidth: 1,
-    borderColor: '#383838',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: '#fff',
-  },
-  selectedText: {
-    fontSize: 12,
-    fontWeight: '500',
-    lineHeight: 14.98,
-    color: '#383838',
-  },
-  grayBtn: {
-    height: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 40,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: '#EEEEEE',
-  },
-  grayText: {
-    fontSize: 12,
-    fontWeight: '500',
-    lineHeight: 14.98,
-    color: '#C5C5C5',
-  },
+
   container: {
     marginBottom: 7,
     flexDirection: 'row',

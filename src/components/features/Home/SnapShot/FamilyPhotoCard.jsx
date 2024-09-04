@@ -17,7 +17,7 @@ export const FamilyPhotoCard = ({profile, snapshot}) => {
           />
         </View>
       )}
-      <Image source={profile ? profile : mom} style={styles.profile} />
+      <Image source={{uri: profile}} style={styles.profile} />
     </View>
   );
 };

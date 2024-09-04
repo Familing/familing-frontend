@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import defaultImg from '@assets/images/photocard/photocard1.png';
 
 export default function Profile({profileImg, name, userId, navigation}) {
   const handleProfileClick = () => {
@@ -14,7 +13,7 @@ export default function Profile({profileImg, name, userId, navigation}) {
   return (
     <View style={styles.profileCard}>
       <TouchableOpacity onPress={handleProfileClick}>
-        <Image source={profileImg | defaultImg} style={styles.avatar} />
+        <Image source={{uri: profileImg}} style={styles.avatar} />
         <Text style={styles.name}>{name}</Text>
       </TouchableOpacity>
     </View>
@@ -30,9 +29,12 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   avatar: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 68,
     height: 68,
     marginBottom: 8,
+    borderRadius: 50,
   },
   name: {
     textAlign: 'center',
