@@ -17,7 +17,7 @@ import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import getToday from './getToday';
 
-export const CameraAlert = ({visible, onClose}) => {
+export const CameraAlert = ({visible, onClose, setUploadImage}) => {
   const handleCamera = async () => {
     await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
     await PermissionsAndroid.request(
@@ -80,6 +80,7 @@ export const CameraAlert = ({visible, onClose}) => {
       })
       .then(response => {
         console.log(response.data);
+        setUploadImage(today);
       })
       .catch(error => {
         console.error('snapShot image post failed,', error);
