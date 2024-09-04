@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
@@ -18,6 +19,10 @@ export const RegisterStep2 = ({navigation}) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleJoin = async () => {
+    if (code.trim() === '') {
+      Alert.alert('필수 입력입니다.');
+      return;
+    }
     try {
       const response = await axios.post(`${BASE_URL}/api/v1/family/user`, {
         code: code,
