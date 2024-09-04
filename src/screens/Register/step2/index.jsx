@@ -36,7 +36,6 @@ export const RegisterStep2 = ({navigation}) => {
     }
 
     setErrorMessage('※ 코드가 올바르지 않습니다.');
-    navigation.navigate('RegisterStep4');
   };
 
   const clearInput = () => {
