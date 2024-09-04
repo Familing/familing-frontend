@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   Text,
   FlatList,
@@ -10,33 +10,34 @@ import {
 import axios from 'axios';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
+import {useFocusEffect} from '@react-navigation/native';
 
 export default function NotificationPage({navigation}) {
   const [yesterdayNotifications, setYesterdayNotifications] = useState([]);
   const [unreadNotifications, setUnreadNotifications] = useState([]);
   const [sevendayNotifications, setSevendayNotifications] = useState([]);
 
-  useEffect(() => {
-    const fetchNotification = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/v1/alarms`);
-        const data = response.data;
-        console.log('Fetched Data:', data);
+  useFocusEffect(
+    useCallback(() => {
+      fetchNotification();
+    }, []),
+  );
 
-        // const unread = data.result.unread.filter(item => !item.is_read);
-        // const yesterday = data.result.yesterday.filter(item => item.is_read);
-        // const sevenday = data.result.sevenday.filter(item => item.is_read);
+  const fetchNotification = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/api/v1/alarms`);
+      const data = response.data;
+      // const unread = data.result.unread.filter(item => !item.is_read);
+      // const yesterday = data.result.yesterday.filter(item => item.is_read);
+      // const sevenday = data.result.sevenday.filter(item => item.is_read);
 
-        setYesterdayNotifications(data.result.unread);
-        setUnreadNotifications(data.result.yesterday);
-        setSevendayNotifications(data.result.sevenday);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchNotification();
-  }, []);
+      setYesterdayNotifications(data.result.unread);
+      setUnreadNotifications(data.result.yesterday);
+      setSevendayNotifications(data.result.sevenday);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const renderNotificationItem = ({item}) => (
     <View style={styles.notificationItem}>
@@ -128,6 +129,20 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
+    fontWeight: '800',
+    color: '#383838',
+  },
+  notificationItem: {
+    marginLeft: 24,
+    marginBottom: 5,
+  },
+  notificationImage: {
+    width: 42,
+    height: 42,
+    marginRight: 5,
+  },
+  notificationText: {
+    fontSize: 14,
     fontWeight: '800',
     color: '#383838',
   },
