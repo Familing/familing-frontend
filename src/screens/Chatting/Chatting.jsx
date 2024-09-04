@@ -11,7 +11,6 @@ export default function Chatting({navigation}) {
   const [messageList, setMessageList] = useState({});
   const [receiveMsg, setReceiveMsg] = useState();
   const flatListRef = useRef(null);
-  const [isSelectVisible, setisSelectVisible] = useState(false);
 
   useEffect(() => {
     fetchChatting();
@@ -42,18 +41,14 @@ export default function Chatting({navigation}) {
           />
         )}
         keyExtractor={item => item.id.toString()}
-        style={[styles.messageList, isSelectVisible && styles.bottom]}
+        style={styles.messageList}
         onContentSizeChange={() =>
           flatListRef.current.scrollToEnd({animated: false})
         }
         initialNumToRender={10}
         maxToRenderPerBatch={10}
       />
-      <ChatInput
-        setReceiveMsg={setReceiveMsg}
-        isSelectVisible={isSelectVisible}
-        setisSelectVisible={setisSelectVisible}
-      />
+      <ChatInput setReceiveMsg={setReceiveMsg} />
     </View>
   );
 }
@@ -67,8 +62,5 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 24,
     bottom: 61,
-  },
-  bottom: {
-    bottom: 102,
   },
 });
