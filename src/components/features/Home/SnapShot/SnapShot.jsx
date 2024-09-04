@@ -13,6 +13,7 @@ export const SnapShot = () => {
   const [mySnapShot, setMySnapShot] = useState({});
   const [snapshotTitle, setSnapshotTitle] = useState('');
   const [isShowSnapshot, setIsShowSnapshot] = useState(false);
+  const [uploadImage, setUploadImage] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -24,7 +25,7 @@ export const SnapShot = () => {
 
       //스냅샷 데이터 로드
       fetchSnapshotData();
-    }, []),
+    }, [uploadImage]),
   );
 
   const fetchSnapshotData = async () => {
@@ -95,6 +96,7 @@ export const SnapShot = () => {
             profile={mySnapShot.profile_img}
             uploadImage={mySnapShot.snapshot_img}
             isShowSnapshot={isShowSnapshot}
+            setUploadImage={setUploadImage}
           />
           {familySnapshot &&
             familySnapshot.map((person, index) => (
