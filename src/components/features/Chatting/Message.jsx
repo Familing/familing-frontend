@@ -1,15 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import mom_profile from '@assets/images/photocard/photocard2.png';
 
 export const Message = ({message, showProfile}) => {
-  const getProfileImage = () => {
-    switch (message.senderId) {
-      case '1':
-        return mom_profile;
-    }
-  };
-
   if (message.senderId === 'date') {
     return (
       <View style={styles.dateContainer}>
@@ -28,7 +20,10 @@ export const Message = ({message, showProfile}) => {
     return (
       <View key={message.id} style={styles.otherContainer}>
         {showProfile ? (
-          <Image source={getProfileImage()} style={styles.profileImg} />
+          <Image
+            source={{uri: message.senderProfileImg}}
+            style={styles.profileImg}
+          />
         ) : (
           <View style={styles.profileImg} />
         )}
