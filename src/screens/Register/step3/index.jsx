@@ -21,24 +21,7 @@ export const RegisterStep3 = ({navigation}) => {
   const [code, setCode] = useState('');
   const [inviteCode, setInviteCode] = useState(null);
 
-  // const fetchInviteCode = async () => {
-  //   try {
-  //     const response = await axios.post(`${BASE_URL}/api/v1/family`);
-  //     setInviteCode(response.data.inviteCode);
-  //     Clipboard.setString(response.data.inviteCode);
-  //   } catch (error) {
-  //     Alert.alert('초대 코드를 가져오는 데 실패했습니다.');
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setInviteCode();
-  // }, []);
-
   const handleCreate = async groupName => {
-    // console.log('가족:', groupName);
-
     if (!groupName) {
       Alert.alert('가족 그룹 이름을 입력해주세요.');
       return;
@@ -48,10 +31,6 @@ export const RegisterStep3 = ({navigation}) => {
       const response = await axios.post(`${BASE_URL}/api/v1/family`, {
         family_name: groupName,
       });
-
-      console.log('보내는 데이터:', {family_name: groupName});
-
-      console.log('API 응답:', response.data);
 
       if (response.data.success) {
         const createdGroupName = response.data.result.code
