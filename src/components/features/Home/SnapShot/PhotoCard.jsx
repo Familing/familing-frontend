@@ -2,9 +2,13 @@ import React, {useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
 import {CameraAlert} from '@/components/common/CameraAlert';
-import mom from '../../../../assets/images/photocard/photocard2.png';
 
-export const PhotoCard = ({profile, uploadImage, isShowSnapshot}) => {
+export const PhotoCard = ({
+  profile,
+  uploadImage,
+  isShowSnapshot,
+  setUploadImage,
+}) => {
   const [alertVisible, setAlertVisible] = useState(false);
 
   return (
@@ -29,8 +33,9 @@ export const PhotoCard = ({profile, uploadImage, isShowSnapshot}) => {
       <CameraAlert
         visible={alertVisible}
         onClose={() => setAlertVisible(false)}
+        setUploadImage={setUploadImage}
       />
-      <Image source={profile ? profile : mom} style={styles.profile} />
+      <Image source={{uri: profile}} style={styles.profile} />
     </View>
   );
 };

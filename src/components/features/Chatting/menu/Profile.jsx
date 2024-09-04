@@ -1,11 +1,10 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import defaultImg from '@assets/images/photocard/photocard1.png';
 
 export default function Profile({profile, name}) {
   return (
     <View style={styles.container}>
-      <Image source={profile | defaultImg} style={styles.profile} />
+      <Image source={{uri: profile}} style={styles.profile} />
       <Text style={styles.name}>{name}</Text>
     </View>
   );

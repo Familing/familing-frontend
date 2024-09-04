@@ -18,7 +18,6 @@ import Header from '../../../components/features/Layout/Header';
 import {useFocusEffect} from '@react-navigation/native';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import defaultImg from '@assets/images/photocard/photocard1.png';
 import {getTodayCards} from '@/api/getTodayCards';
 import {getMonthCards} from '@/api/getMonthCards';
 
@@ -92,7 +91,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
     <View style={styles.container}>
       <Header title="내가 받은 애정 카드" navigation={navigation} />
       <ScrollView showsHorizontalScrollIndicator={false}>
-        <SendInfo image={image | defaultImg} name={name} />
+        <SendInfo image={image} name={name} />
         <TodayReceiveCard
           todayCards={todayCards}
           handleCardClick={handleCardClick}

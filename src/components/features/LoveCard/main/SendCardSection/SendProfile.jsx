@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import defaultImg from '@assets/images/photocard/photocard1.png';
 
 export default function SendProfile({userId, name, image, handleAvatarClick}) {
   return (
@@ -8,7 +7,7 @@ export default function SendProfile({userId, name, image, handleAvatarClick}) {
       <TouchableOpacity
         style={styles.avatarContent}
         onPress={() => handleAvatarClick(name, userId)}>
-        <Image source={image | defaultImg} style={styles.avatarImage} />
+        <Image source={{uri: image}} style={styles.avatarImage} />
         <Text style={styles.avatarName}>{name}</Text>
       </TouchableOpacity>
     </View>
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   avatarImage: {
+    borderRadius: 50,
     width: 64,
     height: 64,
   },
