@@ -8,8 +8,8 @@ const wh = resize('wh', 800);
 export const HomeIcon = ({color}) => {
   return (
     <Svg
-      width={ww}
-      height={wh}
+      width={ww(24)}
+      height={wh(24)}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

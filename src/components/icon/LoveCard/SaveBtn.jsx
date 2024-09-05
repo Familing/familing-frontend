@@ -8,8 +8,8 @@ const wh = resize('wh', 800);
 export default function SaveBtn() {
   return (
     <Svg
-      width={ww}
-      height={wh}
+      width={ww(38)}
+      height={wh(39)}
       viewBox="0 0 38 39"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

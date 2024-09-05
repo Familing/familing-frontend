@@ -24,7 +24,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   space: {
-    height: wh * 0.08,
+    height: wh(64),
     width: '100%',
   },
 });

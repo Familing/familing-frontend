@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   messageList: {
     flexGrow: 1,
-    paddingHorizontal: ww * 0.067,
-    bottom: wh * 0.07625,
+    paddingHorizontal: ww(24),
+    bottom: wh(61),
   },
 });

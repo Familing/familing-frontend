@@ -1,11 +1,15 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const MessageIcon = ({height, width, color}) => {
   return (
     <Svg
-      width={width}
-      height={height}
+      width={ww(24)}
+      height={wh(24)}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

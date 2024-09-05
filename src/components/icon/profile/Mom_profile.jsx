@@ -8,8 +8,8 @@ const wh = resize('wh', 800);
 export const Mom_profile = () => {
   return (
     <Svg
-      width={ww * 0.1}
-      height={wh * 0.1}
+      width={ww(39)}
+      height={wh(39)}
       viewBox="0 0 39 39"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
