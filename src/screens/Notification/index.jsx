@@ -27,9 +27,6 @@ export default function NotificationPage({navigation}) {
     try {
       const response = await axios.get(`${BASE_URL}/api/v1/alarms`);
       const data = response.data;
-      // const unread = data.result.unread.filter(item => !item.is_read);
-      // const yesterday = data.result.yesterday.filter(item => item.is_read);
-      // const sevenday = data.result.sevenday.filter(item => item.is_read);
 
       setYesterdayNotifications(data.result.unread);
       setUnreadNotifications(data.result.yesterday);
