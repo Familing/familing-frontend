@@ -26,7 +26,7 @@ export default function DropdownSelectBox({
       })
       .then(response => {
         console.log(response.data.result);
-        setSelectedItem(item);
+        setSelectedItem(item.text);
         setDropdownVisible(false);
       })
       .catch(error => {
@@ -52,16 +52,10 @@ export default function DropdownSelectBox({
               key={item.id}
               style={[
                 styles.item,
-                item.id === selectedItem.id && styles.selectedItem,
+                item.text === selectedItem && styles.selectedItem,
               ]}
               onPress={() => handleSelectItem(item)}>
-              <Text
-                style={[
-                  styles.itemText,
-                  item.id === selectedItem.id && styles.selectedItem,
-                ]}>
-                {item.text}
-              </Text>
+              <Text style={[styles.itemText]}>{item.text}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -72,7 +66,8 @@ export default function DropdownSelectBox({
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
+    position: 'absolute',
+    right: 0,
     zIndex: 100,
   },
   arrowImg: {
@@ -133,7 +128,7 @@ const styles = StyleSheet.create({
   itemText: {
     color: '#383838',
     fontSize: 10,
-    fontWeight: 500,
+    fontWeight: '500',
     lineHeight: 12.48,
   },
 });

@@ -21,9 +21,11 @@ export const PhotoCard = ({
             <Image source={plusbtn} style={styles.addImage} />
           </TouchableOpacity>
         ) : (
-          <View style={styles.card}>
+          <TouchableOpacity
+            onPress={() => setAlertVisible(true)}
+            style={styles.card}>
             <Image style={styles.cardImg} source={{uri: uploadImage}} />
-          </View>
+          </TouchableOpacity>
         )
       ) : (
         <View style={styles.content}>

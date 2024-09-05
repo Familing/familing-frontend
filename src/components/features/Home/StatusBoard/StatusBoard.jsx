@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function StatusBorad() {
   const [myStatus, setMyStatus] = useState({});
   const [familyStatus, setFamilyStatus] = useState([]);
-  const [selectedItem, setSelectedItem] = useState([]);
+  const [selectedItem, setSelectedItem] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -16,6 +16,7 @@ export default function StatusBorad() {
 
       axios.get(`${BASE_URL}/api/v1/statuses/family`).then(response => {
         setMyStatus(response.data.result.me);
+        setSelectedItem(response.data.result.me.status);
         setFamilyStatus(response.data.result.family);
       });
     }, [selectedItem]),
@@ -30,22 +31,26 @@ export default function StatusBorad() {
       <View style={styles.container}>
         <Text style={styles.title}>상태보기</Text>
         <Text style={styles.subTitle}>현재 가족들의 상태를 볼 수 있어요.</Text>
-        <StatusProfile
-          key={myStatus.username}
-          person={myStatus}
-          myName={myStatus.nickname}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
-        />
-        {familyStatus.map(person => (
+        <View style={styles.myStatus}>
           <StatusProfile
-            key={person.username}
-            person={person}
+            key={myStatus.username}
+            person={myStatus}
             myName={myStatus.nickname}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
           />
-        ))}
+        </View>
+        <View style={styles.familyStatus}>
+          {familyStatus.map(person => (
+            <StatusProfile
+              key={person.username}
+              person={person}
+              myName={myStatus.nickname}
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -70,5 +75,13 @@ const styles = StyleSheet.create({
     color: '#383838',
     marginTop: 3.89,
     marginBottom: 15,
+  },
+  myStatus: {
+    position: 'relative',
+    zIndex: 9,
+  },
+  familyStatus: {
+    position: 'relative',
+    zIndex: 0,
   },
 });

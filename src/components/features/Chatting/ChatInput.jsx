@@ -66,8 +66,10 @@ export const ChatInput = ({setReceiveMsg}) => {
   };
 
   const handleAiToggle = async () => {
-    const loveChat = await getLoveChat(inputValue);
-    sendMessage(loveChat);
+    if (inputValue) {
+      const loveChat = await getLoveChat(inputValue);
+      sendMessage(loveChat);
+    }
   };
 
   return (
