@@ -16,6 +16,10 @@ import {BlurView} from '@react-native-community/blur';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import getToday from './getToday';
+import {resize} from 'react-native-responsive-sizer';
+
+const sw = resize('sw', 360);
+const sh = resize('sh', 820);
 
 export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   const handleCamera = async () => {
@@ -138,49 +142,49 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalContainer: {
-    width: 312,
-    height: 153,
+    width: sw(312),
+    height: sh(153),
     backgroundColor: '#fff',
     borderRadius: 6,
     alignItems: 'center',
   },
   close: {
     position: 'absolute',
-    top: 10,
-    right: 10,
+    top: sh(10),
+    right: sw(10),
   },
   img: {
-    width: 24,
-    height: 24,
+    width: sw(24),
+    height: sh(24),
   },
   title: {
     color: '#4D83F4',
-    fontSize: 20,
+    fontSize: sw(20),
     fontWeight: '700',
-    marginTop: 30,
+    marginTop: sh(30),
   },
   btnContainer: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 6,
-    marginTop: 25,
+    gap: sw(6),
+    marginTop: sh(25),
   },
   btnInnerContainer: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 8,
+    gap: sw(8),
   },
   cameraBtn: {
-    width: 136,
-    height: 40,
+    width: sw(136),
+    height: sh(40),
     borderRadius: 38,
     backgroundColor: '#EEEEEE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pictureBtn: {
-    width: 136,
-    height: 40,
+    width: sw(136),
+    height: sh(40),
     borderRadius: 38,
     backgroundColor: '#4D83F4',
     alignItems: 'center',
@@ -188,16 +192,15 @@ const styles = StyleSheet.create({
   },
   cameraText: {
     color: '#383838',
-    fontSize: 14,
+    fontSize: sw(14),
     fontWeight: '700',
-    lineHeight: 23,
+    lineHeight: sh(23),
   },
   pictureText: {
     color: '#FFFFFF',
-    fontSize: 14,
+    fontSize: sw(14),
     fontWeight: '700',
-    lineHeight: 23,
+    lineHeight: sh(23),
   },
 });
-
 export default ChangeProfile;
