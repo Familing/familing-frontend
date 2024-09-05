@@ -11,10 +11,6 @@ import axios from 'axios';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Arrow from '@assets/images/register/arrowImg.png';
 import CopyImage from '@assets/images/register/copyimage.png';
-import PhotoCard1 from '@assets/images/photocard/photocard1.png';
-import PhotoCard2 from '@assets/images/photocard/photocard2.png';
-import PhotoCard3 from '@assets/images/photocard/photocard3.png';
-import PhotoCard4 from '@assets/images/photocard/photocard4.png';
 import {BASE_URL} from '@/util/base_url';
 import {resize} from 'react-native-responsive-sizer';
 
@@ -23,6 +19,7 @@ const wh = resize('wh', 800);
 
 export default function MyFamilyScreen({navigation}) {
   const [inviteCode, setInviteCode] = useState(null);
+  const [familyList, setFamilyList] = useState([]);
 
   useEffect(() => {
     const fetchInviteCode = async () => {
@@ -36,6 +33,19 @@ export default function MyFamilyScreen({navigation}) {
       }
     };
     fetchInviteCode();
+  }, []);
+
+  useEffect(() => {
+    const fetchFamilyList = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/v1/family`);
+        setFamilyList(response.data.family_users_dto.family_user_dto_list);
+      } catch (error) {
+        Alert.alert('가족 목록을 가져오는 데 실패했습니다.');
+        console.error(error);
+      }
+    };
+    fetchFamilyList();
   }, []);
 
   return (
@@ -52,9 +62,6 @@ export default function MyFamilyScreen({navigation}) {
       </View>
 
       <View style={styles.inviteContainer}>
-        {/* <View style={styles.codeBox}>
-          <Text style={styles.code}>YXKRN8QS</Text>
-        </View> */}
         <Text style={styles.inviteTitle}>{inviteCode}</Text>
         <TouchableOpacity onPress={setInviteCode} style={styles.copyContainer}>
           <View style={styles.copyContainer}>
@@ -69,34 +76,17 @@ export default function MyFamilyScreen({navigation}) {
       </View>
 
       <View style={styles.familylistContainer}>
-        <View style={styles.list1}>
-          <Image source={PhotoCard1} style={styles.listImage} />
-          <View style={styles.listTextContainer}>
-            <Text style={styles.listText}>행복한 부자아빠</Text>
+        {familyList.map((user, index) => (
+          <View key={index}>
+            <View style={styles.listContainer}>
+              <Image source={{uri: user.profileImg}} style={styles.listImage} />
+              <View style={styles.listTextContainer}>
+                <Text style={styles.listText}>{user.nickName}</Text>
+              </View>
+            </View>
+            <View style={styles.separator} />
           </View>
-        </View>
-        <View style={styles.separator} />
-        <View style={styles.list2}>
-          <Image source={PhotoCard2} style={styles.listImage} />
-          <View style={styles.listTextContainer}>
-            <Text style={styles.listText}>익순여왕님</Text>
-          </View>
-        </View>
-        <View style={styles.separator} />
-        <View style={styles.list3}>
-          <Image source={PhotoCard3} style={styles.listImage} />
-          <View style={styles.listTextContainer}>
-            <Text style={styles.listText}>민지 공주</Text>
-          </View>
-        </View>
-        <View style={styles.separator} />
-        <View style={styles.list4}>
-          <Image source={PhotoCard4} style={styles.listImage} />
-          <View style={styles.listTextContainer}>
-            <Text style={styles.listText}>이민형</Text>
-          </View>
-        </View>
-        <View style={styles.separator} />
+        ))}
       </View>
     </View>
   );
@@ -183,18 +173,17 @@ const styles = StyleSheet.create({
     marginTop: wh * 0.0125,
     marginLeft: ww * 0.0667,
   },
-  list1: {
-    width: ww * 0.3972,
-    height: wh * 0.0472,
-    flexDirection: 'row',
-    gap: ww * 0.0444,
+  listContainer: {
+    marginTop: wh * 0.00625,
+    marginBottom: wh * 0.00625,
   },
   listImage: {
-    width: wh * 0.0472,
-    height: wh * 0.0472,
+    width: ww * 0.1056,
+    height: ww * 0.1056,
+    marginLeft: ww * 0.0667,
   },
   listTextContainer: {
-    marginTop: wh * 0.01,
+    marginLeft: ww * 0.0444,
   },
   listText: {
     fontSize: ww * 0.0389,
@@ -208,21 +197,5 @@ const styles = StyleSheet.create({
     borderColor: '#E7E7E7',
     marginTop: wh * 0.0025,
     opacity: 1,
-  },
-  list2: {
-    width: ww * 0.3222,
-    height: wh * 0.0472,
-    flexDirection: 'row',
-    gap: ww * 0.0444,
-  },
-  list3: {
-    flexDirection: 'row',
-    gap: ww * 0.0444,
-  },
-  list4: {
-    width: ww * 0.2528,
-    height: wh * 0.0472,
-    flexDirection: 'row',
-    gap: ww * 0.0444,
   },
 });
