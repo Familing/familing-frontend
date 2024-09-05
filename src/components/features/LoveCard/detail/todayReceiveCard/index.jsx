@@ -12,17 +12,14 @@ export default function TodayReceiveCard({todayCards, handleCardClick}) {
 
       <View style={styles.scrollContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {todayCards == undefined ? (
-            <Text style={styles.text}>오늘 받은 카드가 없어요!</Text>
-          ) : (
+          {todayCards.length != 0 &&
             todayCards.map(card => (
               <TodayCards
                 key={card.id}
                 handleCardClick={handleCardClick}
                 card={card.lovecardResponse}
               />
-            ))
-          )}
+            ))}
         </ScrollView>
       </View>
     </View>
@@ -46,7 +43,6 @@ const styles = StyleSheet.create({
     color: '#383838',
   },
   scrollContainer: {
-    alignItems: 'center',
     flexDirection: 'row',
     marginTop: 16,
     height: 210,

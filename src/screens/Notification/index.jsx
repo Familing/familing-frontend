@@ -11,6 +11,7 @@ import axios from 'axios';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
 import {useFocusEffect} from '@react-navigation/native';
+import defaultImg from '@assets/images/photocard/defaultImg.png';
 
 export default function NotificationPage({navigation}) {
   const [yesterdayNotifications, setYesterdayNotifications] = useState([]);
@@ -41,7 +42,10 @@ export default function NotificationPage({navigation}) {
 
   const renderNotificationItem = ({item}) => (
     <View style={styles.notificationItem}>
-      <Image source={{uri: item.alarm_img}} style={styles.notificationImage} />
+      <Image
+        source={item.alarm_img ? {uri: item.alarm_img} : defaultImg}
+        style={styles.notificationImage}
+      />
       <Text style={styles.notificationText}>{item.message}</Text>
     </View>
   );

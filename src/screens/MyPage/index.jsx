@@ -17,9 +17,9 @@ import {useFocusEffect} from '@react-navigation/native';
 
 export default function MyPage({navigation}) {
   const [alertVisible, setAlertVisible] = useState(false);
-  const [nickname, setNickname] = useState('');
-  const [realname, setRealname] = useState('');
-  const [profile, setProfile] = useState('');
+  const [nickname, setNickname] = useState(null);
+  const [realname, setRealname] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -45,6 +45,10 @@ export default function MyPage({navigation}) {
       console.error('Error fetching data:', error);
     }
   };
+
+  if (nickname === null || realname === null || profile === null) {
+    return <Text>로딩중이에요!</Text>;
+  }
 
   return (
     <ScrollView style={styles.container}>

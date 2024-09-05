@@ -22,8 +22,8 @@ export default function LoveCardMainScreen({navigation}) {
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [selectedCard, setSelectedCard] = useState('');
+  const [selectedCardId, setSelectedCardId] = useState('');
   const [familiy, setFamily] = useState([]);
 
   useEffect(() => {

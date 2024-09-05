@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import defaultImg from '@assets/images/photocard/photocard3.png';
 
 export const Message = ({message, showProfile}) => {
   if (message.senderId === 'date') {
@@ -21,7 +22,11 @@ export const Message = ({message, showProfile}) => {
       <View key={message.id} style={styles.otherContainer}>
         {showProfile ? (
           <Image
-            source={{uri: message.senderProfileImg}}
+            source={
+              message.senderProfileImg
+                ? {uri: message.senderProfileImg}
+                : defaultImg
+            }
             style={styles.profileImg}
           />
         ) : (
@@ -48,6 +53,7 @@ const styles = StyleSheet.create({
     padding: 12.86,
   },
   profileImg: {
+    borderRadius: 50,
     zIndex: 99,
     width: 44,
     height: 44,

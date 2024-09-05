@@ -14,17 +14,14 @@ export default function MonthReceiveCard({monthCards, handleCardClick}) {
 
       <View style={styles.scrollCotainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {monthCards == undefined ? (
-            <Text style={styles.text}>최근 30일간 받은 카드가 없어요!</Text>
-          ) : (
+          {monthCards.length != 0 &&
             monthCards.map(card => (
               <MonthCard
                 key={card.id}
                 card={card.lovecardResponse}
                 handleCardClick={handleCardClick}
               />
-            ))
-          )}
+            ))}
         </ScrollView>
       </View>
     </View>
@@ -49,7 +46,6 @@ const styles = StyleSheet.create({
     color: '#383838',
   },
   scrollCotainer: {
-    alignItems: 'center',
     marginTop: 16,
     height: 156,
   },

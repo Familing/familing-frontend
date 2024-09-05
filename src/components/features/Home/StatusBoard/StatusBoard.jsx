@@ -6,7 +6,7 @@ import {BASE_URL} from '@/util/base_url';
 import axios from 'axios';
 
 export default function StatusBorad() {
-  const [myStatus, setMyStatus] = useState([]);
+  const [myStatus, setMyStatus] = useState({});
   const [familyStatus, setFamilyStatus] = useState([]);
   const [selectedItem, setSelectedItem] = useState([]);
 
@@ -20,6 +20,10 @@ export default function StatusBorad() {
       });
     }, [selectedItem]),
   );
+
+  if (Object.keys(myStatus).length === 0 || familyStatus.length === 0) {
+    return <Text>로딩중이에요!</Text>;
+  }
 
   return (
     <View style={styles.wrapper}>
