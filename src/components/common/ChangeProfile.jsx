@@ -18,8 +18,8 @@ import {BASE_URL} from '@/util/base_url';
 import getToday from './getToday';
 import {resize} from 'react-native-responsive-sizer';
 
-const sw = resize('sw', 360);
-const sh = resize('sh', 820);
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   const handleCamera = async () => {
@@ -142,65 +142,65 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalContainer: {
-    width: sw(312),
-    height: sh(153),
+    width: ww(312),
+    height: wh(153),
     backgroundColor: '#fff',
-    borderRadius: 6,
+    borderRadius: wh(6),
     alignItems: 'center',
   },
   close: {
     position: 'absolute',
-    top: sh(10),
-    right: sw(10),
+    top: wh(10),
+    right: ww(10),
   },
   img: {
-    width: sw(24),
-    height: sh(24),
+    width: ww(24),
+    height: wh(24),
   },
   title: {
     color: '#4D83F4',
-    fontSize: sw(20),
+    fontSize: ww(20),
     fontWeight: '700',
-    marginTop: sh(30),
+    marginTop: wh(30),
   },
   btnContainer: {
     display: 'flex',
     flexDirection: 'row',
-    gap: sw(6),
-    marginTop: sh(25),
+    gap: ww(6),
+    marginTop: wh(25),
   },
   btnInnerContainer: {
     display: 'flex',
     flexDirection: 'row',
-    gap: sw(8),
+    gap: ww(8),
   },
   cameraBtn: {
-    width: sw(136),
-    height: sh(40),
-    borderRadius: 38,
+    width: ww(136),
+    height: wh(40),
+    borderRadius: wh(38),
     backgroundColor: '#EEEEEE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pictureBtn: {
-    width: sw(136),
-    height: sh(40),
-    borderRadius: 38,
+    width: ww(136),
+    height: wh(40),
+    borderRadius: wh(38),
     backgroundColor: '#4D83F4',
     alignItems: 'center',
     justifyContent: 'center',
   },
   cameraText: {
     color: '#383838',
-    fontSize: sw(14),
+    fontSize: ww(14),
     fontWeight: '700',
-    lineHeight: sh(23),
+    lineHeight: wh(23),
   },
   pictureText: {
     color: '#FFFFFF',
-    fontSize: sw(14),
+    fontSize: ww(14),
     fontWeight: '700',
-    lineHeight: sh(23),
+    lineHeight: wh(23),
   },
 });
 export default ChangeProfile;

@@ -1,5 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function Profile({profile, name}) {
   return (
@@ -12,22 +16,22 @@ export default function Profile({profile, name}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
+    height: wh(50),
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   profile: {
-    width: 38,
-    height: 38,
+    width: ww(38),
+    height: ww(38),
     borderRadius: 50,
   },
   name: {
     fontWeight: '500',
-    fontSize: 14,
-    lineHeight: 17.47,
+    fontSize: ww(14),
+    lineHeight: wh(17.47),
     color: '#383838',
-    marginLeft: 18.23,
+    marginLeft: ww(18.23),
   },
 });

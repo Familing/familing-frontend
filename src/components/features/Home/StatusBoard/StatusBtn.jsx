@@ -1,5 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function StatusBtn({nowStatus}) {
   return (
@@ -12,9 +16,9 @@ export default function StatusBtn({nowStatus}) {
 const styles = StyleSheet.create({
   btn: {
     display: 'flex',
-    paddingHorizontal: 14,
+    paddingHorizontal: ww(14),
     justifyContent: 'center',
-    height: 28,
+    height: wh(28),
     borderRadius: 40,
     //shadow
     shadowColor: '#000000',
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   text: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#4D83F4',
   },

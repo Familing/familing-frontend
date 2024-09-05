@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const Message = ({message, showProfile}) => {
   if (message.senderId === 'date') {
@@ -43,40 +47,40 @@ export const Message = ({message, showProfile}) => {
 const styles = StyleSheet.create({
   bubbleContainer: {
     display: 'flex',
-    maxWidth: 273.72,
-    borderRadius: 6,
-    padding: 12.86,
+    maxWidth: ww(273.72),
+    borderRadius: wh(6),
+    padding: wh(12.86),
   },
   profileImg: {
     zIndex: 99,
-    width: 44,
-    height: 44,
+    width: ww(44),
+    height: ww(44),
   },
   myBubble: {
-    marginTop: 7.81,
+    marginTop: wh(7.81),
     backgroundColor: '#4D83F4',
     alignSelf: 'flex-end',
   },
   otherBubble: {
-    marginLeft: -6,
+    marginLeft: ww(-6),
     backgroundColor: '#F8F8F8',
     alignSelf: 'flex-start',
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: {width: 0, height: wh(0)},
     shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowRadius: wh(4),
     elevation: 2,
   },
   otherContainer: {
-    marginTop: 12.28,
+    marginTop: wh(12.28),
     display: 'flex',
     flexDirection: 'row',
   },
   messageText: {
     flexWrap: 'wrap',
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '600',
-    lineHeight: 14.98,
+    lineHeight: wh(14.98),
   },
   myText: {
     color: '#F8F8F8',
@@ -86,12 +90,12 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     alignSelf: 'center',
-    marginTop: 28.45,
-    marginBottom: 16.17,
+    marginTop: wh(28.45),
+    marginBottom: wh(16.17),
   },
   dateText: {
     color: '#B3B3B3',
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '600',
   },
 });

@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import CardImage from '../../../../assets/images/banner/CardImage.png';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const CardBanner = () => {
   return (
@@ -22,9 +26,9 @@ export const CardBanner = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#383838',
-    width: 360,
-    height: 210,
-    paddingHorizontal: 24,
+    width: ww(360),
+    height: wh(210),
+    paddingHorizontal: ww(24),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -33,29 +37,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 6,
+    gap: ww(6),
   },
   title: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#4D83F4',
-    lineHeight: 24.96,
+    lineHeight: wh(24.96),
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: 24.96,
+    lineHeight: wh(24.96),
   },
   description: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#FFFFFF',
-    lineHeight: 14.98,
-    marginTop: 4.23,
+    lineHeight: wh(14.98),
+    marginTop: wh(4.23),
   },
   image: {
-    width: 190,
-    height: 110,
+    width: ww(190),
+    height: wh(110),
   },
 });

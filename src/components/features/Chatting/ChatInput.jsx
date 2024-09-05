@@ -8,6 +8,10 @@ import {Stomp} from '@stomp/stompjs';
 import {BASE_URL} from '@/util/base_url';
 import {getChatRoomId} from '@/api/getChatRoomId';
 import {getLoveChat} from '@/api/getLoveChat';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const ChatInput = ({setReceiveMsg}) => {
   const [inputValue, setInputValue] = useState('');
@@ -106,32 +110,32 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    marginBottom: 7,
+    marginBottom: wh(7),
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'space-between',
-    width: 312,
-    height: 40,
-    borderRadius: 35,
+    width: ww(312),
+    height: wh(40),
+    borderRadius: wh(35),
     backgroundColor: '#FDFDFD',
-    paddingHorizontal: 4,
-    paddingVertical: 3,
-    //shadow
+    paddingHorizontal: ww(4),
+    paddingVertical: wh(3),
+    // shadow
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: {width: 0, height: wh(0)},
     shadowOpacity: 0.15,
-    shadowRadius: 3.77,
+    shadowRadius: wh(3.77),
     elevation: 2,
   },
   assetsContainer: {
     flexDirection: 'row',
-    gap: 12,
+    gap: ww(12),
   },
   input: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '600',
-    lineHeight: 14.98,
+    lineHeight: wh(14.98),
     color: '#383838',
   },
 });

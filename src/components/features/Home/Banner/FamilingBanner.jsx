@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import BannerImage from '../../../../assets/images/banner/BannerImage.png';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const FamilingBanner = () => {
   return (
@@ -22,9 +26,9 @@ export const FamilingBanner = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#4D83F4',
-    width: 360,
-    height: 210,
-    paddingHorizontal: 24,
+    width: ww(360),
+    height: wh(210),
+    paddingHorizontal: ww(24),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -33,39 +37,39 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 13,
+    gap: ww(13),
   },
   textContainer: {
-    marginBottom: 24,
+    marginBottom: wh(24),
     alignItems: 'flex-start',
     flexDirection: 'column',
   },
   title1: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#FFBE00',
-    lineHeight: 24.96,
+    lineHeight: wh(24.96),
   },
   title2: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: 24.96,
+    lineHeight: wh(24.96),
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#FFFFFF',
   },
   description: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#FFFFFF',
-    lineHeight: 14.98,
-    marginTop: 4.23,
+    lineHeight: wh(14.98),
+    marginTop: wh(4.23),
   },
   image: {
-    width: 160,
-    height: 160,
+    width: ww(160),
+    height: wh(160),
   },
 });

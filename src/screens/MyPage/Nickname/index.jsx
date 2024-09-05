@@ -11,6 +11,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Arrow from '@assets/images/register/arrowImg.png';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function NicknameScreen({navigation}) {
   const [nickname, setNickname] = useState(nickname);
@@ -64,66 +68,66 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
-    marginTop: 20,
-    gap: 105,
+    marginTop: wh * 0.025,
+    gap: ww * 0.292,
   },
   arrowImage: {
-    width: 20,
-    height: 15,
-    marginLeft: 24,
+    width: ww * 0.056,
+    height: wh * 0.01875,
+    marginLeft: ww * 0.067,
   },
   title: {
-    fontSize: 20,
+    fontSize: ww * 0.0556,
     fontWeight: '800',
     color: '#383838',
-    marginTop: -5,
+    marginTop: wh * -0.00625,
   },
   nicknameContainer: {
-    width: 312,
-    height: 68,
+    width: ww * 0.8667,
+    height: wh * 0.085,
     flexDirection: 'column',
-    gap: 16,
-    marginTop: 10,
+    gap: wh * 0.02,
+    marginTop: wh * 0.0125,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '800',
     color: '#383838',
-    marginTop: 40,
-    marginLeft: 24,
+    marginTop: wh * 0.05,
+    marginLeft: ww * 0.067,
   },
   inputContainer: {
     flex: 1,
   },
   input: {
-    width: 312,
-    height: 32,
-    fontSize: 16,
+    width: ww * 0.8667,
+    height: wh * 0.04,
+    fontSize: ww * 0.0444,
     fontWeight: '400',
     color: '#C5C5C5',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: 24,
+    marginLeft: ww * 0.067,
   },
   line: {
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: 24,
-    marginTop: 3,
+    marginLeft: ww * 0.067,
+    marginTop: wh * 0.00375,
   },
   button: {
-    width: 312,
-    height: 40,
+    width: ww * 0.8667,
+    height: wh * 0.05,
     borderRadius: 6,
     backgroundColor: '#4D83F4',
-    marginTop: 300,
-    marginLeft: 24,
+    marginTop: wh * 0.375,
+    marginLeft: ww * 0.067,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '700',
     color: '#FFFFFF',
   },

@@ -1,6 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import MonthCard from './MonthCard';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function MonthReceiveCard({monthCards, handleCardClick}) {
   return (
@@ -33,28 +37,28 @@ export default function MonthReceiveCard({monthCards, handleCardClick}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 28,
-    marginLeft: 24,
-    marginBottom: 20,
+    marginTop: wh(28),
+    marginLeft: ww(24),
+    marginBottom: wh(20),
   },
   title2: {
-    fontSize: 16,
+    fontSize: ww(16),
     fontWeight: '800',
     color: '#383838',
-    marginBottom: 4,
+    marginBottom: wh(4),
   },
   subtitle2: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#383838',
   },
-  scrollCotainer: {
+  scrollContainer: {
     alignItems: 'center',
-    marginTop: 16,
-    height: 156,
+    marginTop: wh(16),
+    height: wh(156),
   },
   text: {
-    marginTop: 64,
+    marginTop: wh(64),
     color: '#C5C5C5',
   },
 });

@@ -4,6 +4,10 @@ import selectArrow from '@assets/images/button/selectArrow.png';
 import {getStatuses} from '@/api/getStatuses';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function DropdownSelectBox({
   myStatus,
@@ -76,20 +80,20 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
   arrowImg: {
-    width: 10,
-    height: 6,
+    width: ww(10),
+    height: wh(6),
   },
   selectBox: {
     zIndex: 101,
-    height: 28,
-    width: 88,
+    height: wh(28),
+    width: ww(88),
     backgroundColor: '#4D83F4',
     borderRadius: 40,
-    paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingHorizontal: ww(14),
+    paddingVertical: wh(6),
   },
   textContainer: {
-    gap: 4,
+    gap: wh(4),
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -97,16 +101,16 @@ const styles = StyleSheet.create({
   selectedText: {
     color: '#fff',
     fontWeight: '500',
-    fontSize: 12,
+    fontSize: ww(12),
   },
   dropdown: {
     zIndex: 99,
     position: 'absolute',
-    top: 14,
-    width: 88,
+    top: wh(14),
+    width: ww(88),
     backgroundColor: '#fff',
     borderRadius: 8,
-    paddingTop: 14,
+    paddingTop: wh(14),
     alignItems: 'center',
     //shadow
     shadowColor: '#000000',
@@ -119,21 +123,21 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   item: {
-    height: 16,
-    width: 77,
+    height: wh(16),
+    width: ww(77),
     justifyContent: 'center',
-    paddingVertical: 2,
-    paddingLeft: 4,
+    paddingVertical: wh(2),
+    paddingLeft: ww(4),
     borderRadius: 2,
-    marginVertical: 2,
+    marginVertical: wh(2),
   },
   selectedItem: {
     backgroundColor: '#DBE6FD',
   },
   itemText: {
     color: '#383838',
-    fontSize: 10,
-    fontWeight: 500,
-    lineHeight: 12.48,
+    fontSize: ww(10),
+    fontWeight: '500',
+    lineHeight: wh(12.48),
   },
 });

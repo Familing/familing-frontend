@@ -18,8 +18,6 @@ import {resize} from 'react-native-responsive-sizer';
 
 const ww = resize('ww', 360);
 const wh = resize('wh', 800);
-const sw = resize('sw', 360);
-const sh = resize('sh', 820);
 
 export default function MyPage({navigation}) {
   const [alertVisible, setAlertVisible] = useState(false);
@@ -126,8 +124,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    width: sw(360),
-    height: sh(820),
+    width: ww(360),
+    height: wh(800),
   },
   headerContainer: {
     justifyContent: 'flex-start',
@@ -159,7 +157,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   profileContainer: {
-    width: sw(312),
+    width: ww(312),
     height: wh(121),
     borderRadius: 12,
     borderWidth: 1,
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
     marginLeft: ww(12),
   },
   separator1: {
-    width: sw(310),
+    width: ww(310),
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
@@ -210,7 +208,7 @@ const styles = StyleSheet.create({
     marginLeft: ww(205),
   },
   profileContainer2: {
-    width: sw(312),
+    width: ww(312),
     height: wh(181),
     borderRadius: 12,
     borderWidth: 1,
@@ -232,7 +230,7 @@ const styles = StyleSheet.create({
     marginLeft: ww(200),
   },
   separator2: {
-    width: sw(311),
+    width: ww(311),
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
@@ -259,7 +257,7 @@ const styles = StyleSheet.create({
     marginLeft: ww(14),
   },
   separator3: {
-    width: sw(311),
+    width: ww(311),
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
@@ -279,7 +277,7 @@ const styles = StyleSheet.create({
     marginLeft: ww(200),
   },
   profileContainer3: {
-    width: sw(312),
+    width: ww(312),
     height: wh(61),
     borderRadius: 12,
     borderWidth: 1,

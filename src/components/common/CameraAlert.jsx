@@ -20,8 +20,6 @@ import {resize} from 'react-native-responsive-sizer';
 
 const ww = resize('ww', 360);
 const wh = resize('wh', 800);
-const sw = resize('sw', 360);
-const sh = resize('sh', 820);
 
 export const CameraAlert = ({visible, onClose, setUploadImage}) => {
   const handleCamera = async () => {
@@ -145,8 +143,8 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalContainer: {
-    width: sw(312),
-    height: sh(153),
+    width: ww(312),
+    height: wh(153),
     backgroundColor: '#fff',
     borderRadius: 6,
     alignItems: 'center',
@@ -167,20 +165,18 @@ const styles = StyleSheet.create({
     marginTop: wh(30),
   },
   btnContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    gap: 6,
+    gap: ww(6),
     marginTop: wh(25),
   },
   btnInnerContainer: {
-    display: 'flex',
     flexDirection: 'row',
-    gap: 8,
+    gap: ww(8),
   },
   cameraBtn: {
     width: ww(136),
     height: wh(40),
-    borderRadius: 38,
+    borderRadius: wh(38),
     backgroundColor: '#EEEEEE',
     alignItems: 'center',
     justifyContent: 'center',
@@ -188,7 +184,7 @@ const styles = StyleSheet.create({
   pictureBtn: {
     width: ww(136),
     height: wh(40),
-    borderRadius: 38,
+    borderRadius: wh(38),
     backgroundColor: '#4D83F4',
     alignItems: 'center',
     justifyContent: 'center',
@@ -197,13 +193,13 @@ const styles = StyleSheet.create({
     color: '#383838',
     fontSize: ww(14),
     fontWeight: '700',
-    lineHeight: 23,
+    lineHeight: wh(23),
   },
   pictureText: {
     color: '#FFFFFF',
     fontSize: ww(14),
     fontWeight: '700',
-    lineHeight: 23,
+    lineHeight: wh(23),
   },
 });
 

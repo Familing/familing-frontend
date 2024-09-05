@@ -1,6 +1,10 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import envelope from '../../../../../assets/images/banner/envelope.png';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function LoveCardBanner() {
   return (
@@ -32,11 +36,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: 200,
+    height: wh(200),
     backgroundColor: '#F2F2F2',
   },
   container: {
-    width: 312,
+    width: ww(312),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -46,13 +50,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   title: {
-    fontSize: 20,
+    fontSize: ww(20),
     fontWeight: '800',
     color: '#383838',
-    marginBottom: 8,
+    marginBottom: wh(8),
   },
   subTitle: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#383838',
   },

@@ -16,6 +16,10 @@ import PhotoCard2 from '@assets/images/photocard/photocard2.png';
 import PhotoCard3 from '@assets/images/photocard/photocard3.png';
 import PhotoCard4 from '@assets/images/photocard/photocard4.png';
 import {BASE_URL} from '@/util/base_url';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function MyFamilyScreen({navigation}) {
   const [inviteCode, setInviteCode] = useState(null);
@@ -104,121 +108,121 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   arrowImage: {
-    width: 20,
-    height: 15,
-    marginLeft: 24,
+    width: ww * 0.055,
+    height: wh * 0.01875,
+    marginLeft: ww * 0.0667,
   },
   titleContainer: {
     flexDirection: 'row',
-    marginTop: 20,
-    gap: 90,
+    marginTop: wh * 0.025,
+    gap: ww * 0.25,
   },
   title: {
-    fontSize: 20,
+    fontSize: ww * 0.0556,
     fontWeight: '800',
     color: '#383838',
   },
   subContainer: {
-    marginLeft: 24,
-    marginTop: 40,
+    marginLeft: ww * 0.0667,
+    marginTop: wh * 0.05,
   },
   subtitle1: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '800',
     color: '#383838',
   },
   inviteContainer: {
-    width: 312,
-    height: 80,
+    width: ww * 0.8667,
+    height: wh * 0.1,
     flexDirection: 'column',
     backgroundColor: '#E7E7E7',
-    marginTop: 10,
-    marginLeft: 24,
+    marginTop: wh * 0.0125,
+    marginLeft: ww * 0.0667,
     alignItems: 'center',
     justifyContent: 'center',
   },
   inviteTitle: {
-    fontSize: 20,
-    fontWieght: '800',
+    fontSize: ww * 0.0556,
+    fontWeight: '800',
     color: '#383838',
   },
   codeBox: {
-    marginBottom: 5,
+    marginBottom: wh * 0.00625,
   },
   code: {
-    fontSize: 20,
+    fontSize: ww * 0.0556,
     fontWeight: '800',
     color: '#383838',
   },
   copyContainer: {
     flexDirection: 'row',
-    gap: 5,
+    gap: ww * 0.0139,
   },
   copyImage: {
-    width: 10,
-    height: 12,
-    marginTop: 3,
+    width: ww * 0.0278,
+    height: wh * 0.015,
+    marginTop: wh * 0.00375,
   },
   copyText: {
-    fontSize: 12,
+    fontSize: ww * 0.0333,
     fontWeight: '400',
     color: 'rgba(179, 179, 179, 0.6)',
   },
   subContainer2: {
-    marginLeft: 24,
-    marginTop: 30,
+    marginLeft: ww * 0.0667,
+    marginTop: wh * 0.0375,
   },
   subtitle2: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '800',
     color: '#383838',
   },
   familylistContainer: {
     flexDirection: 'column',
-    gap: 8,
-    marginTop: 10,
-    marginLeft: 24,
+    gap: wh * 0.01,
+    marginTop: wh * 0.0125,
+    marginLeft: ww * 0.0667,
   },
   list1: {
-    width: 143,
-    height: 38,
+    width: ww * 0.3972,
+    height: wh * 0.0472,
     flexDirection: 'row',
-    gap: 16,
+    gap: ww * 0.0444,
   },
   listImage: {
-    width: 38,
-    height: 38,
+    width: wh * 0.0472,
+    height: wh * 0.0472,
   },
   listTextContainer: {
-    marginTop: 8,
+    marginTop: wh * 0.01,
   },
   listText: {
-    fontSize: 14,
+    fontSize: ww * 0.0389,
     fontWeight: '500',
     color: '#383838',
   },
   separator: {
-    width: 310,
+    width: ww * 0.8667,
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
-    marginTop: 2,
+    marginTop: wh * 0.0025,
     opacity: 1,
   },
   list2: {
-    width: 116,
-    height: 38,
+    width: ww * 0.3222,
+    height: wh * 0.0472,
     flexDirection: 'row',
-    gap: 16,
+    gap: ww * 0.0444,
   },
   list3: {
     flexDirection: 'row',
-    gap: 16,
+    gap: ww * 0.0444,
   },
   list4: {
-    width: 91,
-    height: 38,
+    width: ww * 0.2528,
+    height: wh * 0.0472,
     flexDirection: 'row',
-    gap: 16,
+    gap: ww * 0.0444,
   },
 });

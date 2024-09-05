@@ -3,6 +3,10 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {LogoIcon} from '../../icon/LogoIcon';
 import {BellIcon} from '../../icon/BellIcon';
 import {useNavigation} from '@react-navigation/native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const CustomHeader = () => {
   const navigation = useNavigation();
@@ -26,27 +30,27 @@ export const CustomHeader = () => {
 
 const headerStyles = StyleSheet.create({
   wrapper: {
-    height: 64,
+    height: wh(64),
     backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   logo: {
-    top: 15,
-    left: 24,
+    top: wh(15),
+    left: ww(24),
   },
   badgeContainer: {
     position: 'relative',
-    top: 21,
-    right: 24,
+    top: wh(21),
+    right: ww(24),
   },
   badge: {
     position: 'absolute',
-    right: -2,
-    top: -2,
-    width: 12,
-    height: 12,
+    right: ww(-2),
+    top: wh(-2),
+    width: ww(12),
+    height: ww(12),
     borderRadius: 50,
     backgroundColor: '#FF3434',
     justifyContent: 'center',
@@ -55,7 +59,7 @@ const headerStyles = StyleSheet.create({
   badgeText: {
     fontWeight: '600',
     color: '#fff',
-    fontSize: 9,
-    lineHeight: 11.23,
+    fontSize: ww(9),
+    lineHeight: wh(11.23),
   },
 });

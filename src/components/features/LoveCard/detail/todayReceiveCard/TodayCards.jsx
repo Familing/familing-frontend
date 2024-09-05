@@ -1,5 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function TodayCards({handleCardClick, card}) {
   return (
@@ -11,8 +15,8 @@ export default function TodayCards({handleCardClick, card}) {
 
 const styles = StyleSheet.create({
   image1: {
-    width: 140,
-    height: 210,
-    marginRight: 12,
+    width: ww(140),
+    height: wh(210),
+    marginRight: ww(12),
   },
 });

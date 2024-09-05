@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import {View, Image, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import plusbtn from '../../../../assets/images/photocard/plusbtn.png';
 import {CameraAlert} from '@/components/common/CameraAlert';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const PhotoCard = ({
   profile,
@@ -43,41 +47,41 @@ export const PhotoCard = ({
 const styles = StyleSheet.create({
   profile: {
     position: 'absolute',
-    top: 4,
-    left: 4,
-    width: 38,
-    height: 38,
+    top: wh(4),
+    left: ww(4),
+    width: ww(38),
+    height: wh(38),
     borderRadius: 50,
   },
   card: {
     display: 'flex',
-    width: 150,
-    height: 150,
+    width: ww(150),
+    height: wh(150),
     backgroundColor: '#E7E7E7',
     borderRadius: 6,
     justifyContent: 'center',
     alignItems: 'center',
   },
   cardImg: {
-    width: 150,
-    height: 150,
+    width: ww(150),
+    height: wh(150),
     borderRadius: 6,
   },
   content: {
-    width: 150,
-    height: 150,
+    width: ww(150),
+    height: wh(150),
     backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
   },
   description: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '700',
     color: '#C5C5C5',
   },
   addImage: {
-    width: 21,
-    height: 21,
+    width: ww(21),
+    height: wh(21),
   },
 });

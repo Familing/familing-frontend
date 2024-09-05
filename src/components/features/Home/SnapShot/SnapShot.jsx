@@ -7,6 +7,10 @@ import {BASE_URL} from '@/util/base_url';
 import getToday from '@/components/common/getToday';
 import {getSnapshotTime} from '@/api/getSnapshotTime';
 import {useFocusEffect} from '@react-navigation/native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const SnapShot = () => {
   const [familySnapshot, setFamiliySnapshot] = useState([]);
@@ -117,9 +121,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   wrapper: {
-    marginTop: 20,
-    marginHorizontal: 24,
-    marginBottom: 6,
+    marginTop: wh(20),
+    marginHorizontal: ww(24),
+    marginBottom: wh(6),
   },
   header: {
     flexDirection: 'row',
@@ -127,15 +131,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,
+    fontSize: ww(16),
     fontWeight: '800',
     color: '#383838',
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 71,
-    height: 20,
+    width: ww(71),
+    height: wh(20),
     borderRadius: 40,
     //shadow
     shadowColor: '#000000',
@@ -147,54 +151,54 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
     backgroundColor: '#FFFFFF',
-    marginTop: -2,
+    marginTop: wh(-2),
   },
   buttonText: {
-    fontSize: 10,
+    fontSize: ww(10),
     fontWeight: '600',
-    lineHeight: 12.48,
+    lineHeight: wh(12.48),
     color: '#383838',
   },
   subtitle: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '400',
     color: '#383838',
-    marginTop: 4,
+    marginTop: wh(4),
   },
   box: {
     alignSelf: 'flex-start',
-    paddingHorizontal: 24,
-    paddingVertical: 6,
-    height: 28,
+    paddingHorizontal: ww(24),
+    paddingVertical: wh(6),
+    height: wh(28),
     borderRadius: 5,
     backgroundColor: '#C5C5C5',
-    marginTop: 16,
+    marginTop: wh(16),
   },
   snapshotOn: {
     alignSelf: 'flex-start',
-    paddingHorizontal: 24,
-    paddingVertical: 6,
-    height: 28,
+    paddingHorizontal: ww(24),
+    paddingVertical: wh(6),
+    height: wh(28),
     borderRadius: 5,
     backgroundColor: '#FFBE00',
-    marginTop: 16,
+    marginTop: wh(16),
   },
   boxText: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '700',
     color: '#fff',
   },
   cardContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 8,
-    marginBottom: 12,
-    gap: 12,
+    marginTop: wh(8),
+    marginBottom: wh(12),
+    gap: ww(12),
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 12,
-    gap: 12,
+    marginBottom: wh(12),
+    gap: ww(12),
   },
 });

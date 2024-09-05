@@ -1,5 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function MonthCard({card, handleCardClick}) {
   return (
@@ -13,10 +17,10 @@ export default function MonthCard({card, handleCardClick}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: 6,
+    marginRight: ww(6),
   },
   image2: {
-    width: 104,
-    height: 156,
+    width: ww(104),
+    height: wh(156),
   },
 });

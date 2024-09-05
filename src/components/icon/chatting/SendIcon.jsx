@@ -1,11 +1,15 @@
 import React from 'react';
 import {G, Mask, Path, Rect, Svg} from 'react-native-svg';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function SendIcon() {
   return (
     <Svg
-      width="24"
-      height="25"
+      width={ww}
+      height={wh}
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

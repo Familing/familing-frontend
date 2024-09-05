@@ -4,6 +4,10 @@ import StatusProfile from './StatusProfile';
 import {useFocusEffect} from '@react-navigation/native';
 import {BASE_URL} from '@/util/base_url';
 import axios from 'axios';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function StatusBorad() {
   const [myStatus, setMyStatus] = useState([]);
@@ -52,19 +56,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   container: {
-    marginTop: 24,
-    marginHorizontal: 24,
+    marginTop: wh(24),
+    marginHorizontal: ww(24),
   },
   title: {
-    fontSize: 16,
+    fontSize: ww(16),
     fontWeight: '800',
     color: '#383838',
   },
   subTitle: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '400',
     color: '#383838',
-    marginTop: 3.89,
-    marginBottom: 15,
+    marginTop: wh(3.89),
+    marginBottom: wh(15),
   },
 });

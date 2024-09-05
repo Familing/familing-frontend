@@ -1,6 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import TodayCards from './TodayCards';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function TodayReceiveCard({todayCards, handleCardClick}) {
   return (
@@ -31,28 +35,28 @@ export default function TodayReceiveCard({todayCards, handleCardClick}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 24,
-    marginTop: 32,
+    marginLeft: ww(24),
+    marginTop: wh(32),
   },
   title1: {
-    fontSize: 16,
+    fontSize: ww(16),
     fontWeight: '800',
     color: '#383838',
-    marginBottom: 4,
+    marginBottom: wh(4),
   },
   subtitle1: {
-    fontSize: 12,
+    fontSize: ww(12),
     fontWeight: '500',
     color: '#383838',
   },
   scrollContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 16,
-    height: 210,
+    marginTop: wh(16),
+    height: wh(210),
   },
   text: {
-    marginTop: 90,
+    marginTop: wh(90),
     color: '#C5C5C5',
   },
 });

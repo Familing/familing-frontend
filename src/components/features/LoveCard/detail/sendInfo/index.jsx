@@ -1,5 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function SendInfo({image, name}) {
   return (
@@ -17,21 +21,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: 24,
+    marginTop: wh(24),
   },
   avatar: {
     borderRadius: 50,
-    width: 74,
-    height: 74,
-    marginBottom: 8,
+    width: ww(74),
+    height: ww(74),
+    marginBottom: wh(8),
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: ww(18),
     fontWeight: '800',
     color: '#4D83F4',
   },
   name: {
-    fontSize: 18,
+    fontSize: ww(18),
     fontWeight: '400',
     color: '#383838',
   },

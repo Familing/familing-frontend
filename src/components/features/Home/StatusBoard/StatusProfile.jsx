@@ -2,6 +2,10 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import DropdownSelectBox from './selectBox';
 import StatusBtn from './StatusBtn';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function StatusProfile({
   person,
@@ -36,8 +40,8 @@ const styles = StyleSheet.create({
   divider: {
     borderBottomWidth: 1,
     borderBottomColor: '#F2F2F2',
-    paddingBottom: 8,
-    marginBottom: 8,
+    paddingBottom: wh(8),
+    marginBottom: wh(8),
   },
   container: {
     backgroundColor: '#fff',
@@ -45,26 +49,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 38,
+    height: wh(38),
   },
   font: {
-    fontSize: 14,
+    fontSize: ww(14),
     fontWeight: '500',
     color: '#383838',
-    lineHeight: 17.47,
+    lineHeight: wh(17.47),
   },
   leftContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    gap: ww(16),
   },
   rightContainer: {
     justifyContent: 'center',
   },
   profile: {
     borderRadius: 50,
-    width: 38,
-    height: 38,
+    width: wh(38),
+    height: wh(38),
   },
 });
