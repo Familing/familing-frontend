@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {ProgressIndicator} from '../ProgressIndicator';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const RegisterStep1 = ({navigation}) => {
   return (
@@ -35,36 +39,36 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
-    marginTop: 200,
+    marginTop: wh * 0.25,
   },
   title: {
-    fontSize: 24,
+    fontSize: ww * 0.0667,
     fontWeight: '700',
     color: '#4D83F4',
   },
   subtitle: {
-    fontSize: 24,
+    fontSize: ww * 0.0667,
     fontWeight: '700',
     color: '#383838',
   },
   buttonContainer: {
     flexDirection: 'row',
-    marginTop: 32,
-    gap: 10,
-    width: 140,
-    height: 40,
-    marginLeft: 36,
+    marginTop: wh * 0.04,
+    gap: ww * 0.0278,
+    width: ww * 0.3889,
+    height: wh * 0.05,
+    marginLeft: ww * 0.1,
   },
   noButton: {
     backgroundColor: '#EEEEEE',
     borderRadius: 70,
-    paddingVertical: 10,
-    paddingHorizontal: 49,
+    paddingVertical: wh * 0.0125,
+    paddingHorizontal: ww * 0.1361,
     justifyContent: 'center',
     alignItems: 'center',
   },
   noText: {
-    fontSize: 15,
+    fontSize: ww * 0.0417,
     fontWeight: '700',
     color: '#CECECE',
     textAlign: 'center',
@@ -72,13 +76,13 @@ const styles = StyleSheet.create({
   yesButton: {
     backgroundColor: '#4D83F4',
     borderRadius: 70,
-    paddingVertical: 10,
-    paddingHorizontal: 62,
+    paddingVertical: wh * 0.0125,
+    paddingHorizontal: ww * 0.1722,
     justifyContent: 'center',
     alignItems: 'center',
   },
   yesText: {
-    fontSize: 15,
+    fontSize: ww * 0.0417,
     fontWeight: '700',
     color: '#FFFFFF',
     textAlign: 'center',

@@ -23,6 +23,10 @@ import {getMonthCards} from '@/api/getMonthCards';
 
 import * as RNFS from 'react-native-fs';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,7 +54,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
         .catch(error => {
           console.log('fetch receive cards failed', error);
         });
-    }, []),
+    }, [userId]),
   );
 
   const handleCardClick = card => {
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
-    fontSize: 20,
+    fontSize: ww * 0.056,
     fontWeight: '800',
     color: '#383838',
   },
@@ -169,39 +173,39 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: 20,
-    left: 24,
+    top: wh * 0.025,
+    left: ww * 0.067,
   },
   saveImg: {
-    width: 38,
-    height: 38,
+    width: ww * 0.1056,
+    height: ww * 0.1056,
   },
   saveBtn: {
     alignSelf: 'flex-end',
-    marginBottom: 16,
+    marginBottom: wh * 0.02,
   },
   clearbtn2: {
-    width: 24,
-    height: 24,
+    width: ww * 0.0667,
+    height: ww * 0.0667,
   },
   modalImage: {
-    width: 264,
-    height: 394,
+    width: ww * 0.733,
+    height: wh * 0.4925,
   },
   confirmationContainer: {
-    width: 312,
-    height: 52,
+    width: ww * 0.8667,
+    height: wh * 0.065,
     borderRadius: 10,
     backgroundColor: '#383838',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 25,
+    marginLeft: ww * 0.0694,
     zIndex: 2,
     position: 'absolute',
     top: '50%',
   },
   confirmationText: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '400',
     textAlign: 'center',
     color: '#FFFFFF',
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   space: {
-    height: 64,
+    height: wh * 0.08,
     width: '100%',
   },
 });

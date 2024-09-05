@@ -18,7 +18,7 @@ export default function MonthReceiveCard({monthCards, handleCardClick}) {
 
       <View style={styles.scrollCotainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {monthCards == undefined ? (
+          {monthCards === undefined ? (
             <Text style={styles.text}>최근 30일간 받은 카드가 없어요!</Text>
           ) : (
             monthCards.map(card => (

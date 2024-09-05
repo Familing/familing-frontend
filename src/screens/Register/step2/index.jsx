@@ -13,6 +13,10 @@ import {ProgressIndicator} from '../ProgressIndicator';
 import ClearButton from '@assets/images/button/clearbtn.png';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -87,86 +91,86 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   arrowImage: {
-    width: 20,
-    height: 15,
-    marginTop: 20,
-    marginLeft: 24,
+    width: ww * 0.0556,
+    height: wh * 0.01875,
+    marginTop: wh * 0.025,
+    marginLeft: ww * 0.0667,
   },
   titleContainer: {
     alignItems: 'center',
-    marginTop: 130,
-    marginLeft: 24,
+    marginTop: wh * 0.1625,
+    marginLeft: ww * 0.0667,
     flexDirection: 'row',
   },
   title: {
-    fontSize: 24,
+    fontSize: ww * 0.0667,
     fontWeight: '700',
     color: '#4D83F4',
   },
   subtitle: {
-    fontSize: 24,
+    fontSize: ww * 0.0667,
     fontWeight: '700',
     color: '#383838',
   },
   inputContainer: {
     flex: 1,
-    marginTop: 40,
+    marginTop: wh * 0.05,
   },
   input: {
-    width: 312,
-    height: 32,
-    fontSize: 16,
+    width: ww * 0.8667,
+    height: wh * 0.04,
+    fontSize: ww * 0.0444,
     fontWeight: '400',
     color: '#C5C5C5',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: 24,
+    marginLeft: ww * 0.0667,
   },
   line: {
-    width: 312,
+    width: ww * 0.8667,
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: 24,
+    marginLeft: ww * 0.0667,
     marginTop: 3,
   },
   clearbtnContainer: {
     flex: 1,
     position: 'absolute',
-    top: 150,
-    left: 288,
+    top: wh * 0.1875,
+    left: ww * 0.8,
   },
   clearButton: {
     flex: 1,
     position: 'absolute',
-    top: 273,
-    left: 308,
+    top: wh * 0.34125,
+    left: ww * 0.8556,
   },
   clearbtnImage: {
-    width: 24,
-    height: 24,
+    width: ww * 0.0667,
+    height: ww * 0.0667,
   },
   error: {
-    fontSize: 12,
+    fontSize: ww * 0.0333,
     fontWeight: '400',
     color: '#FF3434',
-    marginBottom: 274,
-    marginLeft: 24,
+    marginBottom: wh * 0.3425,
+    marginLeft: ww * 0.0667,
   },
   button: {
-    width: 312,
-    height: 40,
+    width: ww * 0.8667,
+    height: wh * 0.05,
     borderRadius: 70,
     backgroundColor: '#4D83F4',
     position: 'absolute',
-    top: 350,
-    left: 24,
+    top: wh * 0.4375,
+    left: ww * 0.0667,
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: ww * 0.0389,
     fontWeight: '700',
     color: '#FFFFFF',
     textAlign: 'center',
-    marginTop: 7,
+    marginTop: wh * 0.0175,
   },
 });

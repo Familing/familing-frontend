@@ -5,6 +5,10 @@ import React, {useEffect, useRef, useState} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import ChatHeader from '@/components/features/Chatting/header/ChatHeader';
 import {getChatList} from '@/api/getChattingList';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function Chatting({navigation}) {
   const [isSearch, setIsSearch] = useState(false);
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
   },
   messageList: {
     flexGrow: 1,
-    paddingHorizontal: 24,
-    bottom: 61,
+    paddingHorizontal: ww * 0.067,
+    bottom: wh * 0.07625,
   },
 });

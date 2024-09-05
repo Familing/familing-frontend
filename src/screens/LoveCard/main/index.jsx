@@ -16,6 +16,10 @@ import SendProfile from '../../../components/features/LoveCard/main/SendCardSect
 import {CustomHeader} from '../../../components/features/Layout/CustomHeader';
 import {BASE_URL} from '@/util/base_url';
 import axios from 'axios';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function LoveCardMainScreen({navigation}) {
   const [showAvatars, setShowAvatars] = useState(false);
@@ -162,14 +166,14 @@ export default function LoveCardMainScreen({navigation}) {
 
 const styles = StyleSheet.create({
   space: {
-    height: 64,
+    height: wh * 0.08,
     width: '100%',
   },
   container: {
     backgroundColor: '#fff',
   },
   profileContainer: {
-    marginTop: 10,
+    marginTop: wh * 0.0125,
   },
   modalContainer: {
     flex: 1,
@@ -184,40 +188,40 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalImage: {
-    width: 264,
-    height: 394,
-    marginBottom: 20,
+    width: ww * 0.733,
+    height: wh * 0.4925,
+    marginBottom: wh * 0.025,
   },
   buttonContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 8,
+    gap: wh * 0.01,
   },
   sendButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 156,
-    height: 40,
+    width: ww * 0.433,
+    height: wh * 0.05,
     borderRadius: 40,
     backgroundColor: '#4D83F4',
   },
   sendButtonText: {
-    fontSize: 14,
-    lineHeight: 17.47,
+    fontSize: ww * 0.0389,
+    lineHeight: wh * 0.0218,
     fontWeight: '700',
     color: '#FFFFFF',
   },
   cancelButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 156,
-    height: 40,
+    width: ww * 0.433,
+    height: wh * 0.05,
     borderRadius: 40,
     backgroundColor: '#FFFFFF',
   },
   cancelButtonText: {
-    fontSize: 14,
-    lineHeight: 17.47,
+    fontSize: ww * 0.0389,
+    lineHeight: wh * 0.0218,
     fontWeight: '700',
     color: '#383838',
   },
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 172,
+    height: wh * 0.215,
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
@@ -240,8 +244,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   clearButtonContainer: {
-    marginTop: 8,
-    marginRight: 8,
+    marginTop: wh * 0.01,
+    marginRight: ww * 0.0222,
     alignSelf: 'flex-end',
     height: 24,
     width: 24,
@@ -252,14 +256,14 @@ const styles = StyleSheet.create({
   },
   avatarBox: {
     flexDirection: 'row',
-    gap: 16,
-    marginLeft: 24,
+    gap: ww * 0.0444,
+    marginLeft: ww * 0.0667,
   },
   confirmationContainer: {
     position: 'absolute',
-    bottom: 60,
-    width: 312,
-    height: 52,
+    bottom: wh * 0.075,
+    width: ww * 0.8667,
+    height: wh * 0.065,
     borderRadius: 10,
     backgroundColor: '#383838',
     justifyContent: 'center',
@@ -269,12 +273,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   confirmationText: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '400',
     color: '#FFFFFF',
   },
   boldText: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '700',
     color: '#FFFFFF',
   },

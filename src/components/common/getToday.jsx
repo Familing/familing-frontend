@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function getToday() {
   const today = new Date();
   const formattedDate = `${today.getFullYear()}${String(

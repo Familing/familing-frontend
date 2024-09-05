@@ -8,6 +8,10 @@ import offBellIcon from '@assets/images/chatting/offBellIcon.png';
 
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const MenuScreen = () => {
   const [isAlertOn, setIsAlertOn] = useState(true);
@@ -107,19 +111,19 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     backgroundColor: '#fff',
-    width: 289,
+    width: ww * 0.802,
     height: '100%',
-    paddingHorizontal: 20,
+    paddingHorizontal: ww * 0.056,
   },
   title: {
-    fontSize: 20,
+    fontSize: ww * 0.056,
     fontWeight: '800',
-    lineHeight: 24.96,
+    lineHeight: wh * 0.0312,
     color: '#383838',
-    marginTop: 19,
+    marginTop: wh * 0.02375,
   },
   photoSection: {
-    marginTop: 28,
+    marginTop: wh * 0.035,
   },
   photoHeader: {
     display: 'flex',
@@ -132,51 +136,51 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 3,
-    marginTop: 12,
+    marginTop: wh * 0.015,
   },
   btnImg: {
-    width: 16,
-    height: 16,
+    width: ww * 0.044,
+    height: ww * 0.044,
   },
   innerImage: {
-    width: 60,
-    height: 60,
+    width: ww * 0.167,
+    height: ww * 0.167,
     borderRadius: 2,
   },
   leftImage: {
-    width: 60,
-    height: 60,
+    width: ww * 0.167,
+    height: ww * 0.167,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 2,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 2,
   },
   rightImage: {
-    width: 60,
-    height: 60,
+    width: ww * 0.167,
+    height: ww * 0.167,
     borderTopLeftRadius: 2,
     borderTopRightRadius: 4,
     borderBottomLeftRadius: 2,
     borderBottomRightRadius: 4,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: ww * 0.044,
     fontWeight: '700',
-    lineHeight: 19.97,
+    lineHeight: wh * 0.0249,
     color: '#383838',
   },
   profileSection: {
     display: 'flex',
-    marginTop: 20,
+    marginTop: wh * 0.025,
   },
   personSection: {
-    marginTop: 23,
+    marginTop: wh * 0.02875,
   },
   footer: {
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#F8F8F8',
-    height: 76,
+    height: wh * 0.095,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -185,11 +189,11 @@ const styles = StyleSheet.create({
   },
   bellWrapper: {
     position: 'absolute',
-    top: 26,
-    right: 20,
+    top: wh * 0.0325,
+    right: ww * 0.0556,
   },
   bellIcon: {
-    width: 24,
-    height: 24,
+    width: ww * 0.0667,
+    height: ww * 0.0667,
   },
 });

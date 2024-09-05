@@ -11,6 +11,10 @@ import axios from 'axios';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
 import {useFocusEffect} from '@react-navigation/native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function NotificationPage({navigation}) {
   const [yesterdayNotifications, setYesterdayNotifications] = useState([]);
@@ -94,52 +98,52 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    gap: 118,
-    marginTop: 20,
+    gap: ww * 0.328,
+    marginTop: wh * 0.025,
   },
   arrowImage: {
-    width: 20,
-    height: 15,
-    marginLeft: 24,
+    width: ww * 0.0556,
+    height: wh * 0.01875,
+    marginLeft: ww * 0.0667,
   },
   titleContainer: {
-    marginBottom: 25,
+    marginBottom: wh * 0.03125,
     alignItems: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: ww * 0.0556,
     fontWeight: '800',
     color: '#383838',
     textAlign: 'center',
   },
   separator: {
-    width: 390,
+    width: ww * 1.0833,
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
-    marginTop: 10,
-    marginBottom: 20,
+    marginTop: wh * 0.0125,
+    marginBottom: wh * 0.025,
     opacity: 1,
   },
   sectionContainer: {
-    marginLeft: 24,
+    marginLeft: ww * 0.0667,
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: ww * 0.0444,
     fontWeight: '800',
     color: '#383838',
   },
   notificationItem: {
-    marginLeft: 24,
-    marginBottom: 5,
+    marginLeft: ww * 0.0667,
+    marginBottom: wh * 0.00625,
   },
   notificationImage: {
-    width: 42,
-    height: 42,
-    marginRight: 5,
+    width: ww * 0.1167,
+    height: ww * 0.1167,
+    marginRight: ww * 0.0139,
   },
   notificationText: {
-    fontSize: 14,
+    fontSize: ww * 0.0389,
     fontWeight: '800',
     color: '#383838',
   },

@@ -6,6 +6,10 @@ import * as KakaoLogin from '@react-native-seoul/kakao-login';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import Cookies from '@react-native-cookies/cookies';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export default function Start({navigation}) {
   //kakao login
@@ -89,50 +93,50 @@ const styles = StyleSheet.create({
     backgroundColor: '#4D83F4',
   },
   textContainer: {
-    marginTop: 104,
-    marginBottom: 40,
+    marginTop: wh(104),
+    marginBottom: wh(40),
   },
   title: {
-    fontSize: 50,
+    fontSize: ww(50),
     fontWeight: '800',
     color: '#fff',
     textAlign: 'center',
-    lineHeight: 62.4,
-    marginBottom: 4,
+    lineHeight: wh(62.4),
+    marginBottom: wh(4),
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: ww(18),
     fontWeight: '400',
     textAlign: 'center',
     color: '#fff',
   },
   image: {
-    width: 220,
-    height: 220,
+    width: ww(220),
+    height: ww(220),
   },
   button: {
     backgroundColor: '#FFBE00',
-    paddingVertical: 12,
-    paddingHorizontal: 80,
+    paddingVertical: wh(12),
+    paddingHorizontal: ww(80),
     borderRadius: 32.27,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 312,
-    height: 50,
-    marginTop: 40,
+    width: ww(312),
+    height: wh(50),
+    marginTop: wh(40),
   },
   btnContainer: {
     flexDirection: 'row',
-    gap: 8,
+    gap: ww(8),
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: ww(16),
     color: '#371C09',
     fontWeight: '800',
     textAlign: 'center',
   },
   kakao: {
-    width: 28,
-    height: 28,
+    width: ww(28),
+    height: ww(28),
   },
 });

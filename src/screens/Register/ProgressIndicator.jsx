@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import {resize} from 'react-native-responsive-sizer';
+
+const ww = resize('ww', 360);
+const wh = resize('wh', 800);
 
 export const ProgressIndicator = ({currentStep}) => {
   return (
@@ -20,17 +24,17 @@ export const ProgressIndicator = ({currentStep}) => {
 const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: 'row',
-    marginTop: 20,
-    marginLeft: 24,
+    marginTop: wh(20),
+    marginLeft: ww(24),
   },
   stepIndicator: {
-    width: 8,
-    height: 8,
+    width: ww(8),
+    height: ww(8),
     borderRadius: 5,
-    marginHorizontal: 8,
+    marginHorizontal: ww(8),
   },
   activeStep: {
-    width: 40,
+    width: ww(40),
     borderRadius: 32,
     backgroundColor: '#4D83F4',
   },

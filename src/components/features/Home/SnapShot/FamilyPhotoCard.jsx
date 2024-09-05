@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
-import mom from '../../../../assets/images/photocard/photocard2.png';
+// import mom from '../../../../assets/images/photocard/photocard2.png';
 import {resize} from 'react-native-responsive-sizer';
 
 const ww = resize('ww', 360);

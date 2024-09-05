@@ -16,7 +16,7 @@ export default function TodayReceiveCard({todayCards, handleCardClick}) {
 
       <View style={styles.scrollContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {todayCards == undefined ? (
+          {todayCards === undefined ? (
             <Text style={styles.text}>오늘 받은 카드가 없어요!</Text>
           ) : (
             todayCards.map(card => (
