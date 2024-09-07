@@ -137,6 +137,9 @@ const styles = StyleSheet.create({
     color: '#383838',
   },
   notificationItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
     marginLeft: 24,
     marginBottom: 5,
   },
@@ -144,6 +147,7 @@ const styles = StyleSheet.create({
     width: 42,
     height: 42,
     marginRight: 5,
+    borderRadius: 50,
   },
   notificationText: {
     fontSize: 14,

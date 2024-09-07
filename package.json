@@ -41,6 +41,7 @@
     "react-native-select-dropdown": "^4.0.1",
     "react-native-svg": "^15.5.0",
     "react-native-swiper": "^1.6.0",
+    "react-native-system-navigation-bar": "^2.6.4",
     "react-native-vector-icons": "^10.1.0",
     "sockjs-client": "^1.6.1",
     "text-encoding": "^0.7.0",

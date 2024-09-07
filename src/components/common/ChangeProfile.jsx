@@ -20,9 +20,6 @@ import getToday from './getToday';
 export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   const handleCamera = async () => {
     await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
-    await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-    );
 
     const result = await launchCamera({
       mediaType: 'photo',
@@ -43,6 +40,10 @@ export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   };
 
   const handleGallery = async () => {
+    await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+    );
+
     const result = await launchImageLibrary({
       mediaType: 'photo',
       maxHeight: 150,
@@ -64,6 +65,10 @@ export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
   const postImage = (localUri, fileName, type) => {
     const today = getToday();
 
+    console.log('localUri:', localUri);
+    console.log('fileName:', fileName);
+    console.log('type:', type);
+
     //이미지 FormData 객체 생성
     const ImgFormData = new FormData();
     const imgFile = {
@@ -74,6 +79,7 @@ export const ChangeProfile = ({visible, onClose, setImageSelected}) => {
 
     ImgFormData.append('profileImg', imgFile);
 
+    console.log(ImgFormData._parts[0].profileImg);
     axios
       .patch(`${BASE_URL}/api/v1/user/profile`, ImgFormData, {
         headers: {'Content-Type': 'multipart/form-data'},

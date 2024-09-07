@@ -7,6 +7,7 @@ import {
   Modal,
   Text,
   ScrollView,
+  PermissionsAndroid,
 } from 'react-native';
 import SendInfo from '../../../components/features/LoveCard/detail/sendInfo';
 import TodayReceiveCard from '../../../components/features/LoveCard/detail/todayReceiveCard';
@@ -68,6 +69,10 @@ export default function LoveCardDetailScreen({route, navigation}) {
 
   const handleSaveImage = async () => {
     try {
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      );
+
       const fileName = selectedCard.image_url.split('/').pop();
       const localFilePath = `file:///data/user/0/com.familing/cache/${new Date().getTime()}_${fileName}`;
 

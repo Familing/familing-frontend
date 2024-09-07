@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import switchbtn from '@assets/images/button/switchbtn.png';
-import arrowbtn from '@assets/images/button/arrowbtn.png';
+import arrowbtn from '@assets/images/button/arrowbtn2.png';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import ChangeProfile from '@/components/common/ChangeProfile';

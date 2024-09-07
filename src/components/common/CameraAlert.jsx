@@ -20,15 +20,13 @@ import getToday from './getToday';
 export const CameraAlert = ({visible, onClose, setUploadImage}) => {
   const handleCamera = async () => {
     await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
-    await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-    );
 
     const result = await launchCamera({
       mediaType: 'photo',
       cameraType: 'back',
-      maxHeight: 150,
-      maxWidth: 150,
+      maxHeight: 1024,
+      maxWidth: 1024,
+      quality: 1,
     });
     if (result.didCancel) {
       onClose();
@@ -43,10 +41,15 @@ export const CameraAlert = ({visible, onClose, setUploadImage}) => {
   };
 
   const handleGallery = async () => {
+    await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+    );
+
     const result = await launchImageLibrary({
       mediaType: 'photo',
-      maxHeight: 150,
-      maxWidth: 150,
+      maxHeight: 1024,
+      maxWidth: 1024,
+      quality: 1,
     });
     if (result.didCancel) {
       onClose();
@@ -73,14 +76,13 @@ export const CameraAlert = ({visible, onClose, setUploadImage}) => {
     };
 
     ImgFormData.append('snapshot_img', imgFile);
-
     axios
       .post(`${BASE_URL}/api/v1/snapshots/${today}/users`, ImgFormData, {
         headers: {'Content-Type': 'multipart/form-data'},
       })
       .then(response => {
         console.log(response.data);
-        setUploadImage(today);
+        setUploadImage(localUri);
       })
       .catch(error => {
         console.error('snapShot image post failed,', error);

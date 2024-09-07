@@ -23,7 +23,7 @@ export const RegisterStep2 = ({navigation}) => {
         code: code,
       });
 
-      if (response.data.code) {
+      if (response.data.code === 200) {
         navigation.navigate('RegisterStep4');
         console.log(response.data);
       } else {

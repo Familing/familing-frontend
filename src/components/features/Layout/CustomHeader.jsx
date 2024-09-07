@@ -9,9 +9,11 @@ export const CustomHeader = () => {
 
   return (
     <View style={headerStyles.wrapper}>
-      <View style={headerStyles.logo}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Home')}
+        style={headerStyles.logo}>
         <LogoIcon />
-      </View>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('NotificationPage')}>
         <View style={headerStyles.badgeContainer}>
           <BellIcon />

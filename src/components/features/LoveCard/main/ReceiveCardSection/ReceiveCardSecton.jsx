@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   cardContainer: {
     gap: 16,
     flexDirection: 'row',
-    height: 91,
     marginTop: 16,
   },
 });

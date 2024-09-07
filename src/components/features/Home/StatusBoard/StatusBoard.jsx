@@ -22,7 +22,7 @@ export default function StatusBorad() {
     }, [selectedItem]),
   );
 
-  if (Object.keys(myStatus).length === 0 || familyStatus.length === 0) {
+  if (Object.keys(myStatus).length === 0) {
     return <Text>로딩중이에요!</Text>;
   }
 

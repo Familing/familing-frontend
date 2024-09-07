@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     position: 'absolute',
     top: 22,
-    left: 22,
+    left: 24,
   },
   backIcon: {
     width: 24,

@@ -7,7 +7,7 @@ import {BASE_URL} from '@/util/base_url';
 import getToday from '@/components/common/getToday';
 import {getSnapshotTime} from '@/api/getSnapshotTime';
 import {useFocusEffect} from '@react-navigation/native';
-import defaultImg from '@assets/images/photocard/defaultImg.png';
+import defaultImg from '@assets/images/photocard/photocard3.png';
 
 export const SnapShot = () => {
   const [familySnapshot, setFamiliySnapshot] = useState([]);
@@ -65,7 +65,7 @@ export const SnapShot = () => {
     }
   };
 
-  if (Object.keys(mySnapShot).length === 0 || familySnapshot.length === 0) {
+  if (snapshotTitle === '') {
     return <Text>로딩중이에요!</Text>;
   }
 
@@ -96,14 +96,16 @@ export const SnapShot = () => {
         )}
 
         <View style={styles.cardContainer}>
-          <PhotoCard
-            profile={mySnapShot ? mySnapShot.profile_img : defaultImg}
-            uploadImage={
-              mySnapShot.snapshot_img ? mySnapShot.snapshot_img : 'EMPTY'
-            }
-            isShowSnapshot={isShowSnapshot}
-            setUploadImage={setUploadImage}
-          />
+          {Object.keys(mySnapShot).length != 0 && (
+            <PhotoCard
+              profile={mySnapShot ? mySnapShot.profile_img : defaultImg}
+              uploadImage={
+                mySnapShot.snapshot_img ? mySnapShot.snapshot_img : 'EMPTY'
+              }
+              isShowSnapshot={isShowSnapshot}
+              setUploadImage={setUploadImage}
+            />
+          )}
           {familySnapshot &&
             familySnapshot.map((person, index) => (
               <FamilyPhotoCard

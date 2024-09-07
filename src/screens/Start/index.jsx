@@ -27,7 +27,7 @@ export default function Start({navigation}) {
           },
         );
 
-        //로그인 후 화면 이동
+        // 로그인 후 화면 이동
         const hasFamily = await handleFamily();
         if (hasFamily === false) {
           navigation.navigate('RegisterScreen');
@@ -67,17 +67,19 @@ export default function Start({navigation}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>Familing</Text>
-        <Text style={styles.subtitle}>더 가까운 가족이 되는 중</Text>
-      </View>
-      <Image source={BannerImg} style={styles.image} />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <View style={styles.btnContainer}>
-          <Image source={kakao} style={styles.kakao} />
-          <Text style={styles.buttonText}>카카오로 시작하기</Text>
+      <View style={styles.wrapper}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>Familing</Text>
+          <Text style={styles.subtitle}>더 가까운 가족이 되는 중</Text>
         </View>
-      </TouchableOpacity>
+        <Image source={BannerImg} style={styles.image} />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <View style={styles.btnContainer}>
+            <Image source={kakao} style={styles.kakao} />
+            <Text style={styles.buttonText}>카카오로 시작하기</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -86,11 +88,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#4D83F4',
   },
   textContainer: {
-    marginTop: 104,
     marginBottom: 40,
+  },
+  wrapper: {
+    alignItems: 'center',
   },
   title: {
     fontSize: 50,
@@ -124,6 +129,8 @@ const styles = StyleSheet.create({
   btnContainer: {
     flexDirection: 'row',
     gap: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 16,
