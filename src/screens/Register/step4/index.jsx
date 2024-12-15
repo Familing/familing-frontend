@@ -15,10 +15,6 @@ import {ChangeProfile} from '@/components/common/ChangeProfile';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const RegisterStep4 = ({navigation}) => {
   const [code, setCode] = useState('');
@@ -103,65 +99,65 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     justifyContent: 'center',
-    marginTop: wh(130),
-    marginLeft: ww(124),
+    marginTop: 130,
+    marginLeft: 124,
   },
   image: {
     borderRadius: 60,
-    width: ww(112),
-    height: ww(112),
+    width: 112,
+    height: 112,
   },
   image2: {
-    width: ww(28),
-    height: ww(28),
-    marginLeft: ww(80),
+    width: 28,
+    height: 28,
+    marginLeft: 80,
     position: 'absolute',
-    top: wh(90),
+    top: 90,
   },
   titleContainer: {
-    marginTop: wh(32),
-    marginLeft: ww(24),
+    marginTop: 32,
+    marginLeft: 24,
   },
   title: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
   },
   inputContainer: {
     flex: 1,
-    marginTop: wh(5),
+    marginTop: 5,
   },
   input: {
-    width: ww(312),
-    height: wh(32),
-    fontSize: ww(16),
+    width: 312,
+    height: 32,
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: ww(24),
+    marginLeft: 24,
   },
   line: {
-    width: ww(312),
+    width: 312,
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: ww(24),
-    marginTop: wh(3),
+    marginLeft: 24,
+    marginTop: 3,
   },
   button: {
-    width: ww(312),
-    height: wh(40),
+    width: 312,
+    height: 40,
     borderRadius: 70,
     backgroundColor: '#4D83F4',
     position: 'absolute',
-    top: wh(400),
-    left: ww(24),
+    top: 400,
+    left: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
   },

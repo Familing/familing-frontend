@@ -1,10 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import TodayCards from './TodayCards';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function TodayReceiveCard({todayCards, handleCardClick}) {
   return (
@@ -16,17 +12,14 @@ export default function TodayReceiveCard({todayCards, handleCardClick}) {
 
       <View style={styles.scrollContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {todayCards === undefined ? (
-            <Text style={styles.text}>오늘 받은 카드가 없어요!</Text>
-          ) : (
+          {todayCards.length != 0 &&
             todayCards.map(card => (
               <TodayCards
                 key={card.id}
                 handleCardClick={handleCardClick}
                 card={card.lovecardResponse}
               />
-            ))
-          )}
+            ))}
         </ScrollView>
       </View>
     </View>
@@ -35,28 +28,27 @@ export default function TodayReceiveCard({todayCards, handleCardClick}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: ww(24),
-    marginTop: wh(32),
+    marginLeft: 24,
+    marginTop: 32,
   },
   title1: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    marginBottom: wh(4),
+    marginBottom: 4,
   },
   subtitle1: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '500',
     color: '#383838',
   },
   scrollContainer: {
-    alignItems: 'center',
     flexDirection: 'row',
-    marginTop: wh(16),
-    height: wh(210),
+    marginTop: 16,
+    height: 210,
   },
   text: {
-    marginTop: wh(90),
+    marginTop: 90,
     color: '#C5C5C5',
   },
 });

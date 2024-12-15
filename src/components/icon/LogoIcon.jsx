@@ -1,15 +1,10 @@
-import React from 'react';
 import {Circle, Path, Rect, Svg} from 'react-native-svg';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const LogoIcon = () => {
   return (
     <Svg
-      width={ww(37)}
-      height={wh(36)}
+      width="37"
+      height="36"
       viewBox="0 0 37 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

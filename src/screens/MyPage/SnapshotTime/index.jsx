@@ -9,10 +9,6 @@ import {
 } from 'react-native';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {setSnapshotTime} from '@/api/setSnapshotTime';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function SnapshotTimeScreen({navigation}) {
   const [selectedTime, setSelectedTime] = useState('10:00');
@@ -108,68 +104,68 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
-    marginTop: wh(20),
-    gap: ww(75),
+    marginTop: 20,
+    gap: 75,
   },
   arrowImage: {
-    width: ww(20),
-    height: wh(15),
-    marginLeft: ww(24),
+    width: 20,
+    height: 15,
+    marginLeft: 24,
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
-    marginTop: wh(-5),
+    marginTop: -5,
   },
   subtitle: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    marginTop: wh(50),
-    marginLeft: ww(24),
+    marginTop: 50,
+    marginLeft: 24,
   },
   sectionBox1: {
     flexDirection: 'row',
-    gap: ww(4),
-    marginTop: wh(10),
-    marginLeft: ww(24),
+    gap: 4,
+    marginTop: 10,
+    marginLeft: 24,
   },
   sectionTitle1: {
-    fontSize: ww(20),
+    fontSize: 20,
     color: '#383838',
-    lineHeight: wh(25),
+    lineHeight: 25,
   },
   sectionTitle2: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
   },
   sectionBox2: {
-    width: ww(36),
-    height: wh(20),
+    width: 36,
+    height: 20,
     flexDirection: 'row',
-    gap: ww(4),
+    gap: 4,
   },
   changeButton: {
-    width: ww(312),
-    height: wh(40),
+    width: 312,
+    height: 40,
     borderRadius: 6,
     backgroundColor: '#4D83F4',
     justifyContent: 'center',
     alignContent: 'center',
-    marginLeft: ww(24),
-    marginBottom: wh(10),
+    marginLeft: 24,
+    marginBottom: 10,
   },
   buttonText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
     textAlign: 'center',
   },
   timeButton: {
-    width: ww(100),
-    height: wh(36),
+    width: 100,
+    height: 36,
     borderRadius: 6,
     borderWidth: 1,
     borderColor: '#C5C5C5',
@@ -178,8 +174,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   selectedTime: {
-    width: ww(100),
-    height: wh(36),
+    width: 100,
+    height: 36,
     borderRadius: 6,
     borderWidth: 1,
     borderColor: '#4D83F4',
@@ -188,13 +184,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   defaultTime: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
     color: '#C5C5C5',
     textAlign: 'center',
   },
   selectedTimeText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#4D83F4',
     textAlign: 'center',
@@ -202,7 +198,7 @@ const styles = StyleSheet.create({
   timeRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: wh(4),
-    marginHorizontal: ww(25),
+    marginVertical: 4,
+    marginHorizontal: 25,
   },
 });

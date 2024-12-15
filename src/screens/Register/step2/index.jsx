@@ -6,27 +6,18 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  Alert,
 } from 'react-native';
 import axios from 'axios';
 import {ProgressIndicator} from '../ProgressIndicator';
 import ClearButton from '@assets/images/button/clearbtn.png';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const RegisterStep2 = ({navigation}) => {
   const [code, setCode] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleJoin = async () => {
-    if (code.trim() === '') {
-      Alert.alert('필수 입력입니다.');
-      return;
-    }
     try {
       const response = await axios.post(`${BASE_URL}/api/v1/family/user`, {
         code: code,
@@ -45,7 +36,6 @@ export const RegisterStep2 = ({navigation}) => {
     }
 
     setErrorMessage('※ 코드가 올바르지 않습니다.');
-    navigation.navigate('RegisterStep4');
   };
 
   const clearInput = () => {
@@ -91,86 +81,86 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   arrowImage: {
-    width: ww(20),
-    height: wh(15),
-    marginTop: wh(20),
-    marginLeft: ww(24),
+    width: 20,
+    height: 15,
+    marginTop: 20,
+    marginLeft: 24,
   },
   titleContainer: {
     alignItems: 'center',
-    marginTop: wh(130),
-    marginLeft: ww(24),
+    marginTop: 130,
+    marginLeft: 24,
     flexDirection: 'row',
   },
   title: {
-    fontSize: ww(24),
+    fontSize: 24,
     fontWeight: '700',
     color: '#4D83F4',
   },
   subtitle: {
-    fontSize: ww(24),
+    fontSize: 24,
     fontWeight: '700',
     color: '#383838',
   },
   inputContainer: {
     flex: 1,
-    marginTop: wh(40),
+    marginTop: 40,
   },
   input: {
-    width: ww(312),
-    height: wh(32),
-    fontSize: ww(16),
+    width: 312,
+    height: 32,
+    fontSize: 16,
     fontWeight: '400',
     color: '#C5C5C5',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: ww(24),
+    marginLeft: 24,
   },
   line: {
-    width: ww(312),
+    width: 312,
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: ww(24),
+    marginLeft: 24,
     marginTop: 3,
   },
   clearbtnContainer: {
     flex: 1,
     position: 'absolute',
-    top: wh(150),
-    left: ww(288),
+    top: 150,
+    left: 288,
   },
   clearButton: {
     flex: 1,
     position: 'absolute',
-    top: wh(273),
-    left: ww(308),
+    top: 273,
+    left: 308,
   },
   clearbtnImage: {
-    width: ww(24),
-    height: ww(24),
+    width: 24,
+    height: 24,
   },
   error: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '400',
     color: '#FF3434',
-    marginBottom: wh(274),
-    marginLeft: ww(24),
+    marginBottom: 274,
+    marginLeft: 24,
   },
   button: {
-    width: ww(312),
-    height: wh(40),
+    width: 312,
+    height: 40,
     borderRadius: 70,
     backgroundColor: '#4D83F4',
     position: 'absolute',
-    top: wh(350),
-    left: ww(24),
+    top: 350,
+    left: 24,
   },
   buttonText: {
-    fontSize: ww(14),
+    fontSize: 14,
     fontWeight: '700',
     color: '#FFFFFF',
     textAlign: 'center',
-    marginTop: wh(7),
+    marginTop: 7,
   },
 });

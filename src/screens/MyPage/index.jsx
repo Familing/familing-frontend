@@ -9,27 +9,23 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import switchbtn from '@assets/images/button/switchbtn.png';
-import arrowbtn from '@assets/images/button/arrowbtn2.png';
+import arrowbtn from '@assets/images/button/arrowbtn.png';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import ChangeProfile from '@/components/common/ChangeProfile';
 import {useFocusEffect} from '@react-navigation/native';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function MyPage({navigation}) {
   const [alertVisible, setAlertVisible] = useState(false);
-  const [nickname, setNickname] = useState('');
-  const [realname, setRealname] = useState('');
-  const [profile, setProfile] = useState('');
+  const [nickname, setNickname] = useState(null);
+  const [realname, setRealname] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useFocusEffect(
     useCallback(() => {
       fetchUserData();
       fetchNickname();
-    }, []),
+    }, [profile]),
   );
 
   const fetchNickname = async () => {
@@ -49,6 +45,10 @@ export default function MyPage({navigation}) {
       console.error('Error fetching data:', error);
     }
   };
+
+  if (nickname === null || realname === null || profile === null) {
+    return <Text>로딩중이에요!</Text>;
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -124,180 +124,185 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    width: ww(360),
-    height: wh(800),
+    width: 360,
+    height: 800,
   },
   headerContainer: {
     justifyContent: 'flex-start',
-    marginLeft: ww(24),
-    marginTop: wh(20),
+    marginLeft: 24,
+    marginTop: 20,
   },
   header: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
+    justifyContent: 'flex-start',
   },
   profileImageContainer: {
     justifyContent: 'center',
-    width: ww(92),
-    height: ww(92),
-    marginTop: wh(25),
-    marginLeft: ww(134),
+    width: 92,
+    height: 92,
+    marginTop: 25,
+    marginLeft: 134,
   },
   profileImage1: {
     borderRadius: 50,
-    width: ww(92),
-    height: ww(92),
+    width: 92,
+    height: 92,
   },
   profileImage2: {
-    width: ww(28),
-    height: ww(28),
+    width: 28,
+    height: 28,
     position: 'absolute',
     bottom: 0,
     right: 0,
   },
   profileContainer: {
-    width: ww(312),
-    height: wh(121),
+    width: 312,
+    height: 121,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#E7E7E7',
-    marginTop: wh(28),
-    marginLeft: ww(24),
+    marginTop: 28,
+    marginLeft: 24,
   },
   nicknameTitle1: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
     position: 'absolute',
-    marginTop: wh(21),
-    marginLeft: ww(10),
+    marginTop: 21,
+    marginLeft: 10,
   },
   nicknameText1: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
     color: '#B3B3B3',
-    marginTop: wh(21),
-    marginLeft: ww(220),
+    marginTop: 21,
+    marginLeft: 220,
   },
   arrowButton1: {
-    width: ww(18),
-    height: ww(18),
-    marginTop: wh(21),
-    marginLeft: ww(12),
+    width: 18,
+    height: 18,
+    position: 'absolute',
+    top: 23,
+    left: 10,
   },
   separator1: {
-    width: ww(310),
+    width: 310,
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
-    marginTop: wh(20),
+    marginTop: 20,
+    opacity: 1,
   },
   nicknameTitle2: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
-    marginTop: wh(15),
-    marginLeft: ww(12),
+    marginTop: 15,
+    marginLeft: 12,
   },
   nicknameText2: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
     color: '#B3B3B3',
-    marginTop: wh(15),
-    marginLeft: ww(205),
+    marginTop: 15,
+    marginLeft: 205,
   },
   profileContainer2: {
-    width: ww(312),
-    height: wh(181),
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#E7E7E7',
-    marginTop: wh(20),
-    marginLeft: ww(24),
-  },
-  nicknameTitle3: {
-    fontSize: ww(16),
-    fontWeight: '700',
-    color: '#383838',
-    marginTop: wh(21),
-    marginLeft: ww(12),
-  },
-  arrowButton2: {
-    width: ww(18),
-    height: ww(18),
-    marginTop: wh(25),
-    marginLeft: ww(200),
-  },
-  separator2: {
-    width: ww(311),
-    height: StyleSheet.hairlineWidth,
-    borderTopWidth: 1,
-    borderColor: '#E7E7E7',
-    marginTop: wh(20),
-  },
-  nicknameTitle4: {
-    fontSize: ww(16),
-    fontWeight: '700',
-    color: '#383838',
-    marginTop: wh(15),
-    marginLeft: ww(12),
-  },
-  nicknameText3: {
-    fontSize: ww(16),
-    fontWeight: '400',
-    color: '#B3B3B3',
-    marginTop: wh(15),
-    marginLeft: ww(112),
-  },
-  arrowButton3: {
-    width: ww(18),
-    height: ww(18),
-    marginTop: wh(18),
-    marginLeft: ww(14),
-  },
-  separator3: {
-    width: ww(311),
-    height: StyleSheet.hairlineWidth,
-    borderTopWidth: 1,
-    borderColor: '#E7E7E7',
-    marginTop: wh(20),
-  },
-  nicknameTitle5: {
-    fontSize: ww(16),
-    fontWeight: '700',
-    color: '#383838',
-    marginTop: wh(15),
-    marginLeft: ww(12),
-  },
-  arrowButton4: {
-    width: ww(18),
-    height: ww(18),
-    marginTop: wh(20),
-    marginLeft: ww(200),
-  },
-  profileContainer3: {
-    width: ww(312),
-    height: wh(61),
+    width: 312,
+    height: 181,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#E7E7E7',
     marginTop: 20,
-    marginLeft: ww(24),
-    marginBottom: wh(20),
+    marginLeft: 24,
   },
-  nicknameTitle6: {
-    fontSize: ww(16),
+  nicknameTitle3: {
+    fontSize: 16,
     fontWeight: '700',
     color: '#383838',
-    marginTop: wh(16),
-    marginLeft: ww(12),
+    marginTop: 21,
+    marginLeft: 12,
+  },
+  arrowButton2: {
+    width: 18,
+    height: 18,
+    marginTop: 25,
+    marginLeft: 200,
+  },
+  separator2: {
+    width: 311,
+    height: StyleSheet.hairlineWidth,
+    borderTopWidth: 1,
+    borderColor: '#E7E7E7',
+    marginTop: 20,
+    opacity: 1,
+  },
+  nicknameTitle4: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#383838',
+    marginTop: 15,
+    marginLeft: 12,
+  },
+  nicknameText3: {
+    fontSize: 16,
+    fontWeight: '400',
+    color: '#B3B3B3',
+    marginTop: 15,
+    marginLeft: 112,
+  },
+  arrowButton3: {
+    width: 18,
+    height: 18,
+    marginTop: 18,
+    marginLeft: 12,
+  },
+  separator3: {
+    width: 311,
+    height: StyleSheet.hairlineWidth,
+    borderTopWidth: 1,
+    borderColor: '#E7E7E7',
+    marginTop: 20,
+    opacity: 1,
+  },
+  nicknameTitle5: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#383838',
+    marginTop: 15,
+    marginLeft: 12,
+  },
+  arrowButton4: {
+    width: 18,
+    height: 18,
+    marginTop: 20,
+    marginLeft: 200,
+  },
+  profileContainer3: {
+    width: 312,
+    height: 61,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E7E7E7',
+    marginTop: 20,
+    marginLeft: 24,
+    marginBottom: 20,
+  },
+  nicknameTitle6: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#383838',
+    marginTop: 16,
+    marginLeft: 12,
   },
   arrowButton5: {
-    width: ww(18),
-    height: ww(18),
-    marginTop: wh(20),
-    marginLeft: ww(150),
+    width: 18,
+    height: 18,
+    marginTop: 20,
+    marginLeft: 150,
   },
   nicknameContainer: {
     flexDirection: 'row',

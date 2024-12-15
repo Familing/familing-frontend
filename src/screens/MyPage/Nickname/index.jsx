@@ -11,10 +11,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Arrow from '@assets/images/register/arrowImg.png';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function NicknameScreen({navigation}) {
   const [nickname, setNickname] = useState(nickname);
@@ -68,66 +64,66 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
-    marginTop: wh(20),
-    gap: ww(105),
+    marginTop: 20,
+    gap: 105,
   },
   arrowImage: {
-    width: ww(20),
-    height: wh(15),
-    marginLeft: ww(24),
+    width: 20,
+    height: 15,
+    marginLeft: 24,
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
-    marginTop: wh(-5),
+    marginTop: -5,
   },
   nicknameContainer: {
-    width: ww(312),
-    height: wh(68),
+    width: 312,
+    height: 68,
     flexDirection: 'column',
-    gap: wh(16),
-    marginTop: wh(10),
+    gap: 16,
+    marginTop: 10,
   },
   subtitle: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    marginTop: wh(40),
-    marginLeft: ww(24),
+    marginTop: 40,
+    marginLeft: 24,
   },
   inputContainer: {
     flex: 1,
   },
   input: {
-    width: ww(312),
-    height: wh(32),
-    fontSize: ww(16),
+    width: 312,
+    height: 32,
+    fontSize: 16,
     fontWeight: '400',
     color: '#C5C5C5',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: ww(24),
+    marginLeft: 24,
   },
   line: {
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: ww(24),
-    marginTop: wh(3),
+    marginLeft: 24,
+    marginTop: 3,
   },
   button: {
-    width: ww(312),
-    height: wh(40),
+    width: 312,
+    height: 40,
     borderRadius: 6,
     backgroundColor: '#4D83F4',
-    marginTop: wh(300),
-    marginLeft: ww(24),
+    marginTop: 300,
+    marginLeft: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
   },

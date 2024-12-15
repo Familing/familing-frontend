@@ -16,10 +16,6 @@ import {BlurView} from '@react-native-community/blur';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import getToday from './getToday';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const CameraAlert = ({visible, onClose, setUploadImage}) => {
   const handleCamera = async () => {
@@ -143,63 +139,65 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalContainer: {
-    width: ww(312),
-    height: wh(153),
+    width: 312,
+    height: 153,
     backgroundColor: '#fff',
     borderRadius: 6,
     alignItems: 'center',
   },
   close: {
     position: 'absolute',
-    top: wh(10),
-    right: ww(10),
+    top: 10,
+    right: 10,
   },
   img: {
-    width: ww(24),
-    height: wh(24),
+    width: 24,
+    height: 24,
   },
   title: {
     color: '#4D83F4',
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '700',
-    marginTop: wh(30),
+    marginTop: 30,
   },
   btnContainer: {
+    display: 'flex',
     flexDirection: 'row',
-    gap: ww(6),
-    marginTop: wh(25),
+    gap: 6,
+    marginTop: 25,
   },
   btnInnerContainer: {
+    display: 'flex',
     flexDirection: 'row',
-    gap: ww(8),
+    gap: 8,
   },
   cameraBtn: {
-    width: ww(136),
-    height: wh(40),
-    borderRadius: wh(38),
+    width: 136,
+    height: 40,
+    borderRadius: 38,
     backgroundColor: '#EEEEEE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pictureBtn: {
-    width: ww(136),
-    height: wh(40),
-    borderRadius: wh(38),
+    width: 136,
+    height: 40,
+    borderRadius: 38,
     backgroundColor: '#4D83F4',
     alignItems: 'center',
     justifyContent: 'center',
   },
   cameraText: {
     color: '#383838',
-    fontSize: ww(14),
+    fontSize: 14,
     fontWeight: '700',
-    lineHeight: wh(23),
+    lineHeight: 23,
   },
   pictureText: {
     color: '#FFFFFF',
-    fontSize: ww(14),
+    fontSize: 14,
     fontWeight: '700',
-    lineHeight: wh(23),
+    lineHeight: 23,
   },
 });
 

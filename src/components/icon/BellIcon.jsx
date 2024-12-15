@@ -1,19 +1,14 @@
-import React from 'react';
 import {ClipPath, Defs, G, Mask, Path, Rect, Svg} from 'react-native-svg';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const BellIcon = () => {
   return (
     <Svg
-      width={ww(25)}
-      height={wh(25)}
+      width="25"
+      height="25"
       viewBox="0 0 25 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
-      <G clipPath="url(#clip0_102_2494)">
+      <G clip-path="url(#clip0_102_2494)">
         <Mask
           id="mask0_102_2494"
           style="mask-type:alpha"

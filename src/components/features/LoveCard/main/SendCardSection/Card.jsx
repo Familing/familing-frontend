@@ -1,9 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function Card({
   loveCard,
@@ -28,10 +24,10 @@ export default function Card({
 
 const styles = StyleSheet.create({
   container: {
-    marginRight: ww(12),
+    marginRight: 12,
   },
   image: {
-    width: ww(140),
-    height: wh(210),
+    width: 140,
+    height: 210,
   },
 });

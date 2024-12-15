@@ -4,10 +4,6 @@ import selectArrow from '@assets/images/button/selectArrow.png';
 import {getStatuses} from '@/api/getStatuses';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function DropdownSelectBox({
   myStatus,
@@ -30,7 +26,7 @@ export default function DropdownSelectBox({
       })
       .then(response => {
         console.log(response.data.result);
-        setSelectedItem(item);
+        setSelectedItem(item.text);
         setDropdownVisible(false);
       })
       .catch(error => {
@@ -56,16 +52,10 @@ export default function DropdownSelectBox({
               key={item.id}
               style={[
                 styles.item,
-                item.id === selectedItem.id && styles.selectedItem,
+                item.text === selectedItem && styles.selectedItem,
               ]}
               onPress={() => handleSelectItem(item)}>
-              <Text
-                style={[
-                  styles.itemText,
-                  item.id === selectedItem.id && styles.selectedItem,
-                ]}>
-                {item.text}
-              </Text>
+              <Text style={[styles.itemText]}>{item.text}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -76,24 +66,25 @@ export default function DropdownSelectBox({
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
+    position: 'absolute',
+    right: 0,
     zIndex: 100,
   },
   arrowImg: {
-    width: ww(10),
-    height: wh(6),
+    width: 10,
+    height: 6,
   },
   selectBox: {
     zIndex: 101,
-    height: wh(28),
-    width: ww(88),
+    height: 28,
+    width: 88,
     backgroundColor: '#4D83F4',
     borderRadius: 40,
-    paddingHorizontal: ww(14),
-    paddingVertical: wh(6),
+    paddingHorizontal: 14,
+    paddingVertical: 6,
   },
   textContainer: {
-    gap: wh(4),
+    gap: 4,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -101,16 +92,16 @@ const styles = StyleSheet.create({
   selectedText: {
     color: '#fff',
     fontWeight: '500',
-    fontSize: ww(12),
+    fontSize: 12,
   },
   dropdown: {
     zIndex: 99,
     position: 'absolute',
-    top: wh(14),
-    width: ww(88),
+    top: 14,
+    width: 88,
     backgroundColor: '#fff',
     borderRadius: 8,
-    paddingTop: wh(14),
+    paddingTop: 14,
     alignItems: 'center',
     //shadow
     shadowColor: '#000000',
@@ -123,21 +114,21 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   item: {
-    height: wh(16),
-    width: ww(77),
+    height: 16,
+    width: 77,
     justifyContent: 'center',
-    paddingVertical: wh(2),
-    paddingLeft: ww(4),
+    paddingVertical: 2,
+    paddingLeft: 4,
     borderRadius: 2,
-    marginVertical: wh(2),
+    marginVertical: 2,
   },
   selectedItem: {
     backgroundColor: '#DBE6FD',
   },
   itemText: {
     color: '#383838',
-    fontSize: ww(10),
+    fontSize: 10,
     fontWeight: '500',
-    lineHeight: wh(12.48),
+    lineHeight: 12.48,
   },
 });

@@ -23,10 +23,6 @@ import {getMonthCards} from '@/api/getMonthCards';
 
 import * as RNFS from 'react-native-fs';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function LoveCardDetailScreen({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -54,7 +50,7 @@ export default function LoveCardDetailScreen({route, navigation}) {
         .catch(error => {
           console.log('fetch receive cards failed', error);
         });
-    }, [userId]),
+    }, []),
   );
 
   const handleCardClick = card => {
@@ -154,7 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
   },
@@ -173,39 +169,39 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: wh(20),
-    left: ww(24),
+    top: 20,
+    left: 24,
   },
   saveImg: {
-    width: ww(38),
-    height: wh(38),
+    width: 38,
+    height: 38,
   },
   saveBtn: {
     alignSelf: 'flex-end',
-    marginBottom: wh(16),
+    marginBottom: 16,
   },
   clearbtn2: {
-    width: ww(24),
-    height: wh(24),
+    width: 24,
+    height: 24,
   },
   modalImage: {
-    width: ww(264),
-    height: wh(394),
+    width: 264,
+    height: 394,
   },
   confirmationContainer: {
-    width: ww(312),
-    height: wh(52),
+    width: 312,
+    height: 52,
     borderRadius: 10,
     backgroundColor: '#383838',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: ww(25),
+    marginLeft: 25,
     zIndex: 2,
     position: 'absolute',
     top: '50%',
   },
   confirmationText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
     textAlign: 'center',
     color: '#FFFFFF',
@@ -214,7 +210,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   space: {
-    height: wh(64),
+    height: 64,
     width: '100%',
   },
 });

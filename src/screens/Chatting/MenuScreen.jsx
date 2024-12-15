@@ -8,10 +8,6 @@ import offBellIcon from '@assets/images/chatting/offBellIcon.png';
 
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const MenuScreen = () => {
   const [isAlertOn, setIsAlertOn] = useState(true);
@@ -111,19 +107,19 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     backgroundColor: '#fff',
-    width: ww(289),
+    width: 289,
     height: '100%',
-    paddingHorizontal: ww(20),
+    paddingHorizontal: 20,
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
-    lineHeight: wh(24.96),
+    lineHeight: 24.96,
     color: '#383838',
-    marginTop: wh(19),
+    marginTop: 19,
   },
   photoSection: {
-    marginTop: wh(28),
+    marginTop: 28,
   },
   photoHeader: {
     display: 'flex',
@@ -136,51 +132,51 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 3,
-    marginTop: wh(12),
+    marginTop: 12,
   },
   btnImg: {
-    width: ww(16),
-    height: wh(16),
+    width: 16,
+    height: 16,
   },
   innerImage: {
-    width: ww(60),
-    height: wh(60),
+    width: 60,
+    height: 60,
     borderRadius: 2,
   },
   leftImage: {
-    width: ww(60),
-    height: wh(60),
+    width: 60,
+    height: 60,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 2,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 2,
   },
   rightImage: {
-    width: ww(60),
-    height: wh(60),
+    width: 60,
+    height: 60,
     borderTopLeftRadius: 2,
     borderTopRightRadius: 4,
     borderBottomLeftRadius: 2,
     borderBottomRightRadius: 4,
   },
   subtitle: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
-    lineHeight: wh(19.97),
+    lineHeight: 19.97,
     color: '#383838',
   },
   profileSection: {
     display: 'flex',
-    marginTop: wh(20),
+    marginTop: 20,
   },
   personSection: {
-    marginTop: wh(23),
+    marginTop: 23,
   },
   footer: {
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#F8F8F8',
-    height: wh(76),
+    height: 76,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -189,11 +185,11 @@ const styles = StyleSheet.create({
   },
   bellWrapper: {
     position: 'absolute',
-    top: wh(26),
-    right: ww(20),
+    top: 26,
+    right: 20,
   },
   bellIcon: {
-    width: ww(24),
-    height: ww(24),
+    width: 24,
+    height: 24,
   },
 });

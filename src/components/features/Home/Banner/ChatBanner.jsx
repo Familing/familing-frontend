@@ -1,10 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import ChatImage from '@assets/images/banner/ChatImage.png';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const ChatBanner = () => {
   return (
@@ -26,9 +22,9 @@ export const ChatBanner = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F8F8F8',
-    width: ww(360),
-    height: wh(210),
-    paddingHorizontal: ww(24),
+    width: 360,
+    height: 210,
+    paddingHorizontal: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -37,29 +33,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: ww(36),
+    gap: 36,
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#4D83F4',
-    lineHeight: wh(24.96),
+    lineHeight: 24.96,
   },
   subtitle: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
-    lineHeight: wh(24.96),
+    lineHeight: 24.96,
   },
   description: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '500',
     color: '#383838',
-    lineHeight: wh(14.98),
-    marginTop: wh(4.23),
+    lineHeight: 14.98,
+    marginTop: 4.23,
   },
   image: {
-    width: ww(149),
-    height: wh(107.11),
+    width: 149,
+    height: 107.11,
   },
 });

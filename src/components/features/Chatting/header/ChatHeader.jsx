@@ -2,10 +2,6 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import searchIcon from '@assets/images/chatting/searchIcon.png';
 import menuIcon from '@assets/images/chatting/menuIcon.png';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function ChatHeader({setIsSearch, navigation}) {
   return (
@@ -28,31 +24,31 @@ const styles = StyleSheet.create({
     zIndex: 9,
     display: 'flex',
     flexDirection: 'row',
-    paddingHorizontal: ww(24),
+    paddingHorizontal: 24,
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: wh(64),
+    height: 64,
     backgroundColor: 'rgba(77, 131, 244, 1)',
-    // shadow
+    //shadow
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: wh(2)},
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
-    shadowRadius: wh(10),
+    shadowRadius: 10,
     elevation: 5,
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
-    lineHeight: wh(24.96),
+    lineHeight: 24.96,
     color: 'rgba(255, 255, 255, 1)',
   },
   iconContainer: {
     flexDirection: 'row',
-    gap: ww(24),
+    gap: 24,
   },
   icon: {
-    width: ww(24),
-    height: wh(24),
+    width: 24,
+    height: 24,
   },
 });

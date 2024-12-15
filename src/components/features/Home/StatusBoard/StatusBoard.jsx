@@ -4,15 +4,11 @@ import StatusProfile from './StatusProfile';
 import {useFocusEffect} from '@react-navigation/native';
 import {BASE_URL} from '@/util/base_url';
 import axios from 'axios';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function StatusBorad() {
-  const [myStatus, setMyStatus] = useState([]);
+  const [myStatus, setMyStatus] = useState({});
   const [familyStatus, setFamilyStatus] = useState([]);
-  const [selectedItem, setSelectedItem] = useState([]);
+  const [selectedItem, setSelectedItem] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -20,32 +16,41 @@ export default function StatusBorad() {
 
       axios.get(`${BASE_URL}/api/v1/statuses/family`).then(response => {
         setMyStatus(response.data.result.me);
+        setSelectedItem(response.data.result.me.status);
         setFamilyStatus(response.data.result.family);
       });
     }, [selectedItem]),
   );
+
+  if (Object.keys(myStatus).length === 0 || familyStatus.length === 0) {
+    return <Text>로딩중이에요!</Text>;
+  }
 
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Text style={styles.title}>상태보기</Text>
         <Text style={styles.subTitle}>현재 가족들의 상태를 볼 수 있어요.</Text>
-        <StatusProfile
-          key={myStatus.username}
-          person={myStatus}
-          myName={myStatus.nickname}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
-        />
-        {familyStatus.map(person => (
+        <View style={styles.myStatus}>
           <StatusProfile
-            key={person.username}
-            person={person}
+            key={myStatus.username}
+            person={myStatus}
             myName={myStatus.nickname}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
           />
-        ))}
+        </View>
+        <View style={styles.familyStatus}>
+          {familyStatus.map(person => (
+            <StatusProfile
+              key={person.username}
+              person={person}
+              myName={myStatus.nickname}
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+            />
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -56,19 +61,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   container: {
-    marginTop: wh(24),
-    marginHorizontal: ww(24),
+    marginTop: 24,
+    marginHorizontal: 24,
   },
   title: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
   },
   subTitle: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '400',
     color: '#383838',
-    marginTop: wh(3.89),
-    marginBottom: wh(15),
+    marginTop: 3.89,
+    marginBottom: 15,
+  },
+  myStatus: {
+    position: 'relative',
+    zIndex: 9,
+  },
+  familyStatus: {
+    position: 'relative',
+    zIndex: 0,
   },
 });

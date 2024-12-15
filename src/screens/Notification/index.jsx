@@ -11,10 +11,7 @@ import axios from 'axios';
 import Arrow from '@assets/images/register/arrowImg.png';
 import {BASE_URL} from '@/util/base_url';
 import {useFocusEffect} from '@react-navigation/native';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
+import defaultImg from '@assets/images/photocard/defaultImg.png';
 
 export default function NotificationPage({navigation}) {
   const [yesterdayNotifications, setYesterdayNotifications] = useState([]);
@@ -31,6 +28,9 @@ export default function NotificationPage({navigation}) {
     try {
       const response = await axios.get(`${BASE_URL}/api/v1/alarms`);
       const data = response.data;
+      // const unread = data.result.unread.filter(item => !item.is_read);
+      // const yesterday = data.result.yesterday.filter(item => item.is_read);
+      // const sevenday = data.result.sevenday.filter(item => item.is_read);
 
       setYesterdayNotifications(data.result.unread);
       setUnreadNotifications(data.result.yesterday);
@@ -42,7 +42,10 @@ export default function NotificationPage({navigation}) {
 
   const renderNotificationItem = ({item}) => (
     <View style={styles.notificationItem}>
-      <Image source={{uri: item.alarm_img}} style={styles.notificationImage} />
+      <Image
+        source={item.alarm_img ? {uri: item.alarm_img} : defaultImg}
+        style={styles.notificationImage}
+      />
       <Text style={styles.notificationText}>{item.message}</Text>
     </View>
   );
@@ -98,52 +101,52 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    gap: ww(118),
-    marginTop: wh(20),
+    gap: 118,
+    marginTop: 20,
   },
   arrowImage: {
-    width: ww(20),
-    height: wh(15),
-    marginLeft: ww(24),
+    width: 20,
+    height: 15,
+    marginLeft: 24,
   },
   titleContainer: {
-    marginBottom: wh(25),
+    marginBottom: 25,
     alignItems: 'center',
   },
   title: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
     textAlign: 'center',
   },
   separator: {
-    width: ww(390),
+    width: 390,
     height: StyleSheet.hairlineWidth,
     borderTopWidth: 1,
     borderColor: '#E7E7E7',
-    marginTop: wh(10),
-    marginBottom: wh(20),
+    marginTop: 10,
+    marginBottom: 20,
     opacity: 1,
   },
   sectionContainer: {
-    marginLeft: ww(24),
+    marginLeft: 24,
   },
   sectionTitle: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
   },
   notificationItem: {
-    marginLeft: ww(24),
-    marginBottom: wh(5),
+    marginLeft: 24,
+    marginBottom: 5,
   },
   notificationImage: {
-    width: ww(42),
-    height: wh(42),
-    marginRight: ww(5),
+    width: 42,
+    height: 42,
+    marginRight: 5,
   },
   notificationText: {
-    fontSize: ww(14),
+    fontSize: 14,
     fontWeight: '800',
     color: '#383838',
   },

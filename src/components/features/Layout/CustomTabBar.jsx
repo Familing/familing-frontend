@@ -4,10 +4,6 @@ import {HomeIcon} from '../../icon/HomeIcon';
 import {MessageIcon} from '../../icon/MessageIcon';
 import {CardIcon} from '../../icon/CardIcon';
 import {PersonIcon} from '../../icon/PersonIcon';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const CustomTabBar = ({navigation}) => {
   const [selectedTab, setSelectedTab] = useState('Home');
@@ -91,41 +87,42 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     width: '100%',
-    height: wh(76),
+    height: 76,
     backgroundColor: '#FDFDFD',
-    shadowColor: '#000000',
-    shadowOffset: {width: 0, height: -1},
-    shadowOpacity: 0.1,
-    shadowRadius: wh(9),
+    //shadow
+    shadowColor: '#000000', // 그림자 색상
+    shadowOffset: {width: 0, height: -1}, // X: 0, Y: -1
+    shadowOpacity: 0.1, // 그림자의 불투명도 (10%)
+    shadowRadius: 9, // 그림자의 블러 반경
     elevation: 5,
   },
   innerWrapper: {
-    marginLeft: ww(42),
-    marginTop: wh(16),
+    marginLeft: 42,
+    marginTop: 16,
     flexDirection: 'row',
   },
   iconWrapper: {
-    height: wh(43),
+    height: 43,
     alignItems: 'center',
-    gap: ww(4),
+    gap: 4,
   },
   home: {},
   message: {
-    marginLeft: ww(60),
+    marginLeft: 60,
   },
   loveCard: {
-    marginLeft: ww(52),
+    marginLeft: 52,
   },
   person: {
-    marginLeft: ww(40),
+    marginLeft: 40,
   },
   focusText: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '600',
     color: '#4D83F4',
   },
   text: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '600',
     color: '#D3D3D3',
   },

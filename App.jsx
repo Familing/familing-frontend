@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabScreen} from './src/navigation/BottomTabScreen.jsx';
 import {StatusBar} from 'react-native';
-import {StartStacks} from '@/navigation/StartStack.jsx';
+import {StartStacks} from './src/navigation/StartStack.jsx';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

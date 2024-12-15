@@ -1,9 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
+import defaultImg from '@assets/images/photocard/photocard3.png';
 
 export const Message = ({message, showProfile}) => {
   if (message.senderId === 'date') {
@@ -25,7 +22,11 @@ export const Message = ({message, showProfile}) => {
       <View key={message.id} style={styles.otherContainer}>
         {showProfile ? (
           <Image
-            source={{uri: message.senderProfileImg}}
+            source={
+              message.senderProfileImg
+                ? {uri: message.senderProfileImg}
+                : defaultImg
+            }
             style={styles.profileImg}
           />
         ) : (
@@ -47,40 +48,41 @@ export const Message = ({message, showProfile}) => {
 const styles = StyleSheet.create({
   bubbleContainer: {
     display: 'flex',
-    maxWidth: ww(273.72),
-    borderRadius: wh(6),
-    padding: wh(12.86),
+    maxWidth: 273.72,
+    borderRadius: 6,
+    padding: 12.86,
   },
   profileImg: {
+    borderRadius: 50,
     zIndex: 99,
-    width: ww(44),
-    height: ww(44),
+    width: 44,
+    height: 44,
   },
   myBubble: {
-    marginTop: wh(7.81),
+    marginTop: 7.81,
     backgroundColor: '#4D83F4',
     alignSelf: 'flex-end',
   },
   otherBubble: {
-    marginLeft: ww(-6),
+    marginLeft: -6,
     backgroundColor: '#F8F8F8',
     alignSelf: 'flex-start',
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: wh(0)},
+    shadowOffset: {width: 0, height: 0},
     shadowOpacity: 0.1,
-    shadowRadius: wh(4),
+    shadowRadius: 4,
     elevation: 2,
   },
   otherContainer: {
-    marginTop: wh(12.28),
+    marginTop: 12.28,
     display: 'flex',
     flexDirection: 'row',
   },
   messageText: {
     flexWrap: 'wrap',
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '600',
-    lineHeight: wh(14.98),
+    lineHeight: 14.98,
   },
   myText: {
     color: '#F8F8F8',
@@ -90,12 +92,12 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     alignSelf: 'center',
-    marginTop: wh(28.45),
-    marginBottom: wh(16.17),
+    marginTop: 28.45,
+    marginBottom: 16.17,
   },
   dateText: {
     color: '#B3B3B3',
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '600',
   },
 });

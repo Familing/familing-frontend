@@ -1,10 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import backIcon from '@assets/images/header/backIcon.png';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function Header({title, navigation}) {
   const handleGoBack = () => {
@@ -28,21 +24,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: wh(64),
+    height: 64,
     backgroundColor: '#ffffff',
   },
   iconContainer: {
     position: 'absolute',
-    top: wh(22),
-    left: ww(22),
+    top: 22,
+    left: 22,
   },
   backIcon: {
-    width: ww(24),
-    height: ww(24),
+    width: 24,
+    height: 24,
   },
   title: {
     textAlign: 'center',
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
   },

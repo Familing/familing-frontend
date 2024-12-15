@@ -7,10 +7,7 @@ import {BASE_URL} from '@/util/base_url';
 import getToday from '@/components/common/getToday';
 import {getSnapshotTime} from '@/api/getSnapshotTime';
 import {useFocusEffect} from '@react-navigation/native';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
+import defaultImg from '@assets/images/photocard/defaultImg.png';
 
 export const SnapShot = () => {
   const [familySnapshot, setFamiliySnapshot] = useState([]);
@@ -22,13 +19,12 @@ export const SnapShot = () => {
   useFocusEffect(
     useCallback(() => {
       console.log('home focus');
+      //스냅샷 데이터 로드
+      fetchSnapshotData();
 
       //스냅샷 주제 공개 & 초기화
       //임시 구현
       showAndHideSnapshot();
-
-      //스냅샷 데이터 로드
-      fetchSnapshotData();
     }, [uploadImage]),
   );
 
@@ -38,7 +34,7 @@ export const SnapShot = () => {
     try {
       const response = await axios.get(`${BASE_URL}/api/v1/snapshots/${today}`);
       const familyData = response.data.result.family;
-      const myData = response.data.result.me;
+      const myData = response.data.result.me || {};
       const titleData = response.data.result.title;
       setFamiliySnapshot(familyData);
       setMySnapShot(myData);
@@ -69,6 +65,10 @@ export const SnapShot = () => {
     }
   };
 
+  if (Object.keys(mySnapShot).length === 0 || familySnapshot.length === 0) {
+    return <Text>로딩중이에요!</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -97,8 +97,10 @@ export const SnapShot = () => {
 
         <View style={styles.cardContainer}>
           <PhotoCard
-            profile={mySnapShot.profile_img}
-            uploadImage={mySnapShot.snapshot_img}
+            profile={mySnapShot ? mySnapShot.profile_img : defaultImg}
+            uploadImage={
+              mySnapShot.snapshot_img ? mySnapShot.snapshot_img : 'EMPTY'
+            }
             isShowSnapshot={isShowSnapshot}
             setUploadImage={setUploadImage}
           />
@@ -107,7 +109,7 @@ export const SnapShot = () => {
               <FamilyPhotoCard
                 key={index}
                 profile={person.profile_img}
-                snapshot={person.snapshot_img}
+                snapshot={person.snapshot_img ? person.snapshot_img : 'EMPTY'}
               />
             ))}
         </View>
@@ -121,9 +123,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   wrapper: {
-    marginTop: wh(20),
-    marginHorizontal: ww(24),
-    marginBottom: wh(6),
+    marginTop: 20,
+    marginHorizontal: 24,
+    marginBottom: 6,
   },
   header: {
     flexDirection: 'row',
@@ -131,15 +133,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: ww(71),
-    height: wh(20),
+    width: 71,
+    height: 20,
     borderRadius: 40,
     //shadow
     shadowColor: '#000000',
@@ -151,54 +153,54 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
     backgroundColor: '#FFFFFF',
-    marginTop: wh(-2),
+    marginTop: -2,
   },
   buttonText: {
-    fontSize: ww(10),
+    fontSize: 10,
     fontWeight: '600',
-    lineHeight: wh(12.48),
+    lineHeight: 12.48,
     color: '#383838',
   },
   subtitle: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '400',
     color: '#383838',
-    marginTop: wh(4),
+    marginTop: 4,
   },
   box: {
     alignSelf: 'flex-start',
-    paddingHorizontal: ww(24),
-    paddingVertical: wh(6),
-    height: wh(28),
+    paddingHorizontal: 24,
+    paddingVertical: 6,
+    height: 28,
     borderRadius: 5,
     backgroundColor: '#C5C5C5',
-    marginTop: wh(16),
+    marginTop: 16,
   },
   snapshotOn: {
     alignSelf: 'flex-start',
-    paddingHorizontal: ww(24),
-    paddingVertical: wh(6),
-    height: wh(28),
+    paddingHorizontal: 24,
+    paddingVertical: 6,
+    height: 28,
     borderRadius: 5,
     backgroundColor: '#FFBE00',
-    marginTop: wh(16),
+    marginTop: 16,
   },
   boxText: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '700',
     color: '#fff',
   },
   cardContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: wh(8),
-    marginBottom: wh(12),
-    gap: ww(12),
+    marginTop: 8,
+    marginBottom: 12,
+    gap: 12,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: wh(12),
-    gap: ww(12),
+    marginBottom: 12,
+    gap: 12,
   },
 });

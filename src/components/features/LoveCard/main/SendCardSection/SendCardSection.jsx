@@ -2,10 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Card from './Card';
 import {getSendLoveCard} from '@/api/getSendLoveCard';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function SendCardSection({
   setSelectedCard,
@@ -54,22 +50,22 @@ export default function SendCardSection({
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: wh(28),
-    marginLeft: ww(24),
-    marginBottom: wh(20),
+    marginTop: 28,
+    marginLeft: 24,
+    marginBottom: 20,
   },
   title2: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
   },
   subtitle2: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '500',
     color: '#383838',
-    marginTop: wh(4),
+    marginTop: 4,
   },
   container: {
-    marginTop: wh(16),
+    marginTop: 16,
   },
 });

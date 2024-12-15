@@ -4,9 +4,6 @@ import StatusBorad from '../../components/features/Home/StatusBoard/StatusBoard'
 import {CustomHeader} from '../../components/features/Layout/CustomHeader';
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {resize} from 'react-native-responsive-sizer';
-
-const wh = resize('wh', 800);
 
 export default function Home() {
   return (
@@ -24,7 +21,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   space: {
-    height: wh(64),
+    height: 64,
     width: '100%',
   },
 });

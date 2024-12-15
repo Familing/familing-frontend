@@ -16,16 +16,29 @@ import Arrow from '@assets/images/register/arrowImg.png';
 import ClearButton from '@assets/images/button/clearbtn.png';
 import CopyImage from '@assets/images/register/copyimage.png';
 import {BASE_URL} from '@/util/base_url';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const RegisterStep3 = ({navigation}) => {
   const [code, setCode] = useState('');
   const [inviteCode, setInviteCode] = useState(null);
 
+  // const fetchInviteCode = async () => {
+  //   try {
+  //     const response = await axios.post(`${BASE_URL}/api/v1/family`);
+  //     setInviteCode(response.data.inviteCode);
+  //     Clipboard.setString(response.data.inviteCode);
+  //   } catch (error) {
+  //     Alert.alert('초대 코드를 가져오는 데 실패했습니다.');
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   setInviteCode();
+  // }, []);
+
   const handleCreate = async groupName => {
+    // console.log('가족:', groupName);
+
     if (!groupName) {
       Alert.alert('가족 그룹 이름을 입력해주세요.');
       return;
@@ -35,6 +48,10 @@ export const RegisterStep3 = ({navigation}) => {
       const response = await axios.post(`${BASE_URL}/api/v1/family`, {
         family_name: groupName,
       });
+
+      console.log('보내는 데이터:', {family_name: groupName});
+
+      console.log('API 응답:', response.data);
 
       if (response.data.success) {
         const createdGroupName = response.data.result.code
@@ -109,112 +126,112 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   arrowImage: {
-    width: ww(20),
-    height: wh(15),
-    marginTop: wh(20),
-    marginLeft: ww(24),
+    width: 20,
+    height: 15,
+    marginTop: 20,
+    marginLeft: 24,
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: wh(100),
+    marginTop: 100,
   },
   title: {
-    fontSize: ww(24),
+    fontSize: 24,
     fontWeight: '700',
     color: '#4D83F4',
   },
   subtitle: {
-    fontSize: ww(24),
+    fontSize: 24,
     fontWeight: '700',
     color: '#383838',
   },
   inputContainer: {
     flex: 1,
-    marginTop: wh(40),
+    marginTop: 40,
   },
   input: {
-    width: ww(312),
-    height: wh(32),
-    fontSize: ww(16),
+    width: 312,
+    height: 32,
+    fontSize: 16,
     fontWeight: '400',
     color: '#C5C5C5',
     paddingHorizontal: 5,
     paddingVertical: 1,
-    marginLeft: ww(24),
+    marginLeft: 24,
   },
   line: {
-    width: ww(312),
+    width: 312,
     borderWidth: 2,
     borderColor: '#4D83F4',
     borderRadius: 12,
-    marginLeft: ww(24),
-    marginTop: wh(3),
+    marginLeft: 24,
+    marginTop: 3,
   },
   clearbtnContainer: {
     position: 'absolute',
-    top: wh(250),
-    left: ww(288),
+    top: 250,
+    left: 288,
   },
   clearButton: {
     position: 'absolute',
-    top: wh(6),
-    left: ww(310),
+    top: 6,
+    left: 310,
   },
   clearbtnImage: {
-    width: ww(24),
-    height: wh(24),
+    width: 24,
+    height: 24,
   },
   inviteContainer: {
-    width: ww(312),
-    height: wh(80),
+    width: 312,
+    height: 80,
     backgroundColor: '#F2F2F2',
     position: 'absolute',
-    top: wh(310),
-    left: ww(24),
+    top: 310,
+    left: 24,
   },
   inviteTitle: {
-    fontSize: ww(20),
+    fontSize: 20,
     fontWeight: '800',
     color: '#383838',
     textAlign: 'center',
-    marginTop: wh(16),
-    lineHeight: wh(24.96),
+    marginTop: 16,
+    lineHeight: 24.96,
   },
   copyContainer: {
     flexDirection: 'row',
-    marginLeft: ww(95),
-    marginTop: wh(5),
+    marginLeft: 95,
+    marginTop: 5,
   },
   copyImage: {
-    width: ww(10),
-    height: wh(12),
-    marginTop: wh(6),
-    marginRight: ww(5),
+    width: 10,
+    height: 12,
+    marginTop: 6,
+    marginRight: 5,
   },
   copyTitle: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '400',
     color: '#B3B3B3',
-    lineHeight: wh(24),
+    lineHeight: 24,
   },
   btnContainer: {
-    marginLeft: ww(24),
+    marginLeft: 24,
     position: 'absolute',
-    top: wh(425),
+    top: 425,
   },
   button: {
-    width: ww(312),
-    height: wh(40),
+    width: 312,
+    height: 40,
     borderRadius: 70,
     backgroundColor: '#4D83F4',
   },
   buttonText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
     textAlign: 'center',
-    marginTop: wh(6),
+    marginTop: 6,
   },
 });

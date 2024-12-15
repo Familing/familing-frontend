@@ -1,22 +1,18 @@
 import React from 'react';
 import {Circle, Defs, LinearGradient, Path, Stop, Svg} from 'react-native-svg';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function AiIcon() {
   return (
     <Svg
-      width={ww(22)}
-      height={wh(23)}
+      width="22"
+      height="23"
       viewBox="0 0 22 23"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <Circle
-        cx={ww(11)}
-        cy={wh(11.7471)}
-        r={ww(10.5)}
+        cx="11"
+        cy="11.7471"
+        r="10.5"
         fill="url(#paint0_linear_105_1428)"
         stroke="#6396FF"
       />
@@ -27,10 +23,10 @@ export default function AiIcon() {
       <Defs>
         <LinearGradient
           id="paint0_linear_105_1428"
-          x1={ww(4.47161)}
-          y1={wh(20.08)}
-          x2={ww(17.4631)}
-          y2={wh(3.36341)}
+          x1="4.47161"
+          y1="20.08"
+          x2="17.4631"
+          y2="3.36341"
           gradientUnits="userSpaceOnUse">
           <Stop offset="0.135" stopColor="#4D83F4" />
           <Stop offset="1" stopColor="#FFBE00" />

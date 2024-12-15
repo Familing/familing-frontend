@@ -1,15 +1,11 @@
 import React from 'react';
 import {Circle, Path, Svg} from 'react-native-svg';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function SaveBtn() {
   return (
     <Svg
-      width={ww(38)}
-      height={wh(39)}
+      width="38"
+      height="39"
       viewBox="0 0 38 39"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
@@ -21,8 +17,8 @@ export default function SaveBtn() {
       <Path
         d="M10 29.75H28"
         stroke="#B3B3B3"
-        strokeWidth="2"
-        strokeLinecap="round"
+        stroke-width="2"
+        stroke-linecap="round"
       />
     </Svg>
   );

@@ -1,10 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Profile from './Profile';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function ReceiveCardSecton({familiy, navigation}) {
   return (
@@ -34,24 +30,24 @@ export default function ReceiveCardSecton({familiy, navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: wh(24),
-    marginLeft: ww(24),
+    marginTop: 24,
+    marginLeft: 24,
   },
   title1: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
   },
   subtitle1: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '500',
     color: '#383838',
-    marginTop: wh(4),
+    marginTop: 4,
   },
   cardContainer: {
-    gap: wh(16),
+    gap: 16,
     flexDirection: 'row',
-    height: wh(91),
-    marginTop: wh(16),
+    height: 91,
+    marginTop: 16,
   },
 });

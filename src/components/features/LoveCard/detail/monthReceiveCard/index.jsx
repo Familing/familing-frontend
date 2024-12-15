@@ -1,10 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import MonthCard from './MonthCard';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function MonthReceiveCard({monthCards, handleCardClick}) {
   return (
@@ -18,17 +14,14 @@ export default function MonthReceiveCard({monthCards, handleCardClick}) {
 
       <View style={styles.scrollCotainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {monthCards === undefined ? (
-            <Text style={styles.text}>최근 30일간 받은 카드가 없어요!</Text>
-          ) : (
+          {monthCards.length != 0 &&
             monthCards.map(card => (
               <MonthCard
                 key={card.id}
                 card={card.lovecardResponse}
                 handleCardClick={handleCardClick}
               />
-            ))
-          )}
+            ))}
         </ScrollView>
       </View>
     </View>
@@ -37,28 +30,27 @@ export default function MonthReceiveCard({monthCards, handleCardClick}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: wh(28),
-    marginLeft: ww(24),
-    marginBottom: wh(20),
+    marginTop: 28,
+    marginLeft: 24,
+    marginBottom: 20,
   },
   title2: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '800',
     color: '#383838',
-    marginBottom: wh(4),
+    marginBottom: 4,
   },
   subtitle2: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '500',
     color: '#383838',
   },
-  scrollContainer: {
-    alignItems: 'center',
-    marginTop: wh(16),
-    height: wh(156),
+  scrollCotainer: {
+    marginTop: 16,
+    height: 156,
   },
   text: {
-    marginTop: wh(64),
+    marginTop: 64,
     color: '#C5C5C5',
   },
 });

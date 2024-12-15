@@ -16,18 +16,14 @@ import SendProfile from '../../../components/features/LoveCard/main/SendCardSect
 import {CustomHeader} from '../../../components/features/Layout/CustomHeader';
 import {BASE_URL} from '@/util/base_url';
 import axios from 'axios';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function LoveCardMainScreen({navigation}) {
   const [showAvatars, setShowAvatars] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [selectedCard, setSelectedCard] = useState('');
+  const [selectedCardId, setSelectedCardId] = useState('');
   const [familiy, setFamily] = useState([]);
 
   useEffect(() => {
@@ -166,14 +162,14 @@ export default function LoveCardMainScreen({navigation}) {
 
 const styles = StyleSheet.create({
   space: {
-    height: wh(64),
+    height: 64,
     width: '100%',
   },
   container: {
     backgroundColor: '#fff',
   },
   profileContainer: {
-    marginTop: wh(10),
+    marginTop: 10,
   },
   modalContainer: {
     flex: 1,
@@ -188,40 +184,40 @@ const styles = StyleSheet.create({
     right: 0,
   },
   modalImage: {
-    width: ww(264),
-    height: wh(394),
-    marginBottom: wh(20),
+    width: 264,
+    height: 394,
+    marginBottom: 20,
   },
   buttonContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: wh(8),
+    gap: 8,
   },
   sendButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: ww(156),
-    height: wh(40),
+    width: 156,
+    height: 40,
     borderRadius: 40,
     backgroundColor: '#4D83F4',
   },
   sendButtonText: {
-    fontSize: ww(14),
-    lineHeight: wh(17.47),
+    fontSize: 14,
+    lineHeight: 17.47,
     fontWeight: '700',
     color: '#FFFFFF',
   },
   cancelButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: ww(156),
-    height: wh(40),
+    width: 156,
+    height: 40,
     borderRadius: 40,
     backgroundColor: '#FFFFFF',
   },
   cancelButtonText: {
-    fontSize: ww(14),
-    lineHeight: wh(17.47),
+    fontSize: 14,
+    lineHeight: 17.47,
     fontWeight: '700',
     color: '#383838',
   },
@@ -230,7 +226,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: wh(172),
+    height: 172,
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
@@ -244,8 +240,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   clearButtonContainer: {
-    marginTop: wh(8),
-    marginRight: ww(8),
+    marginTop: 8,
+    marginRight: 8,
     alignSelf: 'flex-end',
     height: 24,
     width: 24,
@@ -256,14 +252,14 @@ const styles = StyleSheet.create({
   },
   avatarBox: {
     flexDirection: 'row',
-    gap: ww(16),
-    marginLeft: ww(24),
+    gap: 16,
+    marginLeft: 24,
   },
   confirmationContainer: {
     position: 'absolute',
-    bottom: wh(60),
-    width: ww(312),
-    height: wh(52),
+    bottom: 60,
+    width: 312,
+    height: 52,
     borderRadius: 10,
     backgroundColor: '#383838',
     justifyContent: 'center',
@@ -273,12 +269,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   confirmationText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
     color: '#FFFFFF',
   },
   boldText: {
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '700',
     color: '#FFFFFF',
   },

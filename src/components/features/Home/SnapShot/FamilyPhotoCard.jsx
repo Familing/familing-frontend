@@ -1,10 +1,5 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
-// import mom from '../../../../assets/images/photocard/photocard2.png';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const FamilyPhotoCard = ({profile, snapshot}) => {
   return (
@@ -29,13 +24,13 @@ export const FamilyPhotoCard = ({profile, snapshot}) => {
 const styles = StyleSheet.create({
   profile: {
     position: 'absolute',
-    top: wh(4),
-    left: ww(4),
-    width: ww(38),
-    height: wh(38),
+    top: 4,
+    left: 4,
+    width: 38,
+    height: 38,
     borderRadius: 50,
   },
-  imageContainer: {
+  imgaeContainer: {
     width: '100%',
     height: '100%',
     borderRadius: 6,
@@ -47,15 +42,15 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   content: {
-    width: ww(150),
-    height: wh(150),
+    width: 150,
+    height: 150,
     backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 6,
   },
   description: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '700',
     color: '#C5C5C5',
   },

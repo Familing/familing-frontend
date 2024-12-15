@@ -8,10 +8,6 @@ import {Stomp} from '@stomp/stompjs';
 import {BASE_URL} from '@/util/base_url';
 import {getChatRoomId} from '@/api/getChatRoomId';
 import {getLoveChat} from '@/api/getLoveChat';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export const ChatInput = ({setReceiveMsg}) => {
   const [inputValue, setInputValue] = useState('');
@@ -70,8 +66,10 @@ export const ChatInput = ({setReceiveMsg}) => {
   };
 
   const handleAiToggle = async () => {
-    const loveChat = await getLoveChat(inputValue);
-    sendMessage(loveChat);
+    if (inputValue) {
+      const loveChat = await getLoveChat(inputValue);
+      sendMessage(loveChat);
+    }
   };
 
   return (
@@ -110,32 +108,32 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    marginBottom: wh(7),
+    marginBottom: 7,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'space-between',
-    width: ww(312),
-    height: wh(40),
-    borderRadius: wh(35),
+    width: 312,
+    height: 40,
+    borderRadius: 35,
     backgroundColor: '#FDFDFD',
-    paddingHorizontal: ww(4),
-    paddingVertical: wh(3),
-    // shadow
+    paddingHorizontal: 4,
+    paddingVertical: 3,
+    //shadow
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: wh(0)},
+    shadowOffset: {width: 0, height: 0},
     shadowOpacity: 0.15,
-    shadowRadius: wh(3.77),
+    shadowRadius: 3.77,
     elevation: 2,
   },
   assetsContainer: {
     flexDirection: 'row',
-    gap: ww(12),
+    gap: 12,
   },
   input: {
-    fontSize: ww(12),
+    fontSize: 12,
     fontWeight: '600',
-    lineHeight: wh(14.98),
+    lineHeight: 14.98,
     color: '#383838',
   },
 });

@@ -8,10 +8,6 @@ import {
   View,
 } from 'react-native';
 import searchIcon from '@assets/images/chatting/searchIcon.png';
-import {resize} from 'react-native-responsive-sizer';
-
-const ww = resize('ww', 360);
-const wh = resize('wh', 800);
 
 export default function SearchChatHeader({setIsSearch}) {
   const [searchValue, setSearchValue] = useState('');
@@ -42,37 +38,37 @@ const styles = StyleSheet.create({
     zIndex: 9,
     display: 'flex',
     flexDirection: 'row',
-    paddingHorizontal: ww(24),
+    paddingHorizontal: 24,
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: wh(64),
+    height: 64,
     backgroundColor: 'rgba(77, 131, 244, 1)',
-    // shadow
+    //shadow
     shadowColor: '#000000',
-    shadowOffset: {width: 0, height: wh(2)},
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
-    shadowRadius: wh(10),
+    shadowRadius: 10,
     elevation: 5,
   },
   icon: {
-    width: ww(24),
-    height: ww(24),
+    width: 24,
+    height: 24,
   },
   rightWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: ww(8),
+    gap: 8,
   },
   textInput: {
     color: '#fff',
-    fontSize: ww(16),
+    fontSize: 16,
     fontWeight: '400',
   },
   cancel: {
-    fontSize: ww(18),
+    fontSize: 18,
     fontWeight: '500',
-    lineHeight: wh(22.46),
+    lineHeight: 22.46,
     color: '#FFFFFF',
   },
 });
