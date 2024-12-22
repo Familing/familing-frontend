@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import BannerImg from '@assets/images/banner/BannerImage.png';
 import kakao from '@assets/images/register/kakao.png';
@@ -6,6 +6,11 @@ import * as KakaoLogin from '@react-native-seoul/kakao-login';
 import axios from 'axios';
 import {BASE_URL} from '@/util/base_url';
 import Cookies from '@react-native-cookies/cookies';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {sendFcmToken} from '@/api/fcm/fcm';
 
 export default function Start({navigation}) {
   //kakao login
@@ -27,7 +32,7 @@ export default function Start({navigation}) {
           },
         );
 
-        //로그인 후 화면 이동
+        await sendFcmToken();
         const hasFamily = await handleFamily();
         if (hasFamily === false) {
           navigation.navigate('RegisterScreen');
@@ -89,50 +94,50 @@ const styles = StyleSheet.create({
     backgroundColor: '#4D83F4',
   },
   textContainer: {
-    marginTop: 104,
-    marginBottom: 40,
+    marginTop: hp('17%'),
+    marginBottom: hp('5%'),
   },
   title: {
-    fontSize: 50,
+    fontSize: wp('14%'),
     fontWeight: '800',
     color: '#fff',
     textAlign: 'center',
-    lineHeight: 62.4,
-    marginBottom: 4,
+    lineHeight: wp('17%'),
+    marginBottom: hp('0.5%'),
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: wp('5%'),
     fontWeight: '400',
     textAlign: 'center',
     color: '#fff',
   },
   image: {
-    width: 220,
-    height: 220,
+    width: wp('61%'),
+    height: wp('61%'),
   },
   button: {
     backgroundColor: '#FFBE00',
-    paddingVertical: 12,
-    paddingHorizontal: 80,
-    borderRadius: 32.27,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: wp('22%'),
+    borderRadius: wp('9%'),
     justifyContent: 'center',
     alignItems: 'center',
-    width: 312,
-    height: 50,
-    marginTop: 40,
+    width: wp('87%'),
+    height: hp('7%'),
+    marginTop: hp('5%'),
   },
   btnContainer: {
     flexDirection: 'row',
-    gap: 8,
+    gap: wp('2%'),
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: wp('4.5%'),
     color: '#371C09',
     fontWeight: '800',
     textAlign: 'center',
   },
   kakao: {
-    width: 28,
-    height: 28,
+    width: wp('7.8%'),
+    height: wp('7.8%'),
   },
 });
